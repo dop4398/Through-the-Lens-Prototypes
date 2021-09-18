@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class TempGUI : MonoBehaviour
 {
+    public static TempGUI gui;
     private string name;
     private GUIStyle style;
+
+    private void Awake()
+    {
+        gui = this;
+    }
 
     // Start is called before the first frame update
     void Start()

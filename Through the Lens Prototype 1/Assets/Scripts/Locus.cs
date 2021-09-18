@@ -9,16 +9,25 @@ public class Locus : MonoBehaviour
         present,
         past
     }
+
+    //index used to match photos
     public int id;
 
+    //Object lists
     public List<GameObject> past;
     public List<GameObject> present;
+
+    //correct position and rotation
     private Vector3 pos;
     private Vector3 rot;
-    public State state;
-    public bool isSingleUse;
 
-    public KeyCode key;
+    //used to make pos and rot matching easier
+    private float tolerance_pos;
+    private float tolerance_rot;
+
+    public State state; //current state
+    public bool isSingleUse; //destory component after a toggle
+    public KeyCode key; //debug key
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +48,11 @@ public class Locus : MonoBehaviour
         rot = this.rot;
         state = this.state;
         isSingleUse = this.isSingleUse;
+    }
+
+    private void CheckPlayer()
+    {
+        //Some code to check play pos and rot and toggle state
     }
 
     private void ToggleState()
@@ -86,7 +100,7 @@ public class Locus : MonoBehaviour
         state = s;
 
         if (isSingleUse)
-            gameObject.SetActive(false);
+            Destroy(GetComponent<Locus>());
     }
 
 }
