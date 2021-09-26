@@ -4,20 +4,25 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 
-// Script source:
-// https://sharpcoderblog.com/blog/unity-3d-fps-controller
-// We will sufficiently modify this in the future to separate it form the source.
-
+/// <summary>
+/// Class <c>FPController</c>.
+/// A first-person controller for the player. It deals with movement and the camera.
+/// This script was originally sourced from <a href="https://sharpcoderblog.com/blog/unity-3d-fps-controller">here</a>.
+/// </summary>
+/// <author>
+/// David Patch
+/// </author>
 public class FPController : MonoBehaviour
 {
     #region fields
-    public float walkingSpeed = 7.5f;
-    public float runningSpeed = 11.5f;
+    public float walkingSpeed = 6.0f;
+    public float runningSpeed = 10.0f;
+    public bool canJump = false;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
-    public float lookXLimit = 45.0f;
+    public float lookXLimit = 90.0f;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -27,7 +32,7 @@ public class FPController : MonoBehaviour
     public bool canMove = true;
     #endregion
 
-    #region Unity Methods
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -36,6 +41,7 @@ public class FPController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
 
     void Update()
     {
@@ -49,7 +55,7 @@ public class FPController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (canJump && Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
         }
@@ -78,5 +84,4 @@ public class FPController : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
     }
-    #endregion
 }
