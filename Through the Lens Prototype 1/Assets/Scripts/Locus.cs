@@ -2,8 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class <c>Locus</c>.
+/// Used to check and react to player's action and transform, and control objects, materials, and probably many other things to change based on the state of the Locus.
+/// </summary>
+/// <author>
+/// Alfie Luo
+/// </author>
+
 public class Locus : MonoBehaviour
 {
+
+    //Locus's state is a enum, this is for better script readabily and potential future expansion of the locus class.
     public enum State
     {
         present,
@@ -21,11 +31,12 @@ public class Locus : MonoBehaviour
     private Vector3 pos;
     private Vector3 rot;
 
-    //used to make pos and rot matching easier
+    //used to specify the 'range' of the currect position and rotation to make pos and rot matching easier
     private float tolerance_pos;
     private float tolerance_rot;
 
     public State state; //current state
+    public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
@@ -42,6 +53,9 @@ public class Locus : MonoBehaviour
             ToggleState();
     }
 
+    /// <summary>
+    /// Class initializaiton
+    /// </summary>
     private void Init()
     {
         pos = this.pos;
@@ -50,14 +64,24 @@ public class Locus : MonoBehaviour
         isSingleUse = this.isSingleUse;
     }
 
+    /// <summary>
+    /// Check if player is holding the correct photo and if player's current rotation and position is correct. If correct, toggle state.
+    /// </summary>
     private void CheckPlayer()
     {
-        //Some code to check play pos and rot and toggle state
+        //if locus is active, check player status
+        if (isActive)
+        {
+
+        }
     }
 
+    /// <summary>
+    /// Helper function, Toggle the state of the current locus between past and present, this method exists be cause locus only has two states.
+    /// </summary>
     private void ToggleState()
     {
-        if(state == State.past)
+        if (state == State.past)
         {
             SwitchState(State.present);
         }
@@ -65,19 +89,26 @@ public class Locus : MonoBehaviour
         {
             SwitchState(State.past);
         }
+
+        if (isSingleUse)
+            Destroy(GetComponent<Locus>());
     }
 
+    /// <summary>
+    /// Helper function, switch the current state of this locus to a specified state.
+    /// </summary>
+    /// <param name="s">The specified state the locus will switch to.</param>
     private void SwitchState(State s)
     {
         switch (s)
         {
             case State.past:
-                if(present.Count > 0)
+                if (present.Count > 0)
                 {
                     foreach (GameObject g in present)
                         g.SetActive(false);
                 }
-                if(past.Count > 0)
+                if (past.Count > 0)
                 {
                     foreach (GameObject g in past)
                         g.SetActive(true);
@@ -98,9 +129,15 @@ public class Locus : MonoBehaviour
         }
 
         state = s;
-
-        if (isSingleUse)
-            Destroy(GetComponent<Locus>());
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        isActive = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isActive = false;
+    }
 }
