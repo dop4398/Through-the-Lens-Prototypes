@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-
 /// <summary>
 /// Class <c>FPController</c>.
 /// A first-person controller for the player. It deals with movement and the camera.
@@ -28,8 +26,10 @@ public class FPController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
-    [HideInInspector]
-    public bool canMove = true;
+    [HideInInspector] public bool canMove = true;
+
+    // To be removed once the album is implemented
+    public Photo heldPhoto;
     #endregion
 
 
@@ -44,6 +44,18 @@ public class FPController : MonoBehaviour
 
 
     void Update()
+    {
+        Movement();
+
+        //Debug.Log(GetHeldPhotoIndex());
+    }
+
+
+    #region helper methods
+    /// <summary>
+    /// Deals with inputs to let the player look and move around the scene. To be called every frame in Update().
+    /// </summary>
+    private void Movement()
     {
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -84,4 +96,14 @@ public class FPController : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
     }
+
+    /// <summary>
+    /// Method for retrieving the Photo that the player is holding, if any.
+    /// </summary>
+    /// <returns>The index of the Photo being held by the player, or null if none.</returns>
+    public string GetHeldPhotoIndex()
+    {
+        return heldPhoto.GetIndex();
+    }
+    #endregion
 }
