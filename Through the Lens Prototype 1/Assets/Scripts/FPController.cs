@@ -13,6 +13,8 @@ using UnityEngine;
 public class FPController : MonoBehaviour
 {
     #region fields
+    public static FPController instance;
+
     public float walkingSpeed = 6.0f;
     public float runningSpeed = 10.0f;
     public bool canJump = false;
@@ -32,6 +34,11 @@ public class FPController : MonoBehaviour
     public Photo heldPhoto;
     #endregion
 
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

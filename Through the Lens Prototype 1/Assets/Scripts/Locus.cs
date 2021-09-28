@@ -73,6 +73,7 @@ public class Locus : MonoBehaviour
         //if locus is active, check player status
         if (isActive)
         {
+            //Debug.Log(FPController.instance.GetHeldPhotoIndex());
             ToggleState();
         }
     }
