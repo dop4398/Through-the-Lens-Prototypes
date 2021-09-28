@@ -2,32 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
-
-// Script source:
-// https://sharpcoderblog.com/blog/unity-3d-fps-controller
-// We will sufficiently modify this in the future to separate it form the source.
-
+/// <summary>
+/// Class <c>FPController</c>.
+/// A first-person controller for the player. It deals with movement and the camera.
+/// This script was originally sourced from <a href="https://sharpcoderblog.com/blog/unity-3d-fps-controller">here</a>.
+/// </summary>
+/// <author>
+/// David Patch
+/// </author>
 public class FPController : MonoBehaviour
 {
     #region fields
-    public float walkingSpeed = 7.5f;
-    public float runningSpeed = 11.5f;
+    public float walkingSpeed = 6.0f;
+    public float runningSpeed = 10.0f;
+    public bool canJump = false;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
-    public float lookXLimit = 45.0f;
+    public float lookXLimit = 90.0f;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
 
-    [HideInInspector]
-    public bool canMove = true;
+    [HideInInspector] public bool canMove = true;
+
+    // To be removed once the album is implemented
+    public Photo heldPhoto;
     #endregion
 
-    #region Unity Methods
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -37,7 +42,20 @@ public class FPController : MonoBehaviour
         Cursor.visible = false;
     }
 
+
     void Update()
+    {
+        Movement();
+
+        //Debug.Log(GetHeldPhotoIndex());
+    }
+
+
+    #region helper methods
+    /// <summary>
+    /// Deals with inputs to let the player look and move around the scene. To be called every frame in Update().
+    /// </summary>
+    private void Movement()
     {
         // We are grounded, so recalculate move direction based on axes
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -49,7 +67,7 @@ public class FPController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (canJump && Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
         }
@@ -77,6 +95,15 @@ public class FPController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+    }
+
+    /// <summary>
+    /// Method for retrieving the Photo that the player is holding, if any.
+    /// </summary>
+    /// <returns>The index of the Photo being held by the player, or null if none.</returns>
+    public string GetHeldPhotoIndex()
+    {
+        return heldPhoto.GetIndex();
     }
     #endregion
 }
