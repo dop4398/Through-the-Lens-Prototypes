@@ -9,7 +9,6 @@ using UnityEngine;
 /// <author>
 /// Alfie Luo
 /// </author>
-
 public class Locus : MonoBehaviour
 {
 
@@ -40,17 +39,19 @@ public class Locus : MonoBehaviour
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
-    // Start is called before the first frame update
+
     void Start()
     {
         Init();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(key))
             ToggleState();
+
+        CheckPlayer();
     }
 
     /// <summary>
@@ -72,7 +73,7 @@ public class Locus : MonoBehaviour
         //if locus is active, check player status
         if (isActive)
         {
-
+            ToggleState();
         }
     }
 
