@@ -108,9 +108,9 @@ public class FPController : MonoBehaviour
     /// Method for retrieving the Photo that the player is holding, if any.
     /// </summary>
     /// <returns>The index of the Photo being held by the player, or null if none.</returns>
-    public string GetHeldPhotoIndex()
+    public string GetHeldPhotoID()
     {
-        return heldPhoto.GetIndex();
+        return heldPhoto.GetID();
     }
     #endregion
 }

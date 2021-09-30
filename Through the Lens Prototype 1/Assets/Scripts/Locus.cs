@@ -19,8 +19,8 @@ public class Locus : MonoBehaviour
         past
     }
 
-    //index used to match photos
-    public int id;
+    //ID used to match photos
+    public string id;
 
     //Object lists
     public List<GameObject> past;
@@ -38,6 +38,11 @@ public class Locus : MonoBehaviour
     public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
+
+    
+    private GameObject player; //Player Reference
+    public float cooldownDuration = 2.0f;
+    [SerializeField] private float cooldown = 0.0f;
 
 
     void Start()
@@ -71,10 +76,23 @@ public class Locus : MonoBehaviour
     private void CheckPlayer()
     {
         //if locus is active, check player status
-        if (isActive)
+        if (isActive && cooldown <= 0.0f)
         {
-            //Debug.Log(FPController.instance.GetHeldPhotoIndex());
-            ToggleState();
+            //Debug.Log(FPController.instance.GetHeldPhotoID());
+            
+            cooldown = cooldownDuration;         
+            player = GameObject.FindGameObjectWithTag("Player");
+
+            if(player.GetComponent<FPController>().GetHeldPhotoID() == id)
+            {
+                ToggleState();
+            }         
+        }
+
+        // tick down the cooldown timer, or reset it if 0 is reached
+        if(cooldown > 0.0f)
+        {
+            cooldown -= Time.deltaTime;
         }
     }
 

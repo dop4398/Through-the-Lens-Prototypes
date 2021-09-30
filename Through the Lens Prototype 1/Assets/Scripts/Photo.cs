@@ -10,7 +10,7 @@ using UnityEngine;
 /// </author>
 public class Photo : MonoBehaviour
 {
-    [SerializeField] private string locusIndex = "";
+    [SerializeField] private string locusID = "";
 
     void Start()
     {
@@ -22,8 +22,8 @@ public class Photo : MonoBehaviour
         
     }
 
-    public string GetIndex()
+    public string GetID()
     {
-        return locusIndex;
+        return locusID;
     }
 }
