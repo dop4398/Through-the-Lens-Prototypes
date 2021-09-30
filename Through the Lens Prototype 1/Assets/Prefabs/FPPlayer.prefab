@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7529204688661866335}
   m_Layer: 0
   m_Name: FPPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,9 +230,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 6
   runningSpeed: 10
+  canJump: 0
   jumpSpeed: 8
   gravity: 20
   playerCamera: {fileID: 7529204687901563029}
   lookSpeed: 2
   lookXLimit: 90
   canMove: 1
+  heldPhoto: {fileID: 0}
