@@ -79,12 +79,12 @@ public class Locus : MonoBehaviour
         if (isActive && cooldown <= 0.0f)
         {
             //Debug.Log(FPController.instance.GetHeldPhotoID());
-            
-            cooldown = cooldownDuration;         
+                    
             player = GameObject.FindGameObjectWithTag("Player");
 
             if(player.GetComponent<FPController>().GetHeldPhotoID() == id)
             {
+                cooldown = cooldownDuration;
                 ToggleState();
             }         
         }

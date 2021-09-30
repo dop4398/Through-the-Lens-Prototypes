@@ -31,7 +31,9 @@ public class FPController : MonoBehaviour
     [HideInInspector] public bool canMove = true;
 
     // To be removed once the album is implemented
-    public Photo heldPhoto;
+    public List<Photo> album;
+    [SerializeField] private Photo heldPhoto;
+    private int albumIndex = 0;
     #endregion
 
 
@@ -55,6 +57,11 @@ public class FPController : MonoBehaviour
         Movement();
 
         //Debug.Log(GetHeldPhotoIndex());
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CyclePhoto();
+        }
     }
 
 
@@ -111,6 +118,21 @@ public class FPController : MonoBehaviour
     public string GetHeldPhotoID()
     {
         return heldPhoto.GetID();
+    }
+
+    /// <summary>
+    /// Changes the currently held photo by cycling through the list of all the player's photos (their album).
+    /// </summary>
+    public void CyclePhoto()
+    {
+        albumIndex++;
+        if(albumIndex >= album.Count)
+        {
+            albumIndex = 0;
+        }
+
+        heldPhoto = album[albumIndex];
+        Debug.Log(heldPhoto.GetID() + " - " + albumIndex);
     }
     #endregion
 }
