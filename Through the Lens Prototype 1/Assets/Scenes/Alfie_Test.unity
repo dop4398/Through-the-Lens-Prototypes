@@ -1292,8 +1292,8 @@ MonoBehaviour:
   - {fileID: 2082060828}
   - {fileID: 1514839332}
   - {fileID: 406722259}
-  rot: {x: 0, y: 0, z: 0}
-  tolerance_rot: 1.1
+  rot: {x: -10, y: 0, z: 0}
+  tolerance_rot: 5
   state: 1
   isActive: 0
   isSingleUse: 0
@@ -2565,8 +2565,8 @@ MonoBehaviour:
   - {fileID: 1987083684}
   present:
   - {fileID: 1926662004}
-  rot: {x: -10, y: 0, z: 0}
-  tolerance_rot: 1.1
+  rot: {x: 0, y: 0, z: 0}
+  tolerance_rot: 5
   state: 1
   isActive: 0
   isSingleUse: 0

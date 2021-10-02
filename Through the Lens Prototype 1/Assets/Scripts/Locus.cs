@@ -93,7 +93,8 @@ public class Locus : MonoBehaviour
             if (FPController.instance.GetHeldPhotoID() == id)
             {
                 cooldown = cooldownDuration;
-                if (Quaternion.Angle(FPController.instance.transform.rotation, Quaternion.Euler(rot)) < 1f + tolerance_rot)
+
+                if (Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot)) < 1f + tolerance_rot)
                 {
                     ToggleState();
                 }
