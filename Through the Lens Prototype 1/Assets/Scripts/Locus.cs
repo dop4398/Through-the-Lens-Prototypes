@@ -19,28 +19,36 @@ public class Locus : MonoBehaviour
         past
     }
 
+    [Header("ID")]
     //ID used to match photos
     public string id;
 
+    [Header("Objects")]
     //Object lists
     public List<GameObject> past;
     public List<GameObject> present;
 
+    [Header("Rotation")]
     //correct position and rotation
     private Vector3 pos;
-    private Vector3 rot;
+    public Vector3 rot;
 
     //used to specify the 'range' of the currect position and rotation to make pos and rot matching easier
     private float tolerance_pos;
+    [Header("Tolerance")]
+    [SerializeField]
+    [Range(0.1f,10f)]
     private float tolerance_rot;
 
+    [Header("Other")]
     public State state; //current state
     public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
-    
-    private GameObject player; //Player Reference
+
+    //private GameObject player; //Player Reference
+    [Header("CD")]
     public float cooldownDuration = 2.0f;
     [SerializeField] private float cooldown = 0.0f;
 
@@ -79,18 +87,21 @@ public class Locus : MonoBehaviour
         if (isActive && cooldown <= 0.0f)
         {
             //Debug.Log(FPController.instance.GetHeldPhotoID());
-                    
-            player = GameObject.FindGameObjectWithTag("Player");
 
-            if(player.GetComponent<FPController>().GetHeldPhotoID() == id)
+            //player = GameObject.FindGameObjectWithTag("Player");
+
+            if (FPController.instance.GetHeldPhotoID() == id)
             {
                 cooldown = cooldownDuration;
-                ToggleState();
-            }         
+                if (Quaternion.Angle(FPController.instance.transform.rotation, Quaternion.Euler(rot)) < 1f + tolerance_rot)
+                {
+                    ToggleState();
+                }
+            }
         }
 
         // tick down the cooldown timer, or reset it if 0 is reached
-        if(cooldown > 0.0f)
+        if (cooldown > 0.0f)
         {
             cooldown -= Time.deltaTime;
         }
