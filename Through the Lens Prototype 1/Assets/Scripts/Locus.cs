@@ -90,7 +90,7 @@ public class Locus : MonoBehaviour
 
             //player = GameObject.FindGameObjectWithTag("Player");
 
-            if (FPController.instance.GetHeldPhotoID() == id)
+            if (FPController.instance.GetHeldPhotoID() == id && HoldPhoto.instance.isHolding)
             {
                 cooldown = cooldownDuration;
 

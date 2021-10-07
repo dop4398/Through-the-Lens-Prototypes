@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 7529204688661866337}
   - component: {fileID: 7529204688661866334}
   - component: {fileID: 7529204688661866335}
+  - component: {fileID: 1384710590717951485}
   m_Layer: 0
   m_Name: FPPlayer
   m_TagString: Player
@@ -237,4 +238,20 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 90
   canMove: 1
+  album: []
   heldPhoto: {fileID: 0}
+--- !u!114 &1384710590717951485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529204688661866332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8e0fc6fc8d73d4b897d63c7d9c6794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHolding: 0
+  photo: {fileID: 0}
+  photo_hold: {fileID: 0}

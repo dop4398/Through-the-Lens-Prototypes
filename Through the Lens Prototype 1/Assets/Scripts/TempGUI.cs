@@ -31,7 +31,7 @@ public class TempGUI : MonoBehaviour
     private void OnGUI()
     {
 
-        GUI.Box(new Rect(20, 20, 120, 30), "Item: " + name, style);
+        GUI.Box(new Rect(20, 20, 120, 30), "Photo: " + name, style);
     }
 
     public void SetName(string s)

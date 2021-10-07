@@ -49,6 +49,9 @@ public class FPController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //init GUI
+        TempGUI.gui.SetName(heldPhoto.GetID());
     }
 
 
@@ -132,6 +135,10 @@ public class FPController : MonoBehaviour
         }
 
         heldPhoto = album[albumIndex];
+
+        //update GUI
+        TempGUI.gui.SetName(heldPhoto.GetID());
+
         Debug.Log(heldPhoto.GetID() + " - " + albumIndex);
     }
     #endregion
