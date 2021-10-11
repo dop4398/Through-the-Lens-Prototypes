@@ -35,8 +35,8 @@ public class FPController : MonoBehaviour
     [SerializeField] private Photo currentPhoto;
     private int albumIndex = 0;
 
+    //Hard-coded item stuff
     public GameObject photoObject;
-
     [SerializeField] private bool photoInFocus = false;
     #endregion
 
