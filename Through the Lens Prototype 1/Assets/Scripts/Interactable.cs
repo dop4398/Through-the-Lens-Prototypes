@@ -40,7 +40,7 @@ public class Interactable : MonoBehaviour
         {
             m_Renderer.material.color = m_MouseOverColor;
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Interaction();
             }
