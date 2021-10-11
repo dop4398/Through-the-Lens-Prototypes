@@ -32,10 +32,12 @@ public class FPController : MonoBehaviour
 
     // To be removed once the album is implemented
     public List<Photo> album;
-    [SerializeField] private Photo heldPhoto;
+    [SerializeField] private Photo currentPhoto;
     private int albumIndex = 0;
 
     //Hard-coded item stuff
+    public GameObject photoObject;
+    [SerializeField] private bool photoInFocus = false;
     #endregion
 
 
@@ -57,6 +59,7 @@ public class FPController : MonoBehaviour
     void Update()
     {
         Movement();
+        FocusPhoto();
 
         //Debug.Log(GetHeldPhotoIndex());
 
@@ -119,11 +122,12 @@ public class FPController : MonoBehaviour
     /// <returns>The index of the Photo being held by the player, or null if none.</returns>
     public string GetHeldPhotoID()
     {
-        return heldPhoto.GetID();
+        return currentPhoto.GetID();
     }
 
     /// <summary>
     /// Changes the currently held photo by cycling through the list of all the player's photos (their album).
+    /// This is a quick and dirty solution and should be improved upon for future prototypes.
     /// </summary>
     public void CyclePhoto()
     {
@@ -133,8 +137,36 @@ public class FPController : MonoBehaviour
             albumIndex = 0;
         }
 
-        heldPhoto = album[albumIndex];
-        Debug.Log(heldPhoto.GetID() + " - " + albumIndex);
+        currentPhoto = album[albumIndex];
+        Debug.Log(currentPhoto.GetID() + " - " + albumIndex);
+
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial();
+    }
+
+    /// <summary>
+    /// Bring the currently held photo into focus in the center of the screen, blocking a good section of the player's vision.
+    /// </summary>
+    public void FocusPhoto()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            photoObject.transform.localPosition = new Vector3(0, 0, 0.5f);
+            photoInFocus = true;
+        }
+        else if(Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            photoObject.transform.localPosition = new Vector3(0.75f, -0.5f, 1.5f);
+            photoInFocus = false;
+        }
+    }
+
+    /// <summary>
+    /// Public method for checking whether the player has a photo in focus.
+    /// </summary>
+    /// <returns>True if a photo is in focus, false if not.</returns>
+    public bool IsInFocus()
+    {
+        return photoInFocus;
     }
     #endregion
 }

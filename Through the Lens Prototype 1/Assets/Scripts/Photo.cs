@@ -10,7 +10,11 @@ using UnityEngine;
 /// </author>
 public class Photo : MonoBehaviour
 {
+    #region Fields
     [SerializeField] private string locusID = "";
+    private GameObject heldPhoto;
+    [SerializeField] private Material mat;
+    #endregion
 
     void Start()
     {
@@ -22,8 +26,23 @@ public class Photo : MonoBehaviour
         
     }
 
+    #region Helper Methods
+    /// <summary>
+    /// Getter for the photo's locus ID.
+    /// </summary>
+    /// <returns>ID String.</returns>
     public string GetID()
     {
         return locusID;
     }
+
+    /// <summary>
+    /// Getter for the photo's material (the picture itself).
+    /// </summary>
+    /// <returns>Material for the photo image.</returns>
+    public Material GetMaterial()
+    {
+        return mat;
+    }
+    #endregion
 }

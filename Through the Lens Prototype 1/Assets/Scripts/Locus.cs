@@ -82,7 +82,7 @@ public class Locus : MonoBehaviour
                     
             player = GameObject.FindGameObjectWithTag("Player");
 
-            if(player.GetComponent<FPController>().GetHeldPhotoID() == id)
+            if(player.GetComponent<FPController>().GetHeldPhotoID() == id && player.GetComponent<FPController>().IsInFocus())
             {
                 cooldown = cooldownDuration;
                 ToggleState();
@@ -154,6 +154,7 @@ public class Locus : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         isActive = true;
+        
     }
 
     private void OnTriggerExit(Collider other)

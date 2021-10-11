@@ -237,4 +237,5 @@ MonoBehaviour:
   lookSpeed: 2
   lookXLimit: 90
   canMove: 1
+  album: []
   heldPhoto: {fileID: 0}
