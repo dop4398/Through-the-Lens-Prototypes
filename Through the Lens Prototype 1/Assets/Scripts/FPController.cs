@@ -34,6 +34,8 @@ public class FPController : MonoBehaviour
     public List<Photo> album;
     [SerializeField] private Photo heldPhoto;
     private int albumIndex = 0;
+
+    //Hard-coded item stuff
     #endregion
 
 
