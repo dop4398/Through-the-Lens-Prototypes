@@ -6,23 +6,29 @@ public class TutorialTrigger : MonoBehaviour
 {
     public TutorialType type;
     public bool triggerOnce;
+    public float duration;
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             TempGUI.gui.TurnOnTutorial(type);
+
+            if (duration > 0f)
+            {
+                Invoke("TurnOff", duration);
+            }
         }
     }
 
@@ -30,9 +36,16 @@ public class TutorialTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            CancelInvoke("TurnOff");
+
             TempGUI.gui.TurnOffTutorial(type);
             if (triggerOnce)
                 gameObject.SetActive(false);
         }
+    }
+
+    private void TurnOff()
+    {
+        TempGUI.gui.TurnOffTutorial(type);
     }
 }
