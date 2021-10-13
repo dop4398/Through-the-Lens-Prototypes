@@ -2890,12 +2890,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1136991171}
   m_Layer: 0
-  m_Name: DoorBlocks
+  m_Name: TESTDoorBlocking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1136991171
 Transform:
   m_ObjectHideFlags: 0
@@ -3605,7 +3605,7 @@ PrefabInstance:
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: mat
       value: 
-      objectReference: {fileID: 2100000, guid: 9aefa1fc6259ad843a3c6fe328e34ec3, type: 2}
+      objectReference: {fileID: 2100000, guid: c85c6901bac6ebc4795f655cc8d38b7d, type: 2}
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: locusID
       value: Gate
@@ -5879,7 +5879,7 @@ PrefabInstance:
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: mat
       value: 
-      objectReference: {fileID: 2100000, guid: 8a4c7555ed5ab95488d809f243a02cc9, type: 2}
+      objectReference: {fileID: 2100000, guid: ada17fa45ba39114793567d2744f6048, type: 2}
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: locusID
       value: Table
