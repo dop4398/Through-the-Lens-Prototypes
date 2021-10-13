@@ -38,7 +38,8 @@ public class Interactable : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= radius)
         {
-            m_Renderer.material.color = m_MouseOverColor;
+            //m_Renderer.material.color = m_MouseOverColor;
+            
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -52,7 +53,7 @@ public class Interactable : MonoBehaviour
     /// </summary>
     void OnMouseExit()
     {
-        m_Renderer.material.color = m_OriginalColor;
+        //m_Renderer.material.color = m_OriginalColor;
     }
 
     /// <summary>
