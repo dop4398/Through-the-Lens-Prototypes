@@ -13,15 +13,15 @@ public class Interactable : MonoBehaviour
 {
     #region fields
     public float radius = 2.0f;
-    public Color m_MouseOverColor = Color.red;
-    private Color m_OriginalColor;
-    private MeshRenderer m_Renderer;
+    //public Color m_MouseOverColor = Color.red;
+    //private Color m_OriginalColor;
+    //private MeshRenderer m_Renderer;
     #endregion
 
     void Start()
     {
-        m_Renderer = GetComponent<MeshRenderer>();
-        m_OriginalColor = m_Renderer.material.color;
+        //m_Renderer = GetComponent<MeshRenderer>();
+        //m_OriginalColor = m_Renderer.material.color;
     }
 
     void Update()
@@ -39,7 +39,7 @@ public class Interactable : MonoBehaviour
         if(Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= radius)
         {
             //m_Renderer.material.color = m_MouseOverColor;
-            
+            TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -54,6 +54,7 @@ public class Interactable : MonoBehaviour
     void OnMouseExit()
     {
         //m_Renderer.material.color = m_OriginalColor;
+        TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
     }
 
     /// <summary>
@@ -61,7 +62,7 @@ public class Interactable : MonoBehaviour
     /// </summary>
     void Interaction()
     {
-
+        
     }
     #endregion
 }

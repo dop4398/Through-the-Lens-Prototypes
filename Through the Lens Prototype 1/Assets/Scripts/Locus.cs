@@ -72,8 +72,8 @@ public class Locus : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        pos = this.pos;
-        rot = this.rot;
+        pos = this.transform.position;
+        rot = this.transform.rotation.eulerAngles;
         state = this.state;
         isSingleUse = this.isSingleUse;
     }
