@@ -61,6 +61,7 @@ public class QuitMenu : MonoBehaviour
 
     public void EndGame()   //method for OnClick(), on button press, quit the game (needs EventSystem to function)
     {
+        Application.OpenURL("https://rit.az1.qualtrics.com/jfe/form/SV_0PzqSprj4gyQIXs");
         Application.Quit();
     }
     #endregion
