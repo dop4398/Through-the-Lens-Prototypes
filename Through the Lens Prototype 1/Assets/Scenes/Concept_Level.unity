@@ -4088,9 +4088,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: c85c6901bac6ebc4795f655cc8d38b7d, type: 2}
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: locusID
       value: Gate
       objectReference: {fileID: 0}
+    - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
+      propertyPath: mat_new
+      value: 
+      objectReference: {fileID: 2100000, guid: c85c6901bac6ebc4795f655cc8d38b7d, type: 2}
+    - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
+      propertyPath: mat_old
+      value: 
+      objectReference: {fileID: 2100000, guid: 4839cc3e16fc13e4aaaeeb9c7de6d851, type: 2}
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: locusIndex
       value: Gate
@@ -6592,9 +6604,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: ada17fa45ba39114793567d2744f6048, type: 2}
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: locusID
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
+      propertyPath: mat_new
+      value: 
+      objectReference: {fileID: 2100000, guid: 04b6db77bb2c0914e927158539d07cca, type: 2}
+    - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
+      propertyPath: mat_old
+      value: 
+      objectReference: {fileID: 2100000, guid: ada17fa45ba39114793567d2744f6048, type: 2}
     - target: {fileID: 6344433191050422167, guid: 3ad9911bd1986a3428b5df277bca5167, type: 3}
       propertyPath: locusIndex
       value: Gate

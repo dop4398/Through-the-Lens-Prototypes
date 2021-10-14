@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,6 +54,8 @@ public class Locus : MonoBehaviour
     [SerializeField] private float cooldown = 0.0f;
 
 
+
+
     void Start()
     {
         Init();
@@ -92,6 +95,9 @@ public class Locus : MonoBehaviour
                 if (Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot)) < 1f + tolerance_rot)
                 {
                     ToggleState();
+
+                    //swap photo content
+                    FPController.instance.SwapPhotoContent();
                 }
             }         
         }

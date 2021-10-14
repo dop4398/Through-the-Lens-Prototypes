@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,7 +41,6 @@ public class FPController : MonoBehaviour
     [SerializeField] private bool photoInFocus = false;
     public bool hasKey = false;
     #endregion
-
 
     void Awake()
     {
@@ -141,7 +141,7 @@ public class FPController : MonoBehaviour
         currentPhoto = album[albumIndex];
         Debug.Log(currentPhoto.GetID() + " - " + albumIndex);
 
-        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial();
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
     }
 
     /// <summary>
@@ -168,6 +168,15 @@ public class FPController : MonoBehaviour
     public bool IsInFocus()
     {
         return photoInFocus;
+    }
+
+    /// <summary>
+    /// Toggle the state of the current held photo and update the material of the photo object
+    /// </summary>
+    public void SwapPhotoContent()
+    {
+        currentPhoto.ToggleState();
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
     }
     #endregion
 }
