@@ -1557,6 +1557,8 @@ MonoBehaviour:
   - {fileID: 672360718}
   present:
   - {fileID: 919132147989092218}
+  rot: {x: 0, y: 0, z: 0}
+  tolerance_rot: 15
   state: 0
   isActive: 0
   isSingleUse: 0
@@ -2270,6 +2272,10 @@ PrefabInstance:
     - target: {fileID: 5211844262647857381, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211844262895134691, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
@@ -3471,6 +3477,8 @@ MonoBehaviour:
   - {fileID: 1098843251}
   present:
   - {fileID: 227547735}
+  rot: {x: 0, y: 90, z: 0}
+  tolerance_rot: 15
   state: 0
   isActive: 0
   isSingleUse: 0
