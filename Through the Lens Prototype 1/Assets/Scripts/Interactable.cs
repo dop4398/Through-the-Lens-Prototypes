@@ -6,22 +6,22 @@ using UnityEngine;
 /// Class <class>Interactable</class>
 /// Script for interactable logic. For use with both pickups and other interactable objects.
 /// </summary>
-/// <authour>
+/// <author>
 /// David Patch
-/// </authour>
+/// </author>
 public class Interactable : MonoBehaviour
 {
     #region fields
     public float radius = 2.0f;
-    public Color m_MouseOverColor = Color.red;
-    private Color m_OriginalColor;
-    private MeshRenderer m_Renderer;
+    public GameObject UIElement;
+    public bool requiresKey = false;
+    public Vector3 rot;
+    public Vector3 pos;
     #endregion
 
     void Start()
     {
-        m_Renderer = GetComponent<MeshRenderer>();
-        m_OriginalColor = m_Renderer.material.color;
+
     }
 
     void Update()
@@ -31,16 +31,16 @@ public class Interactable : MonoBehaviour
 
     #region helper methods
     /// <summary>
-    /// While within the radius, on mouse over, change the color of the GameObject. If the Interact key is pressed, do this object's interaction.
+    /// While within the radius, on mouse over, bring up the GUI element. If the Interact key is pressed, do this object's interaction.
     /// </summary>
     private void OnMouseOver()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if(Vector3.Distance(player.transform.position, this.gameObject.transform.position) <= radius)
+        Debug.Log("Mouse over");
+        if(Vector3.Distance(FPController.instance.transform.position, this.gameObject.transform.position) <= radius)
         {
-            m_Renderer.material.color = m_MouseOverColor;
+            TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Interaction();
             }
@@ -48,11 +48,11 @@ public class Interactable : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Turns off the GUI element on mouse exit.
     /// </summary>
     void OnMouseExit()
     {
-        m_Renderer.material.color = m_OriginalColor;
+        TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
     }
 
     /// <summary>
@@ -60,7 +60,30 @@ public class Interactable : MonoBehaviour
     /// </summary>
     void Interaction()
     {
+        if (this.CompareTag("Pickup"))
+        {
+            TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
+            UIElement.SetActive(true);
+            FPController.instance.hasKey = true;
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (requiresKey && !FPController.instance.hasKey)
+            {
+                return;
+            }
 
+            TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
+            if(pos != Vector3.zero)
+            {
+                this.transform.position = pos;
+            } 
+            else if(rot != Vector3.zero)
+            {
+                this.transform.rotation = Quaternion.Euler(rot);
+            }
+        }
     }
     #endregion
 }

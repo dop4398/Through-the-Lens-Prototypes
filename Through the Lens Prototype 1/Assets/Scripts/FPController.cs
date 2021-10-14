@@ -38,6 +38,7 @@ public class FPController : MonoBehaviour
     //Hard-coded item stuff
     public GameObject photoObject;
     [SerializeField] private bool photoInFocus = false;
+    public bool hasKey = false;
     #endregion
 
 

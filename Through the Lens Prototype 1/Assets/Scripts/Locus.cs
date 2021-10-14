@@ -19,28 +19,36 @@ public class Locus : MonoBehaviour
         past
     }
 
+    [Header("ID")]
     //ID used to match photos
     public string id;
 
+    [Header("Objects")]
     //Object lists
     public List<GameObject> past;
     public List<GameObject> present;
 
+    [Header("Rotation")]
     //correct position and rotation
     private Vector3 pos;
-    private Vector3 rot;
+    public Vector3 rot;
 
     //used to specify the 'range' of the currect position and rotation to make pos and rot matching easier
     private float tolerance_pos;
-    private float tolerance_rot;
+    [Header("Tolerance")]
+    [SerializeField]
+    [Range(0.1f, 15.0f)]
+    private float tolerance_rot = 15.0f;
 
+    [Header("Other")]
     public State state; //current state
     public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
-    
-    private GameObject player; //Player Reference
+
+    //private GameObject player; //Player Reference
+    [Header("CD")]
     public float cooldownDuration = 2.0f;
     [SerializeField] private float cooldown = 0.0f;
 
@@ -64,8 +72,8 @@ public class Locus : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        pos = this.pos;
-        rot = this.rot;
+        pos = this.transform.position;
+        rot = this.transform.rotation.eulerAngles;
         state = this.state;
         isSingleUse = this.isSingleUse;
     }
@@ -78,14 +86,13 @@ public class Locus : MonoBehaviour
         //if locus is active, check player status
         if (isActive && cooldown <= 0.0f)
         {
-            //Debug.Log(FPController.instance.GetHeldPhotoID());
-                    
-            player = GameObject.FindGameObjectWithTag("Player");
-
-            if(player.GetComponent<FPController>().GetHeldPhotoID() == id && player.GetComponent<FPController>().IsInFocus())
+            if(FPController.instance.GetHeldPhotoID() == id && FPController.instance.IsInFocus())
             {
                 cooldown = cooldownDuration;
-                ToggleState();
+                if (Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot)) < 1f + tolerance_rot)
+                {
+                    ToggleState();
+                }
             }         
         }
 
