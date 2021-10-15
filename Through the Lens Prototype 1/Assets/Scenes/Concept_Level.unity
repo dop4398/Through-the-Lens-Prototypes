@@ -8748,6 +8748,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2051757201318882259, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9ea151944d9c224785c842bdf4e4b7f, type: 2}
     - target: {fileID: 7529204688534715164, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -8763,7 +8767,7 @@ PrefabInstance:
     - target: {fileID: 7529204688661866335, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: currentPhoto
       value: 
-      objectReference: {fileID: 1749041442}
+      objectReference: {fileID: 529916479}
     - target: {fileID: 7529204688661866335, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: runningSpeed
       value: 10
@@ -8779,7 +8783,7 @@ PrefabInstance:
     - target: {fileID: 7529204688661866335, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: album.Array.data[0]
       value: 
-      objectReference: {fileID: 1749041442}
+      objectReference: {fileID: 529916479}
     - target: {fileID: 7529204688661866335, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: album.Array.data[1]
       value: 
@@ -8787,7 +8791,7 @@ PrefabInstance:
     - target: {fileID: 7529204688661866335, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: album.Array.data[2]
       value: 
-      objectReference: {fileID: 529916479}
+      objectReference: {fileID: 1749041442}
     - target: {fileID: 7529204688661866337, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: m_RootOrder
       value: 6
