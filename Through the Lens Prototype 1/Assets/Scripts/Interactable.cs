@@ -49,7 +49,7 @@ public class Interactable : MonoBehaviour
                 }
                 else
                 {
-                    TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
+                    TempGUI.gui.TurnOnTutorial(TutorialType.LOCKED);
                 }
             }
             else
@@ -69,6 +69,7 @@ public class Interactable : MonoBehaviour
     void OnMouseExit()
     {
         TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
+        TempGUI.gui.TurnOffTutorial(TutorialType.LOCKED);
     }
 
     /// <summary>

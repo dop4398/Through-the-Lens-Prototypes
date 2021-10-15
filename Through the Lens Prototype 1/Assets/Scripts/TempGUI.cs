@@ -8,7 +8,8 @@ public enum TutorialType
     HOLDPHOTO,
     SWAPPHOTO,
     PICKUP,
-    LINEUP
+    LINEUP,
+    LOCKED
 }
 public class TempGUI : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class TempGUI : MonoBehaviour
     public GameObject swap;
     public GameObject pick;
     public GameObject lineUp;
+    public GameObject locked;
+
 
 
     private void Awake()
@@ -55,7 +58,7 @@ public class TempGUI : MonoBehaviour
     private void OnGUI()
     {
 
-        GUI.Box(new Rect(20, 20, 120, 30), "Photo: " + name, style);
+        //GUI.Box(new Rect(20, 20, 120, 30), "Photo: " + name, style);
     }
 
     public void SetName(string s)
@@ -82,6 +85,9 @@ public class TempGUI : MonoBehaviour
             case TutorialType.LINEUP:
                 lineUp.SetActive(true);
                 break;
+            case TutorialType.LOCKED:
+                locked.SetActive(true);
+                break;
         }
     }
 
@@ -103,6 +109,9 @@ public class TempGUI : MonoBehaviour
                 break;
             case TutorialType.LINEUP:
                 lineUp.SetActive(false);
+                break;
+            case TutorialType.LOCKED:
+                locked.SetActive(false);
                 break;
         }
     }
