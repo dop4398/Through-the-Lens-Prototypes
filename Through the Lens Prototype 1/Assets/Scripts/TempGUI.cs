@@ -7,7 +7,8 @@ public enum TutorialType
     WASDMOUSE,
     HOLDPHOTO,
     SWAPPHOTO,
-    PICKUP
+    PICKUP,
+    LINEUP
 }
 public class TempGUI : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class TempGUI : MonoBehaviour
     public GameObject hold;
     public GameObject swap;
     public GameObject pick;
+    public GameObject lineUp;
 
 
     private void Awake()
@@ -39,7 +41,15 @@ public class TempGUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        {
+            TurnOffTutorial(TutorialType.SWAPPHOTO);
+        }
+        else if(hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            TurnOffTutorial(TutorialType.HOLDPHOTO);
+            TurnOnTutorial(TutorialType.LINEUP);
+        }
     }
 
     private void OnGUI()
@@ -69,6 +79,9 @@ public class TempGUI : MonoBehaviour
             case TutorialType.WASDMOUSE:
                 wasd.SetActive(true);
                 break;
+            case TutorialType.LINEUP:
+                lineUp.SetActive(true);
+                break;
         }
     }
 
@@ -87,6 +100,9 @@ public class TempGUI : MonoBehaviour
                 break;
             case TutorialType.WASDMOUSE:
                 wasd.SetActive(false);
+                break;
+            case TutorialType.LINEUP:
+                lineUp.SetActive(false);
                 break;
         }
     }

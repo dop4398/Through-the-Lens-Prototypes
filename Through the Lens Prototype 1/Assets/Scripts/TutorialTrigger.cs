@@ -34,11 +34,14 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && (type == TutorialType.HOLDPHOTO || type == TutorialType.WASDMOUSE))
         {
             CancelInvoke("TurnOff");
 
             TempGUI.gui.TurnOffTutorial(type);
+            // hard-coded in here
+            TempGUI.gui.TurnOffTutorial(TutorialType.LINEUP);
+
             if (triggerOnce)
                 gameObject.SetActive(false);
         }

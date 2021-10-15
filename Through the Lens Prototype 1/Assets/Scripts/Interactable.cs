@@ -35,14 +35,30 @@ public class Interactable : MonoBehaviour
     /// </summary>
     private void OnMouseOver()
     {
-        Debug.Log("Mouse over");
         if(Vector3.Distance(FPController.instance.transform.position, this.gameObject.transform.position) <= radius)
         {
-            TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
-
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if(requiresKey)
             {
-                Interaction();
+                if(FPController.instance.hasKey)
+                {
+                    TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        Interaction();
+                    }
+                }
+                else
+                {
+                    TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
+                }
+            }
+            else
+            {
+                TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Interaction();
+                }
             }
         }
     }
@@ -69,20 +85,23 @@ public class Interactable : MonoBehaviour
         }
         else
         {
-            if (requiresKey && !FPController.instance.hasKey)
+            if (requiresKey)
             {
-                return;
-            }
+                if(!FPController.instance.hasKey)
+                {
+                    return;
+                }
 
-            TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
-            if(pos != Vector3.zero)
-            {
-                this.transform.position = pos;
-            } 
-            else if(rot != Vector3.zero)
-            {
-                this.transform.rotation = Quaternion.Euler(rot);
-            }
+                TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
+                if (pos != Vector3.zero)
+                {
+                    this.transform.position = pos;
+                }
+                else if (rot != Vector3.zero)
+                {
+                    this.transform.rotation = Quaternion.Euler(rot);
+                }
+            }     
         }
     }
     #endregion
