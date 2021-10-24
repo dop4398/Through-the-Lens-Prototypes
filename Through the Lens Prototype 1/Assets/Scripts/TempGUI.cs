@@ -9,7 +9,8 @@ public enum TutorialType
     SWAPPHOTO,
     PICKUP,
     LINEUP,
-    LOCKED
+    LOCKED,
+    GATHER
 }
 public class TempGUI : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class TempGUI : MonoBehaviour
     public GameObject pick;
     public GameObject lineUp;
     public GameObject locked;
+    public GameObject gather;
 
 
 
@@ -88,6 +90,9 @@ public class TempGUI : MonoBehaviour
             case TutorialType.LOCKED:
                 locked.SetActive(true);
                 break;
+            case TutorialType.GATHER:
+                gather.SetActive(true);
+                break;
         }
     }
 
@@ -112,6 +117,9 @@ public class TempGUI : MonoBehaviour
                 break;
             case TutorialType.LOCKED:
                 locked.SetActive(false);
+                break;
+            case TutorialType.GATHER:
+                gather.SetActive(false);
                 break;
         }
     }

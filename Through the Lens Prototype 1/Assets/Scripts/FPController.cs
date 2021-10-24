@@ -15,6 +15,7 @@ public class FPController : MonoBehaviour
 {
     #region fields
     public static FPController instance;
+    public GameObject HandWithPhoto;
 
     public float walkingSpeed = 6.0f;
     public float runningSpeed = 10.0f;
@@ -124,6 +125,17 @@ public class FPController : MonoBehaviour
     public string GetHeldPhotoID()
     {
         return currentPhoto.GetID();
+    }
+
+    /// <summary>
+    /// Method for adding a Photo object to the album.
+    /// </summary>
+    /// <param name="photo">The Photo object being added.</param>
+    public void AddPhotoToAlbum(Photo photo)
+    {
+        album.Add(photo);
+        currentPhoto = album[album.Count - 1];
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
     }
 
     /// <summary>

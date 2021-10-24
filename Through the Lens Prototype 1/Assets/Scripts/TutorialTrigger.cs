@@ -16,7 +16,15 @@ public class TutorialTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(type == TutorialType.GATHER)
+        {
+            // once all of the photos are picked up, deactivate the tutorial GUI colliders.
+            if (FPController.instance.album.Count == 3)
+            {
+                TempGUI.gui.TurnOffTutorial(type);
+                this.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,16 +42,21 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && (type == TutorialType.HOLDPHOTO || type == TutorialType.WASDMOUSE))
+        if (other.tag == "Player")
         {
-            CancelInvoke("TurnOff");
+            switch(type)
+            {
+                case TutorialType.HOLDPHOTO:
+                    TempGUI.gui.TurnOffTutorial(TutorialType.LINEUP);
+                    break;
+            }
 
             TempGUI.gui.TurnOffTutorial(type);
-            // hard-coded in here
-            TempGUI.gui.TurnOffTutorial(TutorialType.LINEUP);
 
             if (triggerOnce)
+            {
                 gameObject.SetActive(false);
+            }
         }
     }
 

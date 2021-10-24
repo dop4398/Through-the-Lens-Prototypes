@@ -84,6 +84,13 @@ public class Interactable : MonoBehaviour
             FPController.instance.hasKey = true;
             this.gameObject.SetActive(false);
         }
+        else if(this.CompareTag("Photo"))
+        {
+            TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
+            FPController.instance.AddPhotoToAlbum(this.gameObject.GetComponent<Photo>());
+            FPController.instance.HandWithPhoto.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
         else
         {
             if (requiresKey)

@@ -50,8 +50,7 @@ public class Locus : MonoBehaviour
 
     //private GameObject player; //Player Reference
     [Header("CD")]
-    public float cooldownDuration = 2.0f;
-    [SerializeField] private float cooldown = 0.0f;
+    [SerializeField] private bool onCooldown = false;
 
 
 
@@ -87,11 +86,11 @@ public class Locus : MonoBehaviour
     private void CheckPlayer()
     {
         //if locus is active, check player status
-        if (isActive && cooldown <= 0.0f)
+        if (isActive && !onCooldown)
         {
             if(FPController.instance.GetHeldPhotoID() == id && FPController.instance.IsInFocus())
             {
-                cooldown = cooldownDuration;
+                onCooldown = true;
                 if (Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot)) < 1f + tolerance_rot)
                 {
                     ToggleState();
@@ -102,10 +101,9 @@ public class Locus : MonoBehaviour
             }         
         }
 
-        // tick down the cooldown timer, or reset it if 0 is reached
-        if(cooldown > 0.0f)
+        if(Input.GetKeyUp(KeyCode.Mouse1))
         {
-            cooldown -= Time.deltaTime;
+            onCooldown = false;
         }
     }
 
