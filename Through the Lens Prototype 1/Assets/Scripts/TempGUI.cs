@@ -137,12 +137,12 @@ public class TempGUI : MonoBehaviour
         g.SetActive(true);
         g.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
         LeanTween.alpha(g.GetComponent<RectTransform>(), 1f, tipSpeed_appear).setEaseInOutQuad();
-        LeanTween.moveLocalY(g, 180, 1f).setEaseInOutQuad();
+        LeanTween.moveLocalY(g, 50, tipSpeed_appear).setEaseInOutQuad();
     }
 
     protected void RemoveTips(GameObject g)
     {
-        LeanTween.moveLocalY(g, 0f, 1f).setEaseInOutQuad();
+        LeanTween.moveLocalY(g, 0f, tipSpeed_disappear).setEaseInOutQuad();
         LeanTween.alpha(g.GetComponent<RectTransform>(), 0f, tipSpeed_disappear).setEaseInOutQuad().setOnComplete(TweenFinished, g);
     }
 

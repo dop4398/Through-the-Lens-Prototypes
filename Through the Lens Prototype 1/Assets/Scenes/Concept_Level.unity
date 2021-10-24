@@ -1766,6 +1766,14 @@ PrefabInstance:
       propertyPath: locked
       value: 
       objectReference: {fileID: 1077148166}
+    - target: {fileID: 7588627351949093741, guid: 4f58e9e805cef994c9ec322e7c925ea4, type: 3}
+      propertyPath: tipSpeed_appear
+      value: 0.571
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588627351949093741, guid: 4f58e9e805cef994c9ec322e7c925ea4, type: 3}
+      propertyPath: tipSpeed_disappear
+      value: 0.448
+      objectReference: {fileID: 0}
     - target: {fileID: 7588627351949093742, guid: 4f58e9e805cef994c9ec322e7c925ea4, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -3227,9 +3235,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3344932304730227448, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3521010434998592589, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487135892553399137, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4630259263954473109, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
       propertyPath: m_RootOrder
@@ -3370,6 +3386,14 @@ PrefabInstance:
     - target: {fileID: 5211844263409733503, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472707901198281213, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6676085524882035865, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7691751580534734354, guid: 43c229e069c6c0a4abe2c68ce98704b7, type: 3}
       propertyPath: m_RootOrder
@@ -5268,8 +5292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  triggerOnce: 1
-  duration: 0
+  triggerOnce: 0
+  duration: 3
 --- !u!65 &1314908537
 BoxCollider:
   m_ObjectHideFlags: 0

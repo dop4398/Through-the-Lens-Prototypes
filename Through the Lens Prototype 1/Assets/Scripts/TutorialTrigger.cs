@@ -55,7 +55,7 @@ public class TutorialTrigger : MonoBehaviour
 
             if (triggerOnce)
             {
-                gameObject.SetActive(false);
+                Invoke("RemoveSelf", 2f);
             }
         }
     }
@@ -63,5 +63,11 @@ public class TutorialTrigger : MonoBehaviour
     private void TurnOff()
     {
         TempGUI.gui.TurnOffTutorial(type);
+    }
+
+    private void RemoveSelf()
+    {
+        TempGUI.gui.TurnOffTutorial(type);
+        gameObject.SetActive(false);
     }
 }
