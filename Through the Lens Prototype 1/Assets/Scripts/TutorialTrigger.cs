@@ -27,7 +27,6 @@ public class TutorialTrigger : MonoBehaviour
 
             if (duration > 0f)
             {
-                CancelInvoke("TurnOff");
                 Invoke("TurnOff", duration);
             }
         }

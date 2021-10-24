@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public enum TutorialType
 {
@@ -15,32 +13,27 @@ public class TempGUI : MonoBehaviour
 {
 
     public static TempGUI gui;
+    private string name;
+    private GUIStyle style;
 
     public GameObject wasd;
     public GameObject hold;
     public GameObject swap;
     public GameObject pick;
 
-    [SerializeField]
-    [Range(0.1f,2f)]
-    private float tipSpeed_appear;
-
-    [SerializeField]
-    [Range(0.1f, 2f)]
-    private float tipSpeed_disappear;
-
-    protected Action<object> OnTweenFinished;
 
     private void Awake()
     {
         gui = this;
-        OnTweenFinished = TweenFinished;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        name = " ";
+        style = new GUIStyle();
+        style.fontSize = 25;
+        style.alignment = TextAnchor.MiddleLeft;
     }
 
     // Update is called once per frame
@@ -52,6 +45,7 @@ public class TempGUI : MonoBehaviour
     private void OnGUI()
     {
 
+        GUI.Box(new Rect(20, 20, 120, 30), "Photo: " + name, style);
     }
 
     public void SetName(string s)
@@ -64,16 +58,16 @@ public class TempGUI : MonoBehaviour
         switch (type)
         {
             case TutorialType.HOLDPHOTO:
-                ShowTips(hold);
+                hold.SetActive(true);
                 break;
             case TutorialType.PICKUP:
-                ShowTips(pick);
+                pick.SetActive(true);
                 break;
             case TutorialType.SWAPPHOTO:
-                ShowTips(swap);
+                swap.SetActive(true);
                 break;
             case TutorialType.WASDMOUSE:
-                ShowTips(wasd);
+                wasd.SetActive(true);
                 break;
         }
     }
@@ -83,40 +77,17 @@ public class TempGUI : MonoBehaviour
         switch (type)
         {
             case TutorialType.HOLDPHOTO:
-                RemoveTips(hold);
+                hold.SetActive(false);
                 break;
             case TutorialType.PICKUP:
-                RemoveTips(pick);
+                pick.SetActive(false);
                 break;
             case TutorialType.SWAPPHOTO:
-                RemoveTips(swap);
+                swap.SetActive(false);
                 break;
             case TutorialType.WASDMOUSE:
-                RemoveTips(wasd);
+                wasd.SetActive(false);
                 break;
         }
-    }
-
-    protected void ShowTips(GameObject g)
-    {
-        if (g.GetComponent<RectTransform>().anchoredPosition != Vector2.zero)
-            return;
-
-        g.SetActive(true);
-        g.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
-        LeanTween.alpha(g.GetComponent<RectTransform>(), 1f, tipSpeed_appear).setEaseInOutQuad();
-        LeanTween.moveLocalY(g, 180, 1f).setEaseInOutQuad();
-    }
-
-    protected void RemoveTips(GameObject g)
-    {
-        LeanTween.moveLocalY(g, 0f, 1f).setEaseInOutQuad();
-        LeanTween.alpha(g.GetComponent<RectTransform>(), 0f, tipSpeed_disappear).setEaseInOutQuad().setOnComplete(TweenFinished, g);
-    }
-
-    protected void TweenFinished(object obj)
-    {
-        GameObject g = (GameObject)obj;
-        g.SetActive(false);
     }
 }
