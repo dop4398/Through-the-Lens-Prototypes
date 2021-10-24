@@ -44,7 +44,10 @@ public class TutorialTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            switch(type)
+
+            CancelInvoke("TurnOff");
+
+            switch (type)
             {
                 case TutorialType.HOLDPHOTO:
                     TempGUI.gui.TurnOffTutorial(TutorialType.LINEUP);
