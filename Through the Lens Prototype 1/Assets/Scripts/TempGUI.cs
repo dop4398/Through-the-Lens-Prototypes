@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum TutorialType
 {
@@ -16,8 +18,6 @@ public class TempGUI : MonoBehaviour
 {
 
     public static TempGUI gui;
-    private string name;
-    private GUIStyle style;
 
     public GameObject wasd;
     public GameObject hold;
@@ -27,30 +27,36 @@ public class TempGUI : MonoBehaviour
     public GameObject locked;
     public GameObject gather;
 
+    [SerializeField]
+    [Range(0.1f,2f)]
+    private float tipSpeed_appear;
 
+    [SerializeField]
+    [Range(0.1f, 2f)]
+    private float tipSpeed_disappear;
+
+    protected Action<object> OnTweenFinished;
 
     private void Awake()
     {
         gui = this;
+        OnTweenFinished = TweenFinished;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        name = " ";
-        style = new GUIStyle();
-        style.fontSize = 25;
-        style.alignment = TextAnchor.MiddleLeft;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
             TurnOffTutorial(TutorialType.SWAPPHOTO);
         }
-        else if(hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
+        else if (hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
         {
             TurnOffTutorial(TutorialType.HOLDPHOTO);
             TurnOnTutorial(TutorialType.LINEUP);
@@ -60,7 +66,6 @@ public class TempGUI : MonoBehaviour
     private void OnGUI()
     {
 
-        //GUI.Box(new Rect(20, 20, 120, 30), "Photo: " + name, style);
     }
 
     public void SetName(string s)
@@ -73,25 +78,25 @@ public class TempGUI : MonoBehaviour
         switch (type)
         {
             case TutorialType.HOLDPHOTO:
-                hold.SetActive(true);
+                ShowTips(hold);
                 break;
             case TutorialType.PICKUP:
-                pick.SetActive(true);
+                ShowTips(pick);
                 break;
             case TutorialType.SWAPPHOTO:
-                swap.SetActive(true);
+                ShowTips(swap);
                 break;
             case TutorialType.WASDMOUSE:
-                wasd.SetActive(true);
+                ShowTips(wasd);
                 break;
             case TutorialType.LINEUP:
-                lineUp.SetActive(true);
+                ShowTips(lineUp);
                 break;
             case TutorialType.LOCKED:
-                locked.SetActive(true);
+                ShowTips(locked);
                 break;
             case TutorialType.GATHER:
-                gather.SetActive(true);
+                ShowTips(gather);
                 break;
         }
     }
@@ -101,26 +106,49 @@ public class TempGUI : MonoBehaviour
         switch (type)
         {
             case TutorialType.HOLDPHOTO:
-                hold.SetActive(false);
+                RemoveTips(hold);
                 break;
             case TutorialType.PICKUP:
-                pick.SetActive(false);
+                RemoveTips(pick);
                 break;
             case TutorialType.SWAPPHOTO:
-                swap.SetActive(false);
+                RemoveTips(swap);
                 break;
             case TutorialType.WASDMOUSE:
-                wasd.SetActive(false);
+                RemoveTips(wasd);
                 break;
             case TutorialType.LINEUP:
-                lineUp.SetActive(false);
+                RemoveTips(lineUp);
                 break;
             case TutorialType.LOCKED:
-                locked.SetActive(false);
+                RemoveTips(locked);
                 break;
             case TutorialType.GATHER:
-                gather.SetActive(false);
+                RemoveTips(gather);
                 break;
         }
+    }
+
+    protected void ShowTips(GameObject g)
+    {
+        if (g.GetComponent<RectTransform>().anchoredPosition != Vector2.zero)
+            return;
+
+        g.SetActive(true);
+        g.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
+        LeanTween.alpha(g.GetComponent<RectTransform>(), 1f, tipSpeed_appear).setEaseInOutQuad();
+        LeanTween.moveLocalY(g, 180, 1f).setEaseInOutQuad();
+    }
+
+    protected void RemoveTips(GameObject g)
+    {
+        LeanTween.moveLocalY(g, 0f, 1f).setEaseInOutQuad();
+        LeanTween.alpha(g.GetComponent<RectTransform>(), 0f, tipSpeed_disappear).setEaseInOutQuad().setOnComplete(TweenFinished, g);
+    }
+
+    protected void TweenFinished(object obj)
+    {
+        GameObject g = (GameObject)obj;
+        g.SetActive(false);
     }
 }
