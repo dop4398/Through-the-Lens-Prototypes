@@ -23,7 +23,7 @@ public class Photo : MonoBehaviour
     [SerializeField] private Material mat_old;
     [SerializeField] private Material mat_new;
 
-    public State state;
+    public State state = State.Past;
     #endregion
 
     void Start()
