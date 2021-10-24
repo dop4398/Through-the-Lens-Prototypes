@@ -156,7 +156,7 @@ public class FPController : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.Mouse1))
         {
-            photoObject.transform.localPosition = new Vector3(0.75f, -0.5f, 1.5f);
+            photoObject.transform.localPosition = new Vector3(0.75f, -0.4f, 1.5f);
             photoInFocus = false;
         }
     }
