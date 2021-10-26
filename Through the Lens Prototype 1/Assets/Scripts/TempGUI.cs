@@ -43,24 +43,22 @@ public class TempGUI : MonoBehaviour
         OnTweenFinished = TweenFinished;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
-        {
-            TurnOffTutorial(TutorialType.SWAPPHOTO);
-        }
-        else if (hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            TurnOffTutorial(TutorialType.HOLDPHOTO);
-            TurnOnTutorial(TutorialType.LINEUP);
-        }
+        //if (swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    TurnOffTutorial(TutorialType.SWAPPHOTO);
+        //}
+        //else if (hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    TurnOffTutorial(TutorialType.HOLDPHOTO);
+        //    TurnOnTutorial(TutorialType.LINEUP);
+        //}
     }
 
     private void OnGUI()
