@@ -13,7 +13,17 @@ public class Photo : MonoBehaviour
     #region Fields
     [SerializeField] private string locusID = "";
     private GameObject heldPhoto;
-    [SerializeField] private Material mat;
+
+    public enum State
+    {
+        Past,
+        Present
+    }
+
+    [SerializeField] private Material mat_old;
+    [SerializeField] private Material mat_new;
+
+    public State state = State.Past;
     #endregion
 
     void Start()
@@ -40,9 +50,28 @@ public class Photo : MonoBehaviour
     /// Getter for the photo's material (the picture itself).
     /// </summary>
     /// <returns>Material for the photo image.</returns>
-    public Material GetMaterial()
+    public Material GetMaterial_Old()
     {
-        return mat;
+        return mat_old;
+    }
+    public Material GetMaterial_New()
+    {
+        return mat_new;
+    }
+    public Material GetMaterial_Current()
+    {
+        return state == State.Past ? mat_old : mat_new;
+    }
+
+    /// <summary>
+    /// Toggle the current state of this photo
+    /// </summary>
+    public void ToggleState()
+    {
+        if (state == State.Past)
+            state = State.Present;
+        else
+            state = State.Past;
     }
     #endregion
 }

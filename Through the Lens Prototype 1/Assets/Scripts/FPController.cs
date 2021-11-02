@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class FPController : MonoBehaviour
 {
     #region fields
     public static FPController instance;
+    public GameObject HandWithPhoto;
 
     public float walkingSpeed = 6.0f;
     public float runningSpeed = 10.0f;
@@ -35,11 +37,11 @@ public class FPController : MonoBehaviour
     [SerializeField] private Photo currentPhoto;
     private int albumIndex = 0;
 
+    //Hard-coded item stuff
     public GameObject photoObject;
-
     [SerializeField] private bool photoInFocus = false;
+    public bool hasKey = false;
     #endregion
-
 
     void Awake()
     {
@@ -126,6 +128,17 @@ public class FPController : MonoBehaviour
     }
 
     /// <summary>
+    /// Method for adding a Photo object to the album.
+    /// </summary>
+    /// <param name="photo">The Photo object being added.</param>
+    public void AddPhotoToAlbum(Photo photo)
+    {
+        album.Add(photo);
+        currentPhoto = album[album.Count - 1];
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
+    }
+
+    /// <summary>
     /// Changes the currently held photo by cycling through the list of all the player's photos (their album).
     /// This is a quick and dirty solution and should be improved upon for future prototypes.
     /// </summary>
@@ -140,7 +153,7 @@ public class FPController : MonoBehaviour
         currentPhoto = album[albumIndex];
         Debug.Log(currentPhoto.GetID() + " - " + albumIndex);
 
-        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial();
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
     }
 
     /// <summary>
@@ -155,7 +168,7 @@ public class FPController : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.Mouse1))
         {
-            photoObject.transform.localPosition = new Vector3(0.75f, -0.5f, 1.5f);
+            photoObject.transform.localPosition = new Vector3(0.75f, -0.4f, 1.5f);
             photoInFocus = false;
         }
     }
@@ -167,6 +180,15 @@ public class FPController : MonoBehaviour
     public bool IsInFocus()
     {
         return photoInFocus;
+    }
+
+    /// <summary>
+    /// Toggle the state of the current held photo and update the material of the photo object
+    /// </summary>
+    public void SwapPhotoContent()
+    {
+        currentPhoto.ToggleState();
+        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
     }
     #endregion
 }

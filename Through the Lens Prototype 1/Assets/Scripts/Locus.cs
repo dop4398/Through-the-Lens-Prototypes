@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 /// <summary>
@@ -19,30 +21,41 @@ public class Locus : MonoBehaviour
         past
     }
 
+    [Header("ID")]
     //ID used to match photos
     public string id;
 
+    [Header("Objects")]
     //Object lists
     public List<GameObject> past;
     public List<GameObject> present;
 
+    [Header("Rotation")]
     //correct position and rotation
     private Vector3 pos;
-    private Vector3 rot;
+    public Vector3 rot;
 
     //used to specify the 'range' of the currect position and rotation to make pos and rot matching easier
     private float tolerance_pos;
-    private float tolerance_rot;
+    [Header("Tolerance")]
+    [SerializeField]
+    [Range(0.1f, 15.0f)]
+    private float tolerance_rot = 15.0f;
+    private float angleDifference;
 
+    [Header("Other")]
     public State state; //current state
     public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
-    
-    private GameObject player; //Player Reference
-    public float cooldownDuration = 2.0f;
-    [SerializeField] private float cooldown = 0.0f;
+
+    [Header("CD")]
+    [SerializeField] private bool onCooldown = false;
+
+    // Vignette reference
+    //public PostProcessProfile postProcessProfile;
+    //private Vignette vignette;
 
 
     void Start()
@@ -64,10 +77,12 @@ public class Locus : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        pos = this.pos;
-        rot = this.rot;
+        pos = this.transform.position;
+        rot = this.transform.rotation.eulerAngles;
         state = this.state;
         isSingleUse = this.isSingleUse;
+
+        //vignette = postProcessProfile.GetSetting<Vignette>();
     }
 
     /// <summary>
@@ -76,23 +91,31 @@ public class Locus : MonoBehaviour
     private void CheckPlayer()
     {
         //if locus is active, check player status
-        if (isActive && cooldown <= 0.0f)
+        if (isActive && !onCooldown)
         {
-            //Debug.Log(FPController.instance.GetHeldPhotoID());
-                    
-            player = GameObject.FindGameObjectWithTag("Player");
-
-            if(player.GetComponent<FPController>().GetHeldPhotoID() == id && player.GetComponent<FPController>().IsInFocus())
+            if(FPController.instance.GetHeldPhotoID() == id && FPController.instance.IsInFocus())
             {
-                cooldown = cooldownDuration;
-                ToggleState();
+                onCooldown = true;
+                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), 
+                                                   Quaternion.Euler(rot));
+
+                // Change the Vignette intensity based on angleDifference
+                //postProcessProfile.GetSetting<Vignette>().intensity.value = 0.4f + (360f - angleDifference) / 360f * 0.2f;
+
+                if (angleDifference < 1f + tolerance_rot)
+                {
+                    ToggleState();
+
+                    //swap photo content
+                    FPController.instance.SwapPhotoContent();
+                }
             }         
         }
 
-        // tick down the cooldown timer, or reset it if 0 is reached
-        if(cooldown > 0.0f)
+        if(Input.GetKeyUp(KeyCode.Mouse1))
         {
-            cooldown -= Time.deltaTime;
+            onCooldown = false;
+            //postProcessProfile.GetSetting<Vignette>().intensity.value = 0.4f;
         }
     }
 
