@@ -37,30 +37,32 @@ public class TempGUI : MonoBehaviour
 
     protected Action<object> OnTweenFinished;
 
+    [SerializeField]
+    [Range(25f, 75f)]
+    private float tipDistance;
+
     private void Awake()
     {
         gui = this;
         OnTweenFinished = TweenFinished;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
-        {
-            TurnOffTutorial(TutorialType.SWAPPHOTO);
-        }
-        else if (hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            TurnOffTutorial(TutorialType.HOLDPHOTO);
-            TurnOnTutorial(TutorialType.LINEUP);
-        }
+        //if (swap.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    TurnOffTutorial(TutorialType.SWAPPHOTO);
+        //}
+        //else if (hold.activeInHierarchy && Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    TurnOffTutorial(TutorialType.HOLDPHOTO);
+        //    TurnOnTutorial(TutorialType.LINEUP);
+        //}
     }
 
     private void OnGUI()
@@ -137,7 +139,7 @@ public class TempGUI : MonoBehaviour
         g.SetActive(true);
         g.GetComponent<Image>().color = new Color(255f, 255f, 255f, 0f);
         LeanTween.alpha(g.GetComponent<RectTransform>(), 1f, tipSpeed_appear).setEaseInOutQuad();
-        LeanTween.moveLocalY(g, 50, tipSpeed_appear).setEaseInOutQuad();
+        LeanTween.moveLocalY(g, tipDistance, tipSpeed_appear).setEaseInOutQuad();
     }
 
     protected void RemoveTips(GameObject g)

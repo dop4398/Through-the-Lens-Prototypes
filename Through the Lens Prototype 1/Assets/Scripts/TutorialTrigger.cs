@@ -13,16 +13,21 @@ public class TutorialTrigger : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(type == TutorialType.GATHER)
         {
-            // once all of the photos are picked up, deactivate the tutorial GUI colliders.
+            // once all of the photos are picked up, ask the player to press "E" to shuffle between them. Release the player upon shuffling.
             if (FPController.instance.album.Count == 3)
             {
                 TempGUI.gui.TurnOffTutorial(type);
-                this.gameObject.SetActive(false);
+                TempGUI.gui.TurnOnTutorial(TutorialType.SWAPPHOTO);
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    TempGUI.gui.TurnOffTutorial(TutorialType.SWAPPHOTO);
+                    this.gameObject.SetActive(false);
+                }
+                
             }
         }
     }
