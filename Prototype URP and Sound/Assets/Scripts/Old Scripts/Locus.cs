@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 /// <summary>
@@ -40,6 +41,7 @@ public class Locus : MonoBehaviour
     [SerializeField]
     [Range(0.1f, 15.0f)]
     private float tolerance_rot = 15.0f;
+    private float angleDifference;
 
     [Header("Other")]
     public State state; //current state
@@ -48,12 +50,12 @@ public class Locus : MonoBehaviour
     public KeyCode key; //debug key
 
 
-    //private GameObject player; //Player Reference
     [Header("CD")]
-    public float cooldownDuration = 2.0f;
-    [SerializeField] private float cooldown = 0.0f;
+    [SerializeField] private bool onCooldown = false;
 
-
+    // Vignette reference
+    //public PostProcessProfile postProcessProfile;
+    //private Vignette vignette;
 
 
     void Start()
@@ -79,6 +81,8 @@ public class Locus : MonoBehaviour
         rot = this.transform.rotation.eulerAngles;
         state = this.state;
         isSingleUse = this.isSingleUse;
+
+        //vignette = postProcessProfile.GetSetting<Vignette>();
     }
 
     /// <summary>
@@ -87,12 +91,18 @@ public class Locus : MonoBehaviour
     private void CheckPlayer()
     {
         //if locus is active, check player status
-        if (isActive && cooldown <= 0.0f)
+        if (isActive && !onCooldown)
         {
             if(FPController.instance.GetHeldPhotoID() == id && FPController.instance.IsInFocus())
             {
-                cooldown = cooldownDuration;
-                if (Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot)) < 1f + tolerance_rot)
+                onCooldown = true;
+                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), 
+                                                   Quaternion.Euler(rot));
+
+                // Change the Vignette intensity based on angleDifference
+                //postProcessProfile.GetSetting<Vignette>().intensity.value = 0.4f + (360f - angleDifference) / 360f * 0.2f;
+
+                if (angleDifference < 1f + tolerance_rot)
                 {
                     ToggleState();
 
@@ -102,10 +112,10 @@ public class Locus : MonoBehaviour
             }         
         }
 
-        // tick down the cooldown timer, or reset it if 0 is reached
-        if(cooldown > 0.0f)
+        if(Input.GetKeyUp(KeyCode.Mouse1))
         {
-            cooldown -= Time.deltaTime;
+            onCooldown = false;
+            //postProcessProfile.GetSetting<Vignette>().intensity.value = 0.4f;
         }
     }
 
