@@ -7,7 +7,8 @@ public enum TutorialType
     WASDMOUSE,
     HOLDPHOTO,
     SWAPPHOTO,
-    PICKUP
+    PICKUP,
+    LOCKED
 }
 public class TempGUI : MonoBehaviour
 {
