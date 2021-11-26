@@ -29,6 +29,9 @@
         },
         {
             "m_Id": "9653d39bac9748228fe6988f2dd10189"
+        },
+        {
+            "m_Id": "3ef7e75c51dc4acba4f06e1c5a30c547"
         }
     ],
     "m_Keywords": [],
@@ -254,20 +257,6 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
-                    "m_Id": "2d8e504bc2df4439bf29cc27411c0d29"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "e5499b2f22b44692a0f9edf382def5f5"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
                     "m_Id": "30a3df5608b2496397ca544f13a63c46"
                 },
                 "m_SlotId": 2
@@ -417,6 +406,20 @@
                     "m_Id": "f8f3dc2b2cc44b87ba9c1bcc5868df7d"
                 },
                 "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5fcec498789e4513a61977e51ca65c34"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "e5499b2f22b44692a0f9edf382def5f5"
+                },
+                "m_SlotId": 0
             }
         },
         {
@@ -1579,8 +1582,8 @@
             "serializedVersion": "2",
             "x": -2171.345458984375,
             "y": 625.7454223632813,
-            "width": 124.80004119873047,
-            "height": 172.7999725341797
+            "width": 125.6728515625,
+            "height": 172.79998779296876
         }
     },
     "m_Slots": [
@@ -1706,7 +1709,7 @@
     "m_ShaderOutputName": "In",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": -1.0,
+        "x": 0.8999999761581421,
         "y": -1.0,
         "z": -1.0,
         "w": -1.0
@@ -1898,7 +1901,7 @@
     },
     "m_Name": "Sub Texture",
     "m_DefaultReferenceName": "Texture2D_3be2c9b2c3fb4366bbd89535208cc059",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_SubTex",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -1925,6 +1928,29 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "3ef7e75c51dc4acba4f06e1c5a30c547",
+    "m_Guid": {
+        "m_GuidSerialized": "3a3967e8-6a86-4167-874e-325e3bbf9d9d"
+    },
+    "m_Name": "Vector2",
+    "m_DefaultReferenceName": "Vector2_3ef7e75c51dc4acba4f06e1c5a30c547",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 0.18000000715255738,
+        "y": -0.800000011920929,
+        "z": 0.0,
+        "w": 0.0
+    }
 }
 
 {
@@ -2557,9 +2583,9 @@
         "m_Position": {
             "serializedVersion": "2",
             "x": -2147.78173828125,
-            "y": 829.0908203125,
-            "width": 102.10900115966797,
-            "height": 34.036373138427737
+            "y": 798.54541015625,
+            "width": 102.109130859375,
+            "height": 34.036376953125
         }
     },
     "m_Slots": [
@@ -4808,7 +4834,7 @@
     },
     "m_Name": "Emission Intensity",
     "m_DefaultReferenceName": "Vector1_f6a5ae5e94084010870d107b7218944f",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_EmissionIntensity",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
