@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class PhotoController : MonoBehaviour
 {
+
+    public static PhotoController instance;
+
     #region Fields
     private Material material;
     public State state;
@@ -23,15 +26,21 @@ public class PhotoController : MonoBehaviour
     }
     #endregion
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
-
+        //DOTween init
         DOTween.Init(true, true);
 
+        //Other init
         material = gameObject.GetComponent<MeshRenderer>().material;
         state = State.Past;
 
+        //Tween effect init
         dissolveTween = DOVirtual.Float(0f, 0.85f, 2f, v =>
         {
             time = v;
@@ -41,7 +50,6 @@ public class PhotoController : MonoBehaviour
         dissolveTween.Pause();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
