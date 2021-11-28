@@ -10,7 +10,6 @@ public class StationTrigger : MonoBehaviour
     void Start()
     {
         owner = transform.parent.GetComponent<Station>();
-        
     }
 
     // Update is called once per frame
@@ -18,6 +17,7 @@ public class StationTrigger : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter(Collider other)
     {
         StationManager.instance.AddStation(owner);

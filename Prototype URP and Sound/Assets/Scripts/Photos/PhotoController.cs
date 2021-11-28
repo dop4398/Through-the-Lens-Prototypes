@@ -72,6 +72,7 @@ public class PhotoController : MonoBehaviour
     //Set frame's glow intensity
     public void SetGlow(float intensity)
     {
+        intensity = intensity * 100f;
         material.SetFloat("_EmissionIntensity", intensity);
     }
 
@@ -123,6 +124,12 @@ public class PhotoController : MonoBehaviour
     public void Present_D()
     {
         time = 1f;
+    }
+
+    //Get Tween Status
+    public bool GetPhotoStatus()
+    {
+        return !dissolveTween.IsPlaying();
     }
     #endregion
 

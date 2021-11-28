@@ -4,13 +4,13 @@ using UnityEngine;
 
 public struct StationInfo
 {
-    public bool inRange;
+    public bool success;
     public float glow;
     public float vignette;
 
-    public StationInfo(bool _inRange, float _glow, float _vignette)
+    public StationInfo(bool _success, float _glow, float _vignette)
     {
-        inRange = _inRange;
+        success = _success;
         glow = _glow;
         vignette = _vignette;
     }
@@ -33,6 +33,9 @@ public class Station : MonoBehaviour
     public List<GameObject> past;
     public List<GameObject> present;
     public GameObject trigger;
+
+    [Header("Radius")]
+    public float radius;
 
     [Header("Rotation")]
     //correct rotation
@@ -70,7 +73,7 @@ public class Station : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /// <summary>
@@ -100,7 +103,7 @@ public class Station : MonoBehaviour
         }
 
         if (isSingleUse)
-            Destroy(GetComponent<Locus>());
+            Destroy(GetComponent<Station>());
     }
 
     /// <summary>
@@ -149,39 +152,46 @@ public class Station : MonoBehaviour
         float glow = 0f;
         float vignette = 0f;
 
-        //if locus is active, check player status
-        if (isActive)
+        // #1 Check Photo ID
+        if (true)
         {
-            if (FPController.instance.GetHeldPhotoID() == id && FPController.instance.IsInFocus())
-            {
-                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
-                glow = CalculateIntensity(angleDifference, tolerance_rot, glow_rot);
+            Vector3 playerPos = FPController.instance.transform.position;
+            Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;
+
+            // #2 Calculate Glow & Distance
+            float distanceH = Vector2.Distance(new Vector2(playerPos.x, playerPos.z), new Vector2(trigger.transform.position.x, trigger.transform.position.z));
+            glow = CalculateIntensity(distanceH, radius, Mathf.Max(triggerSize.x, triggerSize.z));
+
+            //if within radius
+            if(distanceH <= radius)
+            {
+                // #3 Calculate Angle Difference and Vignette
+                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
                 vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 
+                // #4 Change state if successfully aligned
                 if (angleDifference < 1f + tolerance_rot)
                 {
                     success = true;
-
-                    //swap photo content
-                    FPController.instance.SwapPhotoContent();
                 }
             }
         }
 
+
         return new StationInfo(success, glow, vignette);
     }
 
-    private float CalculateIntensity(float rot, float min, float max)
+    private float CalculateIntensity(float value, float min, float max)
     {
         float f = 0f;
 
-        if (rot < max)
+        if (value < max)
         {
-            if (rot >= min)
+            if (value >= min)
             {
-                f = (rot - min) / (max - min);
+                f = (value - min) / (max - min);
                 f = 1f - f;
             }
             else
@@ -191,5 +201,10 @@ public class Station : MonoBehaviour
         }
 
         return f;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(trigger.transform.position, radius);
     }
 }
