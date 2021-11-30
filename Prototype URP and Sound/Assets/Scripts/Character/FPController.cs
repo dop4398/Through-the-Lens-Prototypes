@@ -33,11 +33,6 @@ public class FPController : MonoBehaviour
     //[HideInInspector] public bool canMove = true; // part of old Movement() method
     #endregion
 
-    void Awake()
-    {
-        instance = this;
-    }
-
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -95,15 +90,6 @@ public class FPController : MonoBehaviour
         transform.rotation *= Quaternion.Euler(0, mouseLook.x * lookSpeed, 0);
     }
 
-
-    /// <summary>
-    /// Toggle the state of the current held photo and update the material of the photo object
-    /// </summary>
-    public void SwapPhotoContent()
-    {
-        currentPhoto.ToggleState();
-        photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
-    }
 
     /// <summary>
     /// Deals with inputs to let the player look and move around the scene. To be called every frame in Update().

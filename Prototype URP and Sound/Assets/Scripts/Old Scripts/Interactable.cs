@@ -11,7 +11,7 @@ using UnityEngine;
 /// </author>
 public class Interactable : MonoBehaviour
 {
-    #region fields
+    #region Fields
     public float radius = 2.0f;
     public GameObject UIElement;
     public bool requiresKey = false;
@@ -29,28 +29,28 @@ public class Interactable : MonoBehaviour
 
     }
 
-    #region helper methods
+    #region Helper Methods
     /// <summary>
     /// While within the radius, on mouse over, bring up the GUI element. If the Interact key is pressed, do this object's interaction.
     /// </summary>
     private void OnMouseOver()
     {
-        if(Vector3.Distance(FPController.instance.transform.position, this.gameObject.transform.position) <= radius)
+        if(Vector3.Distance(CharacterComponents.instance.controller.transform.position, this.gameObject.transform.position) <= radius)
         {
             if(requiresKey)
             {
-                if(FPController.instance.hasKey)
-                {
-                    TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
-                        Interaction();
-                    }
-                }
-                else
-                {
-                    TempGUI.gui.TurnOnTutorial(TutorialType.LOCKED);
-                }
+                //if(CharacterComponents.instance.controller.hasKey)
+                //{
+                //    TempGUI.gui.TurnOnTutorial(TutorialType.PICKUP);
+                //    if (Input.GetKeyDown(KeyCode.Mouse0))
+                //    {
+                //        Interaction();
+                //    }
+                //}
+                //else
+                //{
+                //    TempGUI.gui.TurnOnTutorial(TutorialType.LOCKED);
+                //}
             }
             else
             {
@@ -81,35 +81,35 @@ public class Interactable : MonoBehaviour
         {
             TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
             UIElement.SetActive(true);
-            FPController.instance.hasKey = true;
+            //CharacterComponents.instance.controller.hasKey = true;
             this.gameObject.SetActive(false);
         }
         else if(this.CompareTag("Photo"))
         {
             TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
-            FPController.instance.AddPhotoToAlbum(this.gameObject.GetComponent<Photo>());
-            FPController.instance.HandWithPhoto.SetActive(true);
+            CharacterComponents.instance.album.AddPhoto(this.gameObject.GetComponent<Photo>());
+            CharacterComponents.instance.controller.HandWithPhoto.SetActive(true);
             this.gameObject.SetActive(false);
         }
         else
         {
-            if (requiresKey)
-            {
-                if(!FPController.instance.hasKey)
-                {
-                    return;
-                }
+            //if (requiresKey)
+            //{
+            //    if(!CharacterComponents.instance.controller.hasKey)
+            //    {
+            //        return;
+            //    }
 
-                TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
-                if (pos != Vector3.zero)
-                {
-                    this.transform.position = pos;
-                }
-                else if (rot != Vector3.zero)
-                {
-                    this.transform.rotation = Quaternion.Euler(rot);
-                }
-            }     
+            //    TempGUI.gui.TurnOffTutorial(TutorialType.PICKUP);
+            //    if (pos != Vector3.zero)
+            //    {
+            //        this.transform.position = pos;
+            //    }
+            //    else if (rot != Vector3.zero)
+            //    {
+            //        this.transform.rotation = Quaternion.Euler(rot);
+            //    }
+            //}     
         }
     }
     #endregion

@@ -92,23 +92,23 @@ public class Locus : MonoBehaviour
         //if locus is active, check player status
         if (isActive && !onCooldown)
         {
-            if(FPController.instance.GetHeldPhotoID() == id && FPController.instance.IsInFocus())
-            {
-                onCooldown = true;
-                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), 
-                                                   Quaternion.Euler(rot));
+            //if(CharacterComponents.instance.controller.GetHeldPhotoID() == id && CharacterComponents.instance.controller.IsInFocus())
+            //{
+            //    onCooldown = true;
+            //    angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.controller.transform.rotation.eulerAngles.y, 0), 
+            //                                       Quaternion.Euler(rot));
 
-                // Change the Vignette intensity based on angleDifference
-                //postProcessProfile.GetSetting<Vignette>().intensity.value = 0.4f + (360f - angleDifference) / 360f * 0.2f;
+            //    // Change the Vignette intensity based on angleDifference
+            //    //postProcessProfile.GetSetting<Vignette>().intensity.value = 0.4f + (360f - angleDifference) / 360f * 0.2f;
 
-                if (angleDifference < 1f + tolerance_rot)
-                {
-                    ToggleState();
+            //    if (angleDifference < 1f + tolerance_rot)
+            //    {
+            //        ToggleState();
 
-                    //swap photo content
-                    FPController.instance.SwapPhotoContent();
-                }
-            }         
+            //        //swap photo content
+            //        CharacterComponents.instance.controller.SwapPhotoContent();
+            //    }
+            //}         
         }
 
         if(Input.GetKeyUp(KeyCode.Mouse1))

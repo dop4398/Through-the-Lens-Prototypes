@@ -156,7 +156,7 @@ public class Station : MonoBehaviour
         if (true)
         {
 
-            Vector3 playerPos = FPController.instance.transform.position;
+            Vector3 playerPos = CharacterComponents.instance.controller.transform.position;
             Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;
 
             // #2 Calculate Glow & Distance
@@ -167,7 +167,7 @@ public class Station : MonoBehaviour
             if(distanceH <= radius)
             {
                 // #3 Calculate Angle Difference and Vignette
-                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
+                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.controller.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
                 vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 

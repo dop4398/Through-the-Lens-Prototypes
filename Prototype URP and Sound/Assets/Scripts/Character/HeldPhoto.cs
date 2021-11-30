@@ -49,7 +49,6 @@ public class HeldPhoto : MonoBehaviour
         heldPhoto = photo;
 
         // Update the photo object being held
-        Toggle the state and whatnot
     }
 
     /// <summary>
