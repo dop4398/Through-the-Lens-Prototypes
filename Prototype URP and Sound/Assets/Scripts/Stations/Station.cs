@@ -63,7 +63,6 @@ public class Station : MonoBehaviour
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
-
     // Start is called before the first frame update
     void Start()
     {

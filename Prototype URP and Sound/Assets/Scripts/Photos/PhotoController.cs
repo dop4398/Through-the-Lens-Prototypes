@@ -11,6 +11,10 @@ public class PhotoController : MonoBehaviour
     #region Fields
     private Material material;
     public State state;
+
+    [SerializeField]
+    [Range(1f, 10f)]
+    private float glow_intensity;
     private float time;
 
     [SerializeField]
@@ -72,7 +76,7 @@ public class PhotoController : MonoBehaviour
     //Set frame's glow intensity
     public void SetGlow(float intensity)
     {
-        intensity = intensity * 100f;
+        intensity = intensity * glow_intensity;
         material.SetFloat("_EmissionIntensity", intensity);
     }
 
