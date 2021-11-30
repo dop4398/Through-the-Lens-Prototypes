@@ -32,9 +32,11 @@ public class Station : MonoBehaviour
     //Object lists
     public List<GameObject> past;
     public List<GameObject> present;
+
+    [Header("Activation Box")]
     public GameObject trigger;
 
-    [Header("Radius")]
+    [Header("Correct Radius")]
     public float radius;
 
     [Header("Rotation")]
@@ -47,12 +49,7 @@ public class Station : MonoBehaviour
     private float tolerance_rot = 15.0f;
     private float angleDifference;
 
-    [Header("Hint - Glow")]
-    [SerializeField]
-    [Range(15f, 40f)]
-    private float glow_rot = 25.0f;
-
-    [Header("Hint - Vignette")]
+    [Header("Hint - Vignette Angle")]
     [SerializeField]
     [Range(15f, 40f)]
     private float vig_rot = 25.0f;
@@ -60,6 +57,8 @@ public class Station : MonoBehaviour
     [Header("Other")]
     public State state; //current state
     public bool isSingleUse; //destory component after a toggle
+
+    [HideInInspector]
     public KeyCode key; //debug key
 
     // Start is called before the first frame update
@@ -168,7 +167,7 @@ public class Station : MonoBehaviour
             if(distanceH <= radius)
             {
                 // #3 Calculate Angle Difference and Vignette
-                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, FPController.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
+                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
                 vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 
