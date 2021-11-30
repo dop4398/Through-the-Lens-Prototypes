@@ -33,22 +33,26 @@ public class Station : MonoBehaviour
     public List<GameObject> past;
     public List<GameObject> present;
 
+    //Trigger that activates the station
     [Header("Activation Box")]
     public GameObject trigger;
 
+    //radius of the correct location
     [Header("Correct Radius")]
     public float radius;
 
-    [Header("Rotation")]
     //correct rotation
+    [Header("Rotation")]
     public Vector3 rot;
 
+    //the bigger the easier to align
     [Header("Tolerance")]
     [SerializeField]
     [Range(0.1f, 15.0f)]
     private float tolerance_rot = 15.0f;
     private float angleDifference;
 
+    //Controlls the vignette effect, the bigger the easier for it to appear
     [Header("Hint - Vignette Angle")]
     [SerializeField]
     [Range(15f, 40f)]
