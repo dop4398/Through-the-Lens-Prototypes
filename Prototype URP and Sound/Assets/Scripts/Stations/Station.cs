@@ -38,37 +38,38 @@ public class Station : MonoBehaviour
     //Object lists
     public List<GameObject> past;
     public List<GameObject> present;
+
+    //Trigger that activates the station
+    [Header("Activation Box")]
     public GameObject trigger;
 
-    [Header("Radius")]
+    //radius of the correct location
+    [Header("Correct Radius")]
     public float radius;
 
-    [Header("Rotation")]
     //correct rotation
+    [Header("Rotation")]
     public Vector3 rot;
 
+    //the bigger the easier to align
     [Header("Tolerance")]
     [SerializeField]
     [Range(0.1f, 15.0f)]
     private float tolerance_rot = 15.0f;
     private float angleDifference;
 
-    [Header("Hint - Glow")]
-    [SerializeField]
-    [Range(15f, 40f)]
-    private float glow_rot = 25.0f;
-
-    [Header("Hint - Vignette")]
+    //Controlls the vignette effect, the bigger the easier for it to appear
+    [Header("Hint - Vignette Angle")]
     [SerializeField]
     [Range(15f, 40f)]
     private float vig_rot = 25.0f;
 
     [Header("Other")]
     public State state; //current state
-    public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
-    public KeyCode key; //debug key
 
+    [HideInInspector]
+    public KeyCode key; //debug key
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +80,10 @@ public class Station : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (PlayerInput.playerInput.jump)
+        {
+            ToggleState();
+        }
     }
 
     /// <summary>
@@ -162,7 +166,8 @@ public class Station : MonoBehaviour
         if (true)
         {
 
-            Vector3 playerPos = CharacterComponents.instance.controller.transform.position;
+
+            Vector3 playerPos = CharacterComponents.instance.transform.position;
             Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;
 
             // #2 Calculate Glow & Distance
@@ -173,7 +178,7 @@ public class Station : MonoBehaviour
             if(distanceH <= radius)
             {
                 // #3 Calculate Angle Difference and Vignette
-                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.controller.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
+                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
                 vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 
