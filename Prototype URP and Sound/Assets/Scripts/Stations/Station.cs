@@ -16,6 +16,12 @@ public struct StationInfo
     }
 }
 
+/// <summary>
+/// Used to check and react to player's action and transform, and control objects, materials, and probably many other things to change based on the state of the Locus.
+/// </summary>
+/// <author>
+/// Alfie Luo
+/// </author>
 public class Station : MonoBehaviour
 {
     public enum State
@@ -159,6 +165,7 @@ public class Station : MonoBehaviour
         // #1 Check Photo ID
         if (true)
         {
+
 
             Vector3 playerPos = CharacterComponents.instance.transform.position;
             Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;
