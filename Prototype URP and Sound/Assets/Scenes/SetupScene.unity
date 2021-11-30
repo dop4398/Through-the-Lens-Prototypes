@@ -656,11 +656,6 @@ Transform:
   m_Father: {fileID: 450479786}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &1731685396 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2030526725393709793, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
-  m_PrefabInstance: {fileID: 2094436737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1984626760
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 7453756703206973221, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: playerCamera
       value: 
-      objectReference: {fileID: 1731685396}
+      objectReference: {fileID: 0}
     - target: {fileID: 7529204688661866332, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
       propertyPath: m_Name
       value: FPPlayer
