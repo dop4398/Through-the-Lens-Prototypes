@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 846235037}
   - component: {fileID: 846235038}
   m_Layer: 0
-  m_Name: Trigger
+  m_Name: Trigger Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   present:
   - {fileID: 2018998742}
   trigger: {fileID: 846235035}
-  radius: 0.41
+  radius: 0.59
   rot: {x: 0, y: 0, z: 0}
   tolerance_rot: 15
   vig_rot: 25
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 1487922484}
   - component: {fileID: 1487922483}
   m_Layer: 0
-  m_Name: Station Manager
+  m_Name: You need one Station Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1714,7 +1714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940199104}
   m_Layer: 0
-  m_Name: ------------Check Below---------------- (1)
+  m_Name: ------Press Space to change State-------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
