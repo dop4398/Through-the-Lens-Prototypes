@@ -59,7 +59,6 @@ public class Station : MonoBehaviour
 
     [Header("Other")]
     public State state; //current state
-    public bool isActive; //control if it needs to check player's status
     public bool isSingleUse; //destory component after a toggle
     public KeyCode key; //debug key
 
@@ -72,7 +71,10 @@ public class Station : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (PlayerInput.playerInput.jump)
+        {
+            ToggleState();
+        }
     }
 
     /// <summary>
@@ -155,7 +157,7 @@ public class Station : MonoBehaviour
         if (true)
         {
 
-            Vector3 playerPos = FPController.instance.transform.position;
+            Vector3 playerPos = CharacterComponents.instance.transform.position;
             Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;
 
             // #2 Calculate Glow & Distance
