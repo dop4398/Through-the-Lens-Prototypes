@@ -11,8 +11,8 @@ using UnityEngine;
 public class Photo : MonoBehaviour
 {
     #region Fields
-    [SerializeField] private string locusID = "";
-    private GameObject heldPhoto;
+    [SerializeField] private string ID = "";
+    public PhotoController photoController;
 
     public enum State
     {
@@ -25,6 +25,11 @@ public class Photo : MonoBehaviour
 
     public State state = State.Past;
     #endregion
+
+    private void Awake()
+    {
+        //photoController = GetComponent<PhotoController>();
+    }
 
     void Start()
     {
@@ -43,7 +48,7 @@ public class Photo : MonoBehaviour
     /// <returns>ID String.</returns>
     public string GetID()
     {
-        return locusID;
+        return ID;
     }
 
     /// <summary>
