@@ -59,6 +59,8 @@ public class CharacterComponents : MonoBehaviour
             {
                 inventory = this.GetComponent<Inventory>();
             }
+
+            componentsFound = true;
         }
     }
     #endregion
