@@ -33,10 +33,14 @@ public class FPController : MonoBehaviour
     //[HideInInspector] public bool canMove = true; // part of old Movement() method
     #endregion
 
-    void Start()
+    private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        playerCamera = GetComponentInChildren<Camera>();
+    }
 
+    void Start()
+    {
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -47,6 +51,12 @@ public class FPController : MonoBehaviour
     {
         Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
         Look(PlayerInput.playerInput.mouseLook);
+
+        if(PlayerInput.playerInput.interact)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
 
