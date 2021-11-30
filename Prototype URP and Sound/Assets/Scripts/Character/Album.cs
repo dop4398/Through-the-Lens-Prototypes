@@ -13,8 +13,6 @@ public class Album : MonoBehaviour
 {
     #region Fields
     [SerializeField] private List<Photo> album;
-    [SerializeField] private Photo currentPhoto;
-    private int albumIndex = 0;
     #endregion
 
     void Start()
@@ -28,32 +26,19 @@ public class Album : MonoBehaviour
     }
 
     #region Helper Methods
-    /// <summary>
-    /// Changes the currently held photo by cycling through the list of all the player's photos (their album).
-    /// This is a quick and dirty solution and should be improved upon for future prototypes.
-    /// </summary>
-    public void CyclePhoto()
-    {
-        albumIndex++;
-        if (albumIndex >= album.Count)
-        {
-            albumIndex = 0;
-        }
-
-        currentPhoto = album[albumIndex];
-        Debug.Log(currentPhoto.GetID() + " - " + albumIndex);
-
-        //photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
-    }
-
     public void AddPhoto(Photo photo)
     {
         album.Add(photo);
     }
 
-    public Photo GetCurrentPhoto()
+    public Photo GetPhotoAtIndex(int i)
     {
-        return currentPhoto;
+        return album[i];
+    }
+
+    public int GetAlbumSize()
+    {
+        return album.Count;
     }
     #endregion
 }

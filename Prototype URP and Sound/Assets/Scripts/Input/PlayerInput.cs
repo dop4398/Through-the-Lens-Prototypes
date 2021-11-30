@@ -38,6 +38,17 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public Vector2 mouseLook
+    {
+        get
+        {
+            Vector2 i = Vector2.zero;
+            i.x = Input.GetAxis("Mouse X");
+            i.y = Input.GetAxis("Mouse Y");
+            return i;
+        }
+    }
+
     public bool run
     {
         get { return Input.GetKey(KeyCode.LeftShift); }
@@ -56,6 +67,16 @@ public class PlayerInput : MonoBehaviour
     public bool interact
     {
         get { return Input.GetMouseButtonDown(0); }
+    }
+
+    public bool focusPhoto
+    {
+        get { return Input.GetMouseButtonDown(1); }
+    }
+
+    public bool unfocusPhoto
+    {
+        get { return Input.GetMouseButtonUp(1); }
     }
 
     //public bool aim

@@ -12,8 +12,11 @@ public class HeldPhoto : MonoBehaviour
 {
     #region Fields
     public GameObject photoObject;
+    public Photo heldPhoto;
+    public int heldPhotoIndex;
     [SerializeField] private bool photoInFocus = false;
     #endregion
+
     void Start()
     {
         
@@ -21,10 +24,34 @@ public class HeldPhoto : MonoBehaviour
     
     void Update()
     {
-        
+        if(PlayerInput.playerInput.swap)
+        {
+            CyclePhoto();
+        }
+
+        if(PlayerInput.playerInput.focusPhoto)
+        {
+            FocusPhoto();
+        }
+        else if(PlayerInput.playerInput.unfocusPhoto)
+        {
+            UnfocusPhoto();
+        }
     }
 
     #region Helper Methods
+    /// <summary>
+    /// Sets the held photo of the player to the given parameter.
+    /// </summary>
+    /// <param name="photo"></param>
+    public void SetHeldPhoto(Photo photo)
+    {
+        heldPhoto = photo;
+
+        // Update the photo object being held
+        Toggle the state and whatnot
+    }
+
     /// <summary>
     /// Bring the currently held photo into focus in the center of the screen, blocking a good section of the player's vision.
     /// </summary>
@@ -43,7 +70,6 @@ public class HeldPhoto : MonoBehaviour
         photoInFocus = false;
     }
 
-
     /// <summary>
     /// Public method for checking whether the player has a photo in focus.
     /// </summary>
@@ -51,6 +77,32 @@ public class HeldPhoto : MonoBehaviour
     public bool IsInFocus()
     {
         return photoInFocus;
+    }
+
+    /// <summary>
+    /// Changes the currently held photo by cycling through the list of all the player's photos (their album).
+    /// This is a quick and dirty solution and should be improved upon for future prototypes.
+    /// </summary>
+    public void CyclePhoto()
+    {
+        heldPhotoIndex++;
+        if (heldPhotoIndex >= CharacterComponents.instance.album.GetAlbumSize())
+        {
+            heldPhotoIndex = 0;
+        }
+
+       SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
+
+        Debug.Log(heldPhoto.GetID() + " - " + heldPhotoIndex);
+    }
+
+    /// <summary>
+    /// Toggle the state of the current held photo and update the material of the photo object.
+    /// </summary>
+    public void SwapPhotoContent()
+    {
+        heldPhoto.ToggleState();
+        photoObject.GetComponent<MeshRenderer>().material = heldPhoto.GetMaterial_Current();
     }
     #endregion
 }
