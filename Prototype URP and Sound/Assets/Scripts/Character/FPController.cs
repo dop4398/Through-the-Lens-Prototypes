@@ -56,8 +56,8 @@ public class FPController : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        float curSpeedX = (isRunning ? runningSpeed : walkingSpeed) * input.x;
-        float curSpeedY = (isRunning ? runningSpeed : walkingSpeed) * input.y;
+        float curSpeedX = (isRunning ? runningSpeed : walkingSpeed) * input.y;
+        float curSpeedY = (isRunning ? runningSpeed : walkingSpeed) * input.x;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
