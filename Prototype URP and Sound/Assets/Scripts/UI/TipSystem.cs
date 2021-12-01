@@ -38,9 +38,9 @@ public class TipSystem : MonoBehaviour
         foreach (TipsInfo t in tips)
         {
             t.start = t.tip.transform.position;
-            t.tween_pos = t.tip.transform.DOMove(t.tip.transform.position + t.displacement, t.time).SetAutoKill(false).Pause();
+            t.tween_pos = t.tip.transform.DOMove(t.tip.transform.position + t.displacement, t.time).SetEase(Ease.OutQuart).SetAutoKill(false).Pause();
             t.tip.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0);
-            t.tween_alpha = t.tip.GetComponent<Image>().DOFade(1f, t.time).SetAutoKill(false).Pause();
+            t.tween_alpha = t.tip.GetComponent<Image>().DOFade(1f, t.time).SetEase(Ease.OutQuart).SetAutoKill(false).Pause();
             t.tip.GetComponent<Image>().color = new Color(1f,1f,1f,0);
             t.tip.SetActive(false);
         }
@@ -52,6 +52,7 @@ public class TipSystem : MonoBehaviour
         
     }
 
+    //Display tip
     public void ShowTip(string _name)
     {
         //Find the tip
@@ -63,10 +64,11 @@ public class TipSystem : MonoBehaviour
         //Activate it 
         t.tip.SetActive(true);
 
-        t.tween_pos.Play();
-        t.tween_alpha.Play();
+        t.tween_pos.PlayForward();
+        t.tween_alpha.PlayForward();
     }   
 
+    //Display tip with duration
     public void ShowTip(string _name, float duration)
     {
         //Find the tip
@@ -78,12 +80,13 @@ public class TipSystem : MonoBehaviour
         //Activate it 
         t.tip.SetActive(true);
 
-        t.tween_pos.Play();
-        t.tween_alpha.Play();
+        t.tween_pos.PlayForward();
+        t.tween_alpha.PlayForward();
 
         StartCoroutine(CloseTip(t, duration));
     }
 
+    //Remove tip
     public void RemoveTip(string _name)
     {
         //Find the tip
@@ -92,22 +95,13 @@ public class TipSystem : MonoBehaviour
         StartCoroutine(CloseTip(t, 0f));
     }
 
+    //Used to remove tip
     private IEnumerator CloseTip(TipsInfo t, float duration)
     {
         yield return new WaitForSeconds(duration);
 
         t.tween_pos.PlayBackwards();
         t.tween_alpha.PlayBackwards();
-
-        t.tween_alpha.onComplete += () =>
-        {
-            //Deactivate it 
-            t.tip.SetActive(false);
-        };
-        //Alpha Tween
-        yield return t.tween_alpha.WaitForCompletion();
-
-        
     }
 
 }
