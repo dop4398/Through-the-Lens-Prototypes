@@ -11,15 +11,20 @@ using UnityEngine;
 public class HeldPhoto : MonoBehaviour
 {
     #region Fields
-    public GameObject photoObject;
     public Photo heldPhoto;
     public int heldPhotoIndex;
-    [SerializeField] private bool photoInFocus = false;
+    [SerializeField] private bool photoInFocus;
+
+    // placeholder vectors to be phased out when we put the held photo on the UI
+    public Vector3 restPosition;
+    public Vector3 focusedPosition;
     #endregion
 
     void Start()
     {
-        
+        photoInFocus = false;
+        restPosition = new Vector3(0.75f, -0.4f, 1.5f);
+        focusedPosition = new Vector3(0, 0, 0.5f);
     }
     
     void Update()
@@ -49,6 +54,9 @@ public class HeldPhoto : MonoBehaviour
         heldPhoto = photo;
 
         // Update the photo object being held
+        PhotoController.instance.SetMainTexture(heldPhoto.GetMaterial_Old().mainTexture);
+        PhotoController.instance.SetSubTexture(heldPhoto.GetMaterial_New().mainTexture);
+        PhotoController.instance.state = heldPhoto.state;
     }
 
     /// <summary>
@@ -56,7 +64,7 @@ public class HeldPhoto : MonoBehaviour
     /// </summary>
     public void FocusPhoto()
     {
-        photoObject.transform.localPosition = new Vector3(0, 0, 0.5f);
+        PhotoController.instance.transform.localPosition = focusedPosition;
         photoInFocus = true;
     }
 
@@ -65,7 +73,7 @@ public class HeldPhoto : MonoBehaviour
     /// </summary>
     public void UnfocusPhoto()
     {
-        photoObject.transform.localPosition = new Vector3(0.75f, -0.4f, 1.5f);
+        PhotoController.instance.transform.localPosition = restPosition;
         photoInFocus = false;
     }
 
@@ -92,7 +100,7 @@ public class HeldPhoto : MonoBehaviour
 
        SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
 
-        Debug.Log(heldPhoto.GetID() + " - " + heldPhotoIndex);
+        Debug.Log(heldPhoto.ID + " - " + heldPhotoIndex);
     }
 
     /// <summary>
@@ -101,7 +109,9 @@ public class HeldPhoto : MonoBehaviour
     public void SwapPhotoContent()
     {
         heldPhoto.ToggleState();
-        photoObject.GetComponent<MeshRenderer>().material = heldPhoto.GetMaterial_Current();
+
+        //PhotoController.instance.GetComponent<MeshRenderer>().material = heldPhoto.GetMaterial_Current();
+        PhotoController.instance.ChangeState();
     }
     #endregion
 }

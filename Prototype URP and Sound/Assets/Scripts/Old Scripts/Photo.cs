@@ -11,29 +11,26 @@ using UnityEngine;
 public class Photo : MonoBehaviour
 {
     #region Fields
-    [SerializeField] private string ID = "";
-    public PhotoController photoController;
+    public string ID { get; set; }
+    public Material mat_old;
+    public Material mat_new;
 
-    public enum State
-    {
-        Past,
-        Present
-    }
-
-    [SerializeField] private Material mat_old;
-    [SerializeField] private Material mat_new;
-
-    public State state = State.Past;
+    //public enum State
+    //{
+    //    Past,
+    //    Present
+    //}
+    public PhotoState state;
     #endregion
-
-    private void Awake()
-    {
-        //photoController = GetComponent<PhotoController>();
-    }
 
     void Start()
     {
-        
+        state = PhotoState.Past;
+
+        if (ID == null)
+        {
+            ID = this.name;
+        }
     }
 
     void Update()
@@ -42,15 +39,6 @@ public class Photo : MonoBehaviour
     }
 
     #region Helper Methods
-    /// <summary>
-    /// Getter for the photo's locus ID.
-    /// </summary>
-    /// <returns>ID String.</returns>
-    public string GetID()
-    {
-        return ID;
-    }
-
     /// <summary>
     /// Getter for the photo's material (the picture itself).
     /// </summary>
@@ -65,7 +53,7 @@ public class Photo : MonoBehaviour
     }
     public Material GetMaterial_Current()
     {
-        return state == State.Past ? mat_old : mat_new;
+        return state == PhotoState.Past ? mat_old : mat_new;
     }
 
     /// <summary>
@@ -73,10 +61,10 @@ public class Photo : MonoBehaviour
     /// </summary>
     public void ToggleState()
     {
-        if (state == State.Past)
-            state = State.Present;
+        if (state == PhotoState.Past)
+            state = PhotoState.Present;
         else
-            state = State.Past;
+            state = PhotoState.Past;
     }
     #endregion
 }
