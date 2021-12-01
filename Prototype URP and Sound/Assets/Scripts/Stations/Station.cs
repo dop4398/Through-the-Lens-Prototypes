@@ -91,7 +91,7 @@ public class Station : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        rot = this.transform.rotation.eulerAngles;
+        //rot = this.transform.rotation.eulerAngles;
         state = this.state;
         isSingleUse = this.isSingleUse;
 
@@ -165,7 +165,6 @@ public class Station : MonoBehaviour
         // #1 Check Photo ID
         if (true)
         {
-
 
             Vector3 playerPos = CharacterComponents.instance.transform.position;
             Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;

@@ -22,6 +22,7 @@ public class CharacterComponents : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         FindComponents();
     }
 

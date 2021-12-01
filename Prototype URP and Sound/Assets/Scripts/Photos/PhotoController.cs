@@ -33,6 +33,17 @@ public class PhotoController : MonoBehaviour
     private float TransitionTime;
 
     private Tweener dissolveTween;
+
+    public bool isTweening
+    {
+        get
+        {
+            if (dissolveTween == null)
+                return false;
+
+            return dissolveTween.IsPlaying();
+        }
+    }
     #endregion
 
     private void Awake()
@@ -50,7 +61,7 @@ public class PhotoController : MonoBehaviour
         state = PhotoState.Past;
 
         //Tween effect init
-        dissolveTween = DOVirtual.Float(0f, 0.85f, 2f, v =>
+        dissolveTween = DOVirtual.Float(0f, 0.85f, TransitionTime, v =>
         {
             time = v;
             material.SetFloat("_T", v);
@@ -123,16 +134,41 @@ public class PhotoController : MonoBehaviour
         state = PhotoState.Present;
     }
 
+    public void SetState(PhotoState state)
+    {
+        switch (state)
+        {
+            case PhotoState.Past:
+                Present_D();
+                break;
+            case PhotoState.Present:
+                Past_D();
+                break;
+            default:
+                break;
+        }
+    }
+
     //Switch to present state
     public void Past_D()
     {
+        //Pause the current tween and go to past state
+        dissolveTween.Pause();
+        dissolveTween.Goto(0f);
+
         time = 0f;
+        state = PhotoState.Past;
     }
 
     //Switch to present state
     public void Present_D()
     {
-        time = 0f;
+        //Pause the current tween and go to present state
+        dissolveTween.Pause();
+        dissolveTween.Goto(TransitionTime);
+
+        time = 1f;
+        state = PhotoState.Present;
     }
 
     //Get Tween Status
