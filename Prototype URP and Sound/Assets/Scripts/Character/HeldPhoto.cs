@@ -47,6 +47,7 @@ public class HeldPhoto : MonoBehaviour
     #region Helper Methods
     /// <summary>
     /// Sets the held photo of the player to the given parameter.
+    /// This method directly interacts with the PhotoController instance.
     /// </summary>
     /// <param name="photo"></param>
     public void SetHeldPhoto(Photo photo)
@@ -64,7 +65,7 @@ public class HeldPhoto : MonoBehaviour
     /// </summary>
     public void FocusPhoto()
     {
-        PhotoController.instance.transform.localPosition = focusedPosition;
+        PhotoController.instance.transform.localPosition = focusedPosition; // physically moving the instance here.
         photoInFocus = true;
     }
 

@@ -9,9 +9,14 @@ public enum PhotoState
     Present
 }
 
+/// <summary>
+/// Singleton instance that controls the photo scene in the player's hand.
+/// </summary>
+/// <author>
+/// Alfie Luo
+/// </author>
 public class PhotoController : MonoBehaviour
 {
-
     public static PhotoController instance;
 
     #region Fields
@@ -127,7 +132,7 @@ public class PhotoController : MonoBehaviour
     //Switch to present state
     public void Present_D()
     {
-        time = 1f;
+        time = 0f;
     }
 
     //Get Tween Status
