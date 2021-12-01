@@ -49,7 +49,25 @@ public class TipSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    ShowTip("WASD", 2f);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    ShowTip("LMB", 4f);
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    ShowTip("RMB");
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    RemoveTip("RMB");
+        //}
     }
 
     //Display tip
