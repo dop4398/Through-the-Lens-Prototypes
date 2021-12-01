@@ -901,6 +901,11 @@ Transform:
   m_Father: {fileID: 851593001}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1026834376 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2030526725393709793, guid: 421bce854b3f5d041a3171617560a0d2, type: 3}
+  m_PrefabInstance: {fileID: 759142573}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1145444333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1687258582
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1852,7 +1857,7 @@ MonoBehaviour:
   canJump: 0
   jumpSpeed: 8
   gravity: 20
-  playerCamera: {fileID: 1687258584}
+  playerCamera: {fileID: 1026834376}
   lookSpeed: 2
   lookXLimit: 90
   canMove: 1
@@ -1947,7 +1952,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.4546743e-37, z: 2.2e-44, w: 6.2477784e-28}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 3.1e-44, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
