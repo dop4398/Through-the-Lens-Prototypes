@@ -13,7 +13,7 @@ using UnityEngine;
 /// </author>
 public class FPController : MonoBehaviour
 {
-    #region fields
+    #region Fields
     //public static FPController instance;
     public GameObject HandWithPhoto;
 
@@ -60,7 +60,7 @@ public class FPController : MonoBehaviour
     }
 
 
-    #region helper methods
+    #region Helper Methods
     public void Move(Vector2 input, bool isRunning, bool isJumping)
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);

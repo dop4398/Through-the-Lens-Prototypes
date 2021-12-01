@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+public enum PhotoState
+{
+    Past,
+    Present
+}
+
+/// <summary>
+/// Singleton instance that controls the photo scene in the player's hand.
+/// </summary>
+/// <author>
+/// Alfie Luo
+/// </author>
 public class PhotoController : MonoBehaviour
 {
-
     public static PhotoController instance;
 
     #region Fields
     private Material material;
-    public State state;
+    public PhotoState state;
 
     [SerializeField]
     [Range(1f, 10f)]
@@ -22,12 +33,6 @@ public class PhotoController : MonoBehaviour
     private float TransitionTime;
 
     private Tweener dissolveTween;
-
-    public enum State
-    {
-        Past,
-        Present
-    }
     #endregion
 
     private void Awake()
@@ -42,7 +47,7 @@ public class PhotoController : MonoBehaviour
 
         //Other init
         material = gameObject.GetComponent<MeshRenderer>().material;
-        state = State.Past;
+        state = PhotoState.Past;
 
         //Tween effect init
         dissolveTween = DOVirtual.Float(0f, 0.85f, 2f, v =>
@@ -85,10 +90,10 @@ public class PhotoController : MonoBehaviour
     {
         switch (state)
         {
-            case State.Past:
+            case PhotoState.Past:
                 Present_T();
                 break;
-            case State.Present:
+            case PhotoState.Present:
                 Past_T();
                 break;
             default:
@@ -104,7 +109,7 @@ public class PhotoController : MonoBehaviour
 
         dissolveTween.PlayBackwards();
 
-        state = State.Past;
+        state = PhotoState.Past;
     }
 
     //Tween to present state
@@ -115,7 +120,7 @@ public class PhotoController : MonoBehaviour
 
         dissolveTween.PlayForward();
 
-        state = State.Present;
+        state = PhotoState.Present;
     }
 
     //Switch to present state
@@ -127,7 +132,7 @@ public class PhotoController : MonoBehaviour
     //Switch to present state
     public void Present_D()
     {
-        time = 1f;
+        time = 0f;
     }
 
     //Get Tween Status
