@@ -129,6 +129,8 @@ GameObject:
   - component: {fileID: 1904978874843071984}
   - component: {fileID: 2051757201318882259}
   - component: {fileID: 2971474206372255326}
+  - component: {fileID: 5457078753155289642}
+  - component: {fileID: 3638612672683041216}
   m_Layer: 0
   m_Name: Photo
   m_TagString: Untagged
@@ -212,6 +214,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5457078753155289642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191823501159503121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a59ae0403cada46a75b5ef4c16b8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  glow_intensity: 10
+  TransitionTime: 2
+--- !u!114 &3638612672683041216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191823501159503121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
 --- !u!1 &7529204688534715162
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,10 +445,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f913e52a95da3cc4e965e31e90cdfcb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photoObject: {fileID: 0}
   heldPhoto: {fileID: 0}
   heldPhotoIndex: 0
   photoInFocus: 0
+  restPosition: {x: 0, y: 0, z: 0}
+  focusedPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1273289845670797604
 MonoBehaviour:
   m_ObjectHideFlags: 0
