@@ -61,6 +61,7 @@ public class StationManager : MonoBehaviour
             this.vig = Mathf.Lerp(this.vig, vig, Time.deltaTime);
 
             PhotoController.instance.SetGlow(this.glow);
+            PPVController.instance.SetVignette(this.vig);
         }
         else
         {
@@ -71,7 +72,17 @@ public class StationManager : MonoBehaviour
                 if (Mathf.Abs(this.glow) < 0.01f)
                     this.glow = 0f;
             }
+
+            if (this.vig > 0f)
+            {
+                this.vig = Mathf.Lerp(this.vig, 0f, Time.deltaTime);
+
+                if (Mathf.Abs(this.vig) < 0.01f)
+                    this.vig = 0f;
+            }
+
             PhotoController.instance.SetGlow(this.glow);
+            PPVController.instance.SetVignette(this.vig);
         }
     }
 

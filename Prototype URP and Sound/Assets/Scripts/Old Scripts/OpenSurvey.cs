@@ -20,7 +20,7 @@ public class OpenSurvey : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Application.OpenURL("https://rit.az1.qualtrics.com/jfe/form/SV_0PzqSprj4gyQIXs");
+            Application.OpenURL("https://rit.az1.qualtrics.com/jfe/form/SV_1G2WTvrmZyvESLI");
             Application.Quit();
         }
     }

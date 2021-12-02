@@ -80,10 +80,7 @@ public class Station : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerInput.playerInput.jump)
-        {
-            ToggleState();
-        }
+
     }
 
     /// <summary>
