@@ -163,7 +163,7 @@ public class Station : MonoBehaviour
         float vignette = 0f;
 
         // #1 Check Photo ID
-        if (true)
+        if (CharacterComponents.instance.heldPhoto.heldPhoto != null && CharacterComponents.instance.heldPhoto.heldPhoto.ID == id)
         {
 
             Vector3 playerPos = CharacterComponents.instance.transform.position;
@@ -174,7 +174,7 @@ public class Station : MonoBehaviour
             glow = CalculateIntensity(distanceH, radius, Mathf.Max(triggerSize.x, triggerSize.z));
 
             //if within radius
-            if(distanceH <= radius)
+            if(distanceH <= radius && CharacterComponents.instance.heldPhoto.IsInFocus())
             {
                 // #3 Calculate Angle Difference and Vignette
                 angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));

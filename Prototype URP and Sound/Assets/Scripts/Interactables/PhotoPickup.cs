@@ -61,6 +61,7 @@ public class PhotoPickup : MonoBehaviour, IInteractable
     public void Interaction()
     {
         // Add the item to the album
+        photo.ID = ID;
         CharacterComponents.instance.album.AddPhoto(photo);
 
         // Set inactive in the scene
