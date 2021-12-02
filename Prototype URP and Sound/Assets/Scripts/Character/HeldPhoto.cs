@@ -61,8 +61,8 @@ public class HeldPhoto : MonoBehaviour
         heldPhoto = photo;
 
         // Update the photo object being held
-        PhotoController.instance.SetMainTexture(heldPhoto.GetMaterial_Old().mainTexture);
-        PhotoController.instance.SetSubTexture(heldPhoto.GetMaterial_New().mainTexture);
+        PhotoController.instance.SetMainTexture(heldPhoto.GetTexture_Old());
+        PhotoController.instance.SetSubTexture(heldPhoto.GetTexture_New());
         PhotoController.instance.SetState(heldPhoto.state);
     }
 

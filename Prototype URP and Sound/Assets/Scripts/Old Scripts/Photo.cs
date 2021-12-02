@@ -8,52 +8,33 @@ using UnityEngine;
 /// <author>
 /// David Patch
 /// </author>
-public class Photo : MonoBehaviour
+
+[System.Serializable]
+public class Photo
 {
     #region Fields
-    public string ID { get; set; }
-    public Material mat_old;
-    public Material mat_new;
-
-    //public enum State
-    //{
-    //    Past,
-    //    Present
-    //}
+    public string ID;
+    public Texture tex_old;
+    public Texture tex_new;
     public PhotoState state;
     #endregion
-
-    void Start()
-    {
-        state = PhotoState.Past;
-
-        if (ID == null)
-        {
-            ID = this.name;
-        }
-    }
-
-    void Update()
-    {
-        
-    }
 
     #region Helper Methods
     /// <summary>
     /// Getter for the photo's material (the picture itself).
     /// </summary>
     /// <returns>Material for the photo image.</returns>
-    public Material GetMaterial_Old()
+    public Texture GetTexture_Old()
     {
-        return mat_old;
+        return tex_old;
     }
-    public Material GetMaterial_New()
+    public Texture GetTexture_New()
     {
-        return mat_new;
+        return tex_new;
     }
-    public Material GetMaterial_Current()
+    public Texture GetTexture_Current()
     {
-        return state == PhotoState.Past ? mat_old : mat_new;
+        return state == PhotoState.Past ? tex_old : tex_new;
     }
 
     /// <summary>

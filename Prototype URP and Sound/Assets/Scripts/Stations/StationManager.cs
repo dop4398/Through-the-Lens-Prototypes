@@ -50,7 +50,8 @@ public class StationManager : MonoBehaviour
                 {
                     if (PhotoController.instance.GetPhotoStatus())
                     {
-                        PhotoController.instance.ChangeState();
+                        //PhotoController.instance.ChangeState();
+                        CharacterComponents.instance.heldPhoto.SwapPhotoContent();
                         s.ToggleState();
                     }
                 }

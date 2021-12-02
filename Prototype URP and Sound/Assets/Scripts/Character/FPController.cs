@@ -52,7 +52,7 @@ public class FPController : MonoBehaviour
         Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
         Look(PlayerInput.playerInput.mouseLook);
 
-        if(PlayerInput.playerInput.interact)
+        if (PlayerInput.playerInput.interact)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -79,6 +79,10 @@ public class FPController : MonoBehaviour
         else
         {
             moveDirection.y = movementDirectionY;
+            if (characterController.isGrounded)
+            {
+                moveDirection.y = 0f;
+            }
         }
 
         // Apply gravity

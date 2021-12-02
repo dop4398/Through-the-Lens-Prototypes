@@ -10,7 +10,7 @@ public enum PhotoState
 }
 
 /// <summary>
-/// Singleton instance that controls the photo scene in the player's hand.
+/// Singleton instance that controls the photo scene in the player's hand. 
 /// </summary>
 /// <author>
 /// Alfie Luo

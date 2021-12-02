@@ -18,12 +18,11 @@ public class PhotoPickup : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        photo = GetComponent<Photo>();
     }
 
     void Start()
     {
-        radius = 2.0f;
+        radius = 1.0f;
 
         if (ID == null)
         {
@@ -37,23 +36,25 @@ public class PhotoPickup : MonoBehaviour, IInteractable
     }
 
     #region Helper Methods
-    public void OnMouseOver()
-    {
-        if (Vector3.Distance(CharacterComponents.instance.controller.transform.position, this.gameObject.transform.position) <= radius)
-        {
-            // Call UI method here
+    //public void OnMouseOver()
+    //{
+    //    //if (Vector3.Distance(CharacterComponents.instance.controller.transform.position, this.gameObject.transform.position) <= radius)
+    //    if (true)
+    //    {
+    //        // Call UI method here
+    //        Debug.Log("can pick up");
 
-            if (PlayerInput.playerInput.interact)
-            {
-                Interaction();
-            }
-        }
-    }
+    //        if (PlayerInput.playerInput.interact)
+    //        {
+    //            Interaction();
+    //        }
+    //    }
+    //}
 
-    public void OnMouseExit()
-    {
-        // Turn off UI popup here
-    }
+    //public void OnMouseExit()
+    //{
+    //    // Turn off UI popup here
+    //}
 
     /// <summary>
     /// Put it in the bag.
@@ -66,6 +67,11 @@ public class PhotoPickup : MonoBehaviour, IInteractable
 
         // Set inactive in the scene
         this.gameObject.SetActive(false);
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
     #endregion
 }

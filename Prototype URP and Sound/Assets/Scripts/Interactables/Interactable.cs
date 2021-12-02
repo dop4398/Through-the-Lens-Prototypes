@@ -19,8 +19,8 @@ public interface IInteractable
     float radius { get; set; }
     #endregion
 
-    void OnMouseOver();
-    void OnMouseExit();
+    //void OnMouseOver();
+    //void OnMouseExit();
     void Interaction();
 
 
