@@ -25,6 +25,13 @@ public class HeldPhoto : MonoBehaviour
         photoInFocus = false;
         restPosition = new Vector3(0.75f, -0.4f, 1.5f);
         focusedPosition = new Vector3(0, 0, 0.5f);
+
+        // If the player starts with any photos, the first one they have in the album will be set as the held photo.
+        if(CharacterComponents.instance.album.GetAlbumSize() > 0)
+        {
+            heldPhotoIndex = 0;
+            SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
+        }
     }
     
     void Update()
@@ -33,7 +40,6 @@ public class HeldPhoto : MonoBehaviour
         {
             CyclePhoto();
         }
-
         if(PlayerInput.playerInput.focusPhoto)
         {
             FocusPhoto();
