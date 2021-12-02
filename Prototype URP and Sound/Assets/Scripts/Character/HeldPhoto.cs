@@ -99,9 +99,12 @@ public class HeldPhoto : MonoBehaviour
             heldPhotoIndex = 0;
         }
 
-       SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
+        if(CharacterComponents.instance.album.GetAlbumSize() > 0)
+        {
+            SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
 
-        Debug.Log(heldPhoto.ID + " - " + heldPhotoIndex);
+            Debug.Log(heldPhoto.ID + " - " + heldPhotoIndex);
+        }
     }
 
     /// <summary>

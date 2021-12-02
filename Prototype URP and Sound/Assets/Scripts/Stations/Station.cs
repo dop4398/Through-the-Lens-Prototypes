@@ -163,7 +163,7 @@ public class Station : MonoBehaviour
         float vignette = 0f;
 
         // #1 Check Photo ID
-        if (CharacterComponents.instance.heldPhoto.heldPhoto.ID == id)
+        if (CharacterComponents.instance.heldPhoto.heldPhoto != null && CharacterComponents.instance.heldPhoto.heldPhoto.ID == id)
         {
 
             Vector3 playerPos = CharacterComponents.instance.transform.position;
