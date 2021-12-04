@@ -15,6 +15,7 @@ public class HeldPhoto : MonoBehaviour
     public int heldPhotoIndex;
     [SerializeField] private bool photoInFocus;
     public bool swapHasTriggered;
+    private bool photoLoaded;
 
     // placeholder vectors to be phased out when we put the held photo on the UI
     public Vector3 restPosition;
@@ -29,16 +30,14 @@ public class HeldPhoto : MonoBehaviour
         swapHasTriggered = false;
 
         // If the player starts with any photos, the first one they have in the album will be set as the held photo.
-        if (CharacterComponents.instance.album.GetAlbumSize() > 0)
-        {
-            heldPhotoIndex = 0;
-            SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
-        }
+        LoadFirstPhoto();
     }
     
     void Update()
     {
-        if(PlayerInput.playerInput.swap)
+        LoadFirstPhoto();
+
+        if (PlayerInput.playerInput.swap)
         {
             CyclePhoto();
         }
@@ -125,6 +124,17 @@ public class HeldPhoto : MonoBehaviour
 
         //PhotoController.instance.GetComponent<MeshRenderer>().material = heldPhoto.GetMaterial_Current();
         PhotoController.instance.ChangeState();
+    }
+
+
+    public void LoadFirstPhoto()
+    {
+        if (!photoLoaded && CharacterComponents.instance.album.GetAlbumSize() > 0)
+        {
+            heldPhotoIndex = 0;
+            SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
+            photoLoaded = true;
+        }
     }
     #endregion
 }
