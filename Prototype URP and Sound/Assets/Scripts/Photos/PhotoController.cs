@@ -58,6 +58,7 @@ public class PhotoController : MonoBehaviour
 
         //Other init
         material = gameObject.GetComponent<MeshRenderer>().material;
+        Debug.Log("PhotoController State: " + state);
         SetState(CharacterComponents.instance.heldPhoto.heldPhoto.state);
         //state = PhotoState.Past;
         Debug.Log("PhotoController State: " + state);
@@ -147,10 +148,10 @@ public class PhotoController : MonoBehaviour
         switch (state)
         {
             case PhotoState.Past:
-                Present_D();
+                Past_D();
                 break;
             case PhotoState.Present:
-                Past_D();
+                Present_D();
                 break;
             default:
                 break;
