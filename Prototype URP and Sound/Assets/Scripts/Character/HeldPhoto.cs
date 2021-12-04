@@ -14,6 +14,7 @@ public class HeldPhoto : MonoBehaviour
     public Photo heldPhoto;
     public int heldPhotoIndex;
     [SerializeField] private bool photoInFocus;
+    public bool swapHasTriggered;
 
     // placeholder vectors to be phased out when we put the held photo on the UI
     public Vector3 restPosition;
@@ -25,9 +26,10 @@ public class HeldPhoto : MonoBehaviour
         photoInFocus = false;
         restPosition = new Vector3(0.75f, -0.4f, 1.5f);
         focusedPosition = new Vector3(0, 0, 0.5f);
+        swapHasTriggered = false;
 
         // If the player starts with any photos, the first one they have in the album will be set as the held photo.
-        if(CharacterComponents.instance.album.GetAlbumSize() > 0)
+        if (CharacterComponents.instance.album.GetAlbumSize() > 0)
         {
             heldPhotoIndex = 0;
             SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
@@ -48,6 +50,8 @@ public class HeldPhoto : MonoBehaviour
         {
             UnfocusPhoto();
         }
+
+        Debug.Log("Held Photo State: " + heldPhoto.state);
     }
 
     #region Helper Methods
@@ -82,6 +86,7 @@ public class HeldPhoto : MonoBehaviour
     {
         PhotoController.instance.transform.localPosition = restPosition;
         photoInFocus = false;
+        swapHasTriggered = false;
     }
 
     /// <summary>
@@ -108,8 +113,6 @@ public class HeldPhoto : MonoBehaviour
         if(CharacterComponents.instance.album.GetAlbumSize() > 0)
         {
             SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
-
-            Debug.Log(heldPhoto.ID + " - " + heldPhotoIndex);
         }
     }
 

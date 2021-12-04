@@ -48,9 +48,10 @@ public class StationManager : MonoBehaviour
                     vig = info.vignette;
                 if (info.success)
                 {
-                    if (PhotoController.instance.GetPhotoStatus())
+                    if (PhotoController.instance.GetPhotoStatus() && !CharacterComponents.instance.heldPhoto.swapHasTriggered)
                     {
                         //PhotoController.instance.ChangeState();
+                        CharacterComponents.instance.heldPhoto.swapHasTriggered = true; // Here to only swap once per focus
                         CharacterComponents.instance.heldPhoto.SwapPhotoContent();
                         s.ToggleState();
                     }

@@ -38,7 +38,7 @@ public class Photo
     }
 
     /// <summary>
-    /// Toggle the current state of this photo
+    /// Toggle the current state of this photo.
     /// </summary>
     public void ToggleState()
     {

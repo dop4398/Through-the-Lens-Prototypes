@@ -58,7 +58,10 @@ public class PhotoController : MonoBehaviour
 
         //Other init
         material = gameObject.GetComponent<MeshRenderer>().material;
-        state = PhotoState.Past;
+        SetState(CharacterComponents.instance.heldPhoto.heldPhoto.state);
+        //state = PhotoState.Past;
+        Debug.Log("PhotoController State: " + state);
+        Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
         //Tween effect init
         dissolveTween = DOVirtual.Float(0f, 0.85f, TransitionTime, v =>
@@ -73,6 +76,11 @@ public class PhotoController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
+        {
+            ChangeState();
+        }
+
+        if(state != CharacterComponents.instance.heldPhoto.heldPhoto.state)
         {
             ChangeState();
         }
@@ -167,7 +175,7 @@ public class PhotoController : MonoBehaviour
         dissolveTween.Pause();
         dissolveTween.Goto(TransitionTime);
 
-        time = 1f;
+        time = 0f;
         state = PhotoState.Present;
     }
 
