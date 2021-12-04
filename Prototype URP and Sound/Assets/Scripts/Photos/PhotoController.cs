@@ -167,7 +167,7 @@ public class PhotoController : MonoBehaviour
         dissolveTween.Pause();
         dissolveTween.Goto(TransitionTime);
 
-        time = 1f;
+        time = 0f;
         state = PhotoState.Present;
     }
 

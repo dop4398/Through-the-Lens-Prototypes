@@ -63,6 +63,7 @@ public class Station : MonoBehaviour
     [SerializeField]
     [Range(15f, 40f)]
     private float vig_rot = 25.0f;
+    public float vignetteScalar = 0.75f;
 
     [Header("Other")]
     public State state; //current state
@@ -163,6 +164,9 @@ public class Station : MonoBehaviour
         if (CharacterComponents.instance.heldPhoto.heldPhoto != null && CharacterComponents.instance.heldPhoto.heldPhoto.ID == id)
         {
 
+            // I think we should move anything that changes the player's photo from here to either HeldPhoto or PhotoController.
+            // We can try to call an event here instead that the other scripts (or a new one) listen for.
+
             Vector3 playerPos = CharacterComponents.instance.transform.position;
             Vector3 triggerSize = trigger.GetComponent<BoxCollider>().size;
 
@@ -207,7 +211,7 @@ public class Station : MonoBehaviour
             }
         }
 
-        return f;
+        return f * vignetteScalar;
     }
 
     private void OnDrawGizmos()

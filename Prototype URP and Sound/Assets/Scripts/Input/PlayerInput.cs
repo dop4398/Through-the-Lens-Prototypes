@@ -7,7 +7,7 @@ using UnityEngine;
 /// This script holds a reference to the character and calls its movement functions.
 /// </summary>
 /// <author>
-/// David Patch
+/// Alfie Luo
 /// </author>
 
 public class PlayerInput : MonoBehaviour
