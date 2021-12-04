@@ -50,6 +50,8 @@ public class HeldPhoto : MonoBehaviour
         {
             UnfocusPhoto();
         }
+
+        Debug.Log("Held Photo State: " + heldPhoto.state);
     }
 
     #region Helper Methods
@@ -111,8 +113,6 @@ public class HeldPhoto : MonoBehaviour
         if(CharacterComponents.instance.album.GetAlbumSize() > 0)
         {
             SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
-
-            Debug.Log(heldPhoto.ID + " - " + heldPhotoIndex);
         }
     }
 
