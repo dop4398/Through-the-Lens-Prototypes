@@ -129,6 +129,8 @@ GameObject:
   - component: {fileID: 1904978874843071984}
   - component: {fileID: 2051757201318882259}
   - component: {fileID: 2971474206372255326}
+  - component: {fileID: 5457078753155289642}
+  - component: {fileID: 3638612672683041216}
   m_Layer: 0
   m_Name: Photo
   m_TagString: Untagged
@@ -212,6 +214,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5457078753155289642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191823501159503121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a59ae0403cada46a75b5ef4c16b8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  glow_intensity: 10
+  TransitionTime: 2
+--- !u!114 &3638612672683041216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191823501159503121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
 --- !u!1 &7529204688534715162
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +337,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7529204688661866337}
   - component: {fileID: 7529204688661866334}
-  - component: {fileID: 7529204688661866335}
+  - component: {fileID: 1409624922235472514}
+  - component: {fileID: 7453756703206973221}
+  - component: {fileID: 2190246466473437527}
+  - component: {fileID: 6641841813728292137}
+  - component: {fileID: 1273289845670797604}
   m_Layer: 0
   m_Name: FPPlayer
   m_TagString: Player
@@ -345,7 +383,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &7529204688661866335
+--- !u!114 &1409624922235472514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,20 +392,73 @@ MonoBehaviour:
   m_GameObject: {fileID: 7529204688661866332}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a0bad1c017d0c7488c4e8d55626479d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d7ca0e8b45e27b49a298253aaf80542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  heldPhoto: {fileID: 0}
+  album: {fileID: 0}
+  inventory: {fileID: 0}
+--- !u!114 &7453756703206973221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529204688661866332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9643d1d7249a3004cb845110c47917e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HandWithPhoto: {fileID: 0}
   walkingSpeed: 6
   runningSpeed: 10
-  canJump: 0
+  canJump: 1
   jumpSpeed: 8
   gravity: 20
   playerCamera: {fileID: 0}
   lookSpeed: 2
   lookXLimit: 90
-  canMove: 1
+--- !u!114 &2190246466473437527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529204688661866332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc171c45a237a074a899fc2b5253440a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   album: []
-  currentPhoto: {fileID: 0}
-  photoObject: {fileID: 7191823501159503121}
+--- !u!114 &6641841813728292137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529204688661866332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f913e52a95da3cc4e965e31e90cdfcb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldPhoto: {fileID: 0}
+  heldPhotoIndex: 0
   photoInFocus: 0
-  hasKey: 0
+  restPosition: {x: 0, y: 0, z: 0}
+  focusedPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1273289845670797604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529204688661866332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3be52e25cca5c44b57a6d451f73f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
