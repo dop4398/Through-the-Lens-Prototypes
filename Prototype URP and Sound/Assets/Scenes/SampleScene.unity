@@ -271,10 +271,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4527368504392492, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4527368504392492, guid: a87f0180d46fd334b9025d0314a0dc70, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -325,7 +321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &653260036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +399,7 @@ GameObject:
   - component: {fileID: 782875717}
   - component: {fileID: 782875716}
   - component: {fileID: 782875715}
+  - component: {fileID: 782875719}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -479,13 +476,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782875714}
-  m_LocalRotation: {x: -0.024860011, y: -0.64940745, z: -0.065951206, w: 0.75716734}
-  m_LocalPosition: {x: 1.9387, y: 0.7732, z: 0.8844}
+  m_LocalRotation: {x: -0.061426315, y: -0.011072672, z: -0.03456007, w: 0.9974517}
+  m_LocalPosition: {x: 2.25, y: 1.166, z: -0.017}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.0024094696}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -7.083, y: -80.996, z: -3.905}
+  m_LocalEulerAnglesHint: {x: -7.083, y: -1.03, z: -3.905}
+--- !u!114 &782875719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782875714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a59ae0403cada46a75b5ef4c16b8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  TransitionTime: 2
 --- !u!1 &1145444333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1058,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 83967.99, w: -2.1776852e-29}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -8.494436e-10}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
