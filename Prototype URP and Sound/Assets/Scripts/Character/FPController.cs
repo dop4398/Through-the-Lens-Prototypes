@@ -20,6 +20,8 @@ public class FPController : MonoBehaviour
     public float walkingSpeed = 6.0f;
     public float runningSpeed = 10.0f;
     public bool canJump = false;
+    public bool canMove = true;
+    public bool canLook = true;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
@@ -49,8 +51,11 @@ public class FPController : MonoBehaviour
 
     void Update()
     {
-        Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
-        Look(PlayerInput.playerInput.mouseLook);
+        if (canMove)
+            Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
+
+        if (canLook)
+            Look(PlayerInput.playerInput.mouseLook);
 
         if (PlayerInput.playerInput.interact)
         {

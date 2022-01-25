@@ -50,7 +50,7 @@ public class HeldPhoto : MonoBehaviour
             UnfocusPhoto();
         }
 
-        Debug.Log("Held Photo State: " + heldPhoto.state);
+        //Debug.Log("Held Photo State: " + heldPhoto.state);
     }
 
     #region Helper Methods
