@@ -17,20 +17,6 @@ public class StationMaker : MonoBehaviour
     [Range(10, 1000)]
     public float yPos;
 
-    [Header("Screenshot Frame")]
-    [SerializeField]
-    [Range(100, 1000)]
-    public float centerX;
-    [SerializeField]
-    [Range(100, 1000)]
-    public float centerY;
-    [SerializeField]
-    [Range(100, 1000)]
-    public float sizeX;
-    [SerializeField]
-    [Range(100, 1000)]
-    public float sizeY;
-
     [Header("GUI Skins")]
     public GUISkin normal;
     public GUISkin photo;
@@ -90,7 +76,10 @@ public class StationMaker : MonoBehaviour
 
         if (isPhotoMode)
         {
-            GUI.Box(new Rect(centerX, centerY, sizeX, sizeY), GUIContent.none);
+            //Use golden radio to calculate size
+            float size = Screen.width * (500f / 1256f);
+            GUI.Box(new Rect(Screen.width / 2 - size / 2, Screen.height / 2 - size / 2, size, size), GUIContent.none);
+            Debug.Log(Screen.width);
         }
     }
 

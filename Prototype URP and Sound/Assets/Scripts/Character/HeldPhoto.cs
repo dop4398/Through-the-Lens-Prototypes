@@ -25,7 +25,7 @@ public class HeldPhoto : MonoBehaviour
     void Start()
     {
         photoInFocus = false;
-        restPosition = new Vector3(0.75f, -0.4f, 1.5f);
+        restPosition = new Vector3(0.87f, -0.4f, 1.35f);
         focusedPosition = new Vector3(0, 0, 0.5f);
         swapHasTriggered = false;
 
