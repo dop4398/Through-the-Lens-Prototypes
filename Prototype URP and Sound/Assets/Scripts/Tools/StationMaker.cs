@@ -103,6 +103,7 @@ public class StationMaker : MonoBehaviour
 
         //Set its parent to the new station also update station's trigger variable
         trigger.transform.parent = g.transform;
+        trigger.transform.position = new Vector3(0f, -0.5f, 0f);
         station.trigger = trigger;
 
         //Set correct radius

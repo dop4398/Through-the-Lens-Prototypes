@@ -65,6 +65,9 @@ public class Station : MonoBehaviour
     private float vig_rot = 25.0f;
     public float vignetteScalar = 0.75f;
 
+    [Header("Glow Curve")]
+    public AnimationCurve glow_Curve;
+
     [Header("Other")]
     public State state; //current state
     public bool isSingleUse; //destory component after a toggle
@@ -175,7 +178,7 @@ public class Station : MonoBehaviour
             if(distanceH <= radius && CharacterComponents.instance.heldPhoto.IsInFocus())
             {
                 // #3 Calculate Angle Difference and Vignette
-                angleDifference = Quaternion.Angle(Quaternion.Euler(Camera.main.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
+                angleDifference = Quaternion.Angle(Quaternion.Euler(CharacterComponents.instance.controller.playerCamera.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
                 vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 
@@ -200,7 +203,7 @@ public class Station : MonoBehaviour
             if (value >= min)
             {
                 f = (value - min) / (max - min);
-                f = 1f - f;
+                f = glow_Curve.Evaluate(f);
             }
             else
             {
