@@ -54,8 +54,8 @@ public class Station : MonoBehaviour
     //the bigger the easier to align
     [Header("Tolerance")]
     [SerializeField]
-    [Range(0.1f, 15.0f)]
-    private float tolerance_rot = 15.0f;
+    [Range(0.1f, 5.0f)]
+    private float tolerance_rot = 5.0f;
     private float angleDifference;
 
     //Controlls the vignette effect, the bigger the easier for it to appear
@@ -68,9 +68,6 @@ public class Station : MonoBehaviour
     [Header("Other")]
     public State state; //current state
     public bool isSingleUse; //destory component after a toggle
-
-    [HideInInspector]
-    public KeyCode key; //debug key
 
     // Start is called before the first frame update
     void Start()
