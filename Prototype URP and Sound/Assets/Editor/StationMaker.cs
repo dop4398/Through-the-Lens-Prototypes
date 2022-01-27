@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using Utility;
 
 public class StationMaker : MonoBehaviour
 {
@@ -117,9 +116,35 @@ public class StationMaker : MonoBehaviour
         station.vignetteScalar = 1f;
         station.isSingleUse = false;
 
-        PrefabUtil.SaveAsPrefab(g, "Assets/Resources/Prefabs/Stations/");
+        SaveAsPrefab(g, "Assets/Resources/Prefabs/Stations/");
     }
 
+    public void SaveAsPrefab(GameObject obj, string path)
+    {
+
+        //Stores original object name
+        string name = obj.name;
+
+        //Path correction
+        if (path[path.Length - 1] != '/')
+        {
+            path += '/';
+        }
+
+        //Generate new name
+        string new_path = path + name + ".prefab";
+
+        //Check for duplicate files
+        int id = 1;
+        while (System.IO.File.Exists(new_path))
+        {
+            new_path = path + name + "_" + id + ".prefab";
+            id++;
+        }
+
+        //Save object as prefab
+        PrefabUtility.SaveAsPrefabAsset(obj, new_path);
+    }
 
 
 }
