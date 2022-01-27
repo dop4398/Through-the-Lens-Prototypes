@@ -183,7 +183,7 @@ public class Station : MonoBehaviour
                 vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 
                 // #4 Change state if successfully aligned
-                if (angleDifference < 1f + tolerance_rot)
+                if (angleDifference < tolerance_rot)
                 {
                     success = true;
                 }

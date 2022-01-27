@@ -100,6 +100,13 @@ public class FPController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
+    public void Move(Vector3 v3)
+    {
+        //position += v2 * Time.deltaTime;
+        //characterController.Move(v2.x * transform.right + v2.z * transform.forward);
+        characterController.Move(v3 * Time.deltaTime);
+    }
+
     public void Look(Vector2 mouseLook)
     {
         // Player and Camera rotation
