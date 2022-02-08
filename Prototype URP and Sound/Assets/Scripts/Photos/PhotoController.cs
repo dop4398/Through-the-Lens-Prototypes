@@ -78,7 +78,7 @@ public class PhotoController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ChangeState();
+            //ChangeState();
         }
 
         if(state != CharacterComponents.instance.heldPhoto.heldPhoto.state)

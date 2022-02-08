@@ -16,12 +16,16 @@ public class StationMaker : MonoBehaviour
     [Range(10, 1000)]
     public float yPos;
 
+    [Header("Camera")]
+    public Camera camera;
+
     [Header("GUI Skins")]
     public GUISkin normal;
     public GUISkin photo;
 
     private bool flag = false;
     private bool isPhotoMode = false;
+    private bool capturePhoto = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,44 @@ public class StationMaker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Code Source: https://answers.unity.com/questions/22954/how-to-save-a-picture-take-screenshot-from-a-camer.html
+    /// </summary>
+    public static string ScreenShotName(int width, int height)
+    {
+        return string.Format("{0}/Resources/Screenshots/screen_{1}x{2}_{3}.png",
+                             Application.dataPath,
+                             width, height,
+                             System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+    }
+
+    public void CapturePhoto()
+    {
+        capturePhoto = true;
+    }
+
+    void LateUpdate()
+    {
+        if (capturePhoto)
+        {
+            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+            camera.targetTexture = rt;
+            int size = (int)(Screen.width * 500f / 1256f); // #### Custom Ratio ####
+            Texture2D screenShot = new Texture2D(size, size, TextureFormat.RGB24, false);
+            camera.Render();
+            RenderTexture.active = rt;
+            screenShot.ReadPixels(new Rect((Screen.width - size) / 2, (Screen.height - size) / 2, (Screen.width - size) / 2 + size, (Screen.height - size) / 2 + size), 0, 0);
+            camera.targetTexture = null;
+            RenderTexture.active = null; // JC: added to avoid errors
+            Destroy(rt);
+            byte[] bytes = screenShot.EncodeToPNG();
+            string filename = ScreenShotName(size, size);
+            System.IO.File.WriteAllBytes(filename, bytes);
+            Debug.Log(string.Format("Took screenshot to: {0}", filename));
+            capturePhoto = false;
+        }
+    }
+
     private void OnGUI()
     {
         if (!active)
@@ -46,7 +88,7 @@ public class StationMaker : MonoBehaviour
         GUI.skin = normal;
 
         // Make a background box
-        GUI.Box(new Rect(xPos + 10, yPos + 10, 140, 70), "Cool Dev Tool");
+        GUI.Box(new Rect(xPos + 10, yPos + 10, 140, 90), "Cool Station Tool");
 
         //Unlock Cursor while holding down TAB
         if (flag)
@@ -69,6 +111,11 @@ public class StationMaker : MonoBehaviour
         if (GUI.Button(new Rect(xPos + 20, yPos + 50, 100, 20), "Make Station"))
         {
             MakeStation();
+        }
+        
+        if (GUI.Button(new Rect(xPos + 20, yPos + 70, 100, 20), "Capture photo"))
+        {
+            CapturePhoto();
         }
 
         GUI.skin = photo;
