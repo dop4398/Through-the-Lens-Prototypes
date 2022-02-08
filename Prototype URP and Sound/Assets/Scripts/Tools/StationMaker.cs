@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class StationMaker : MonoBehaviour
 {
-
     public bool active;
 
     [Header("Tool Position")]
