@@ -7,6 +7,11 @@ public class StationMaker : MonoBehaviour
 {
     public bool active;
 
+    [Header("Station Specs")]
+    [SerializeField]
+    [Range(2, 10)]
+    public float TriggerSize;
+
     [Header("Tool Position")]
     [SerializeField]
     [Range(10, 1000)]
@@ -87,20 +92,23 @@ public class StationMaker : MonoBehaviour
         GUI.skin = normal;
 
         // Make a background box
-        GUI.Box(new Rect(xPos + 10, yPos + 10, 140, 90), "Cool Station Tool");
+        GUI.Box(new Rect(xPos + 10, yPos + 10, 130, 110), "Cool Station Tool");
 
         //Unlock Cursor while holding down TAB
-        if (flag)
+        if (CharacterComponents.instance)
         {
-            CharacterComponents.instance.controller.canLook = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            CharacterComponents.instance.controller.canLook = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (flag)
+            {
+                CharacterComponents.instance.controller.canLook = false;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                CharacterComponents.instance.controller.canLook = true;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
 
         // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
@@ -111,10 +119,15 @@ public class StationMaker : MonoBehaviour
         {
             MakeStation();
         }
-        
+
         if (GUI.Button(new Rect(xPos + 20, yPos + 70, 100, 20), "Capture photo"))
         {
             CapturePhoto();
+        }
+
+        if (GUI.Button(new Rect(xPos + 20, yPos + 90, 100, 20), "Close"))
+        {
+            Close();
         }
 
         GUI.skin = photo;
@@ -124,8 +137,13 @@ public class StationMaker : MonoBehaviour
             //Use golden radio to calculate size
             float size = Screen.width * (500f / 1256f);
             GUI.Box(new Rect(Screen.width / 2 - size / 2, Screen.height / 2 - size / 2, size, size), GUIContent.none);
-            Debug.Log(Screen.width);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!active)
+            return;
     }
 
     private void MakeStation()
@@ -143,7 +161,7 @@ public class StationMaker : MonoBehaviour
         //Add a collider to the trigger object and the trigger script
         BoxCollider box = trigger.AddComponent<BoxCollider>();
         box.isTrigger = true;
-        box.size = new Vector3(4, 1, 4);
+        box.size = new Vector3(TriggerSize, 1, TriggerSize);
         trigger.AddComponent<StationTrigger>();
 
         //Set its parent to the new station also update station's trigger variable
@@ -192,5 +210,13 @@ public class StationMaker : MonoBehaviour
         PrefabUtility.SaveAsPrefabAsset(obj, new_path);
     }
 
+    public void Close()
+    {
+        if (CharacterComponents.instance)
+            CharacterComponents.instance.controller.canLook = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        active = false;
+    }
 
 }

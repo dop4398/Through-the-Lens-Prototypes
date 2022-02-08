@@ -32,7 +32,12 @@ public class PhotoController : MonoBehaviour
     [Range(0.1f, 2f)]
     private float TransitionTime;
 
+    [SerializeField]
+    [Range(0.1f, 2f)]
+    private float PulseMagnitude;
+
     private Tweener dissolveTween;
+    private float pulse_modifier = 1.0f;
 
     public bool isTweening
     {
@@ -60,7 +65,7 @@ public class PhotoController : MonoBehaviour
         material = gameObject.GetComponent<MeshRenderer>().material;
         Debug.Log("PhotoController State: " + state);
         SetState(CharacterComponents.instance.heldPhoto.heldPhoto.state);
-        //state = PhotoState.Past;
+
         Debug.Log("PhotoController State: " + state);
         Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
@@ -101,7 +106,7 @@ public class PhotoController : MonoBehaviour
     //Set frame's glow intensity
     public void SetGlow(float intensity)
     {
-        intensity = intensity * glow_intensity;
+        intensity = intensity * glow_intensity * pulse_modifier;
         material.SetFloat("_EmissionIntensity", intensity);
     }
 
