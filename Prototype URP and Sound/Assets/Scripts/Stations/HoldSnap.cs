@@ -65,10 +65,7 @@ public class HoldSnap : MonoBehaviour
         tweenX.Pause();
         tweenZ.Pause();
 
-        tweenXB = CharacterComponents.instance.transform.DOMoveX(origin.x, backTime);
-        tweenZB = CharacterComponents.instance.transform.DOMoveZ(origin.z, backTime);
-
-        tweenXB.OnComplete(() => { SetPController(true); });
+        SetPController(true);
     }
 
     public void SetPController(bool b)

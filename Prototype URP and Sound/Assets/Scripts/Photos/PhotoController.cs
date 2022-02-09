@@ -40,6 +40,8 @@ public class PhotoController : MonoBehaviour
     [Range(1f, 2f)]
     private float PulseFrequency;
 
+    public ParticleController successParticle;
+
     private Tweener dissolveTween;
     private Tweener PulseTween;
     private float pulse_modifier = 1.0f;
@@ -107,6 +109,7 @@ public class PhotoController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             //ChangeState();
+            PlaySuccessParticle();
         }
 
         if(state != CharacterComponents.instance.heldPhoto.heldPhoto.state)
@@ -231,6 +234,11 @@ public class PhotoController : MonoBehaviour
     public bool GetPhotoStatus()
     {
         return !dissolveTween.IsPlaying();
+    }
+
+    public void PlaySuccessParticle()
+    {
+        successParticle.Play();
     }
     #endregion
 

@@ -56,14 +56,14 @@ public class Station : MonoBehaviour
     //the bigger the easier to align
     [Header("Tolerance")]
     [SerializeField]
-    [Range(0.1f, 5.0f)]
+    [Range(1f, 5.0f)]
     private float tolerance_rot = 5.0f;
     private float angleDifference;
 
     //Controlls the vignette effect, the bigger the easier for it to appear
     [Header("Hint - Vignette Angle")]
     [SerializeField]
-    [Range(15f, 40f)]
+    [Range(15f, 90f)]
     private float vig_rot = 25.0f;
     public float vignetteScalar = 0.75f;
 

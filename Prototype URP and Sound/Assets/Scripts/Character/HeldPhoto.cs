@@ -25,8 +25,8 @@ public class HeldPhoto : MonoBehaviour
     void Start()
     {
         photoInFocus = false;
-        restPosition = new Vector3(0.87f, -0.4f, 1.35f);
-        focusedPosition = new Vector3(0, 0, 0.5f);
+        restPosition = new Vector3(0.34f, -0.25f, 0.64f);
+        focusedPosition = new Vector3(0, 0, 0.185f);
         swapHasTriggered = false;
 
         // If the player starts with any photos, the first one they have in the album will be set as the held photo.
