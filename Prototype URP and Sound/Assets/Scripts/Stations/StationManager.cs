@@ -77,7 +77,6 @@ public class StationManager : MonoBehaviour
             else
             {
                 PhotoController.instance.Pulse(false);
-                PhotoController.instance.SetPulseSpeed(0f);
             }
 
         }

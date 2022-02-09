@@ -29,15 +29,15 @@ public class PhotoController : MonoBehaviour
     private float time;
 
     [SerializeField]
-    [Range(0.1f, 2f)]
+    [Range(0.1f, 4f)]
     private float TransitionTime;
 
     [SerializeField]
-    [Range(1f, 2f)]
+    [Range(1f, 4f)]
     private float PulseMagnitude;
 
     [SerializeField]
-    [Range(1f, 2f)]
+    [Range(0.5f, 4f)]
     private float PulseFrequency;
 
     public ParticleController successParticle;
@@ -88,7 +88,7 @@ public class PhotoController : MonoBehaviour
         Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
         //Dissolve tween effect init
-        dissolveTween = DOVirtual.Float(0f, 0.85f, TransitionTime, v =>
+        dissolveTween = DOVirtual.Float(0f, 0.8f, TransitionTime, v =>
         {
             time = v;
             material.SetFloat("_T", v);
@@ -127,7 +127,7 @@ public class PhotoController : MonoBehaviour
         else
         {
             PulseTween.Pause();
-            PulseTween.Goto(0f);
+            PulseTween.Rewind();
         }
     }
 

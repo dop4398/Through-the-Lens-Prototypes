@@ -178,7 +178,8 @@ public class Station : MonoBehaviour
             // #3 Calculate Angle Difference and Vignette
             angleDifference = Quaternion.Angle(Quaternion.Euler(CharacterComponents.instance.controller.playerCamera.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
-            pulse = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
+            if(distanceH <= radius)
+                pulse = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
 
             //if within radius
             if (distanceH <= radius && CharacterComponents.instance.heldPhoto.IsInFocus())
