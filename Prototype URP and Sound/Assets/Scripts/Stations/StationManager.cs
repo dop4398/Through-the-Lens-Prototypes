@@ -36,16 +36,19 @@ public class StationManager : MonoBehaviour
     {
         if (stations.Count > 0)
         {
-            float glow = 0f;
-            float vig = 0;
+            float glow = 0f, vig = 0, pulse = 0f;
 
             foreach (Station s in stations)
             {
                 StationInfo info = s.CheckPlayer();
+
                 if (info.glow > glow)
                     glow = info.glow;
                 if (info.vignette > vig)
                     vig = info.vignette;
+                if (info.pulse > pulse)
+                    pulse = info.pulse;
+
                 if (info.success)
                 {
                     if (PhotoController.instance.GetPhotoStatus() && !CharacterComponents.instance.heldPhoto.swapHasTriggered)
@@ -63,6 +66,12 @@ public class StationManager : MonoBehaviour
 
             PhotoController.instance.SetGlow(this.glow);
             PPVController.instance.SetVignette(this.vig);
+
+            if(pulse > 0)
+                PhotoController.instance.Pulse(true);
+            else
+                PhotoController.instance.Pulse(false);
+
         }
         else
         {

@@ -19,9 +19,6 @@
             "m_Id": "f6a5ae5e94084010870d107b7218944f"
         },
         {
-            "m_Id": "c440ff68fbbc4dea9f343512c38ff103"
-        },
-        {
             "m_Id": "4edbea6208e4499c85cf5b1772c41f77"
         },
         {
@@ -4230,29 +4227,6 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "c440ff68fbbc4dea9f343512c38ff103",
-    "m_Guid": {
-        "m_GuidSerialized": "c332404a-64c0-44a0-bc2f-24d65604ca83"
-    },
-    "m_Name": "Brightness",
-    "m_DefaultReferenceName": "Vector1_c440ff68fbbc4dea9f343512c38ff103",
-    "m_OverrideReferenceName": "_Brightness",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
 }
 
 {

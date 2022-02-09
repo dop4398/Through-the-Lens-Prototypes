@@ -33,13 +33,18 @@ public class PhotoController : MonoBehaviour
     private float TransitionTime;
 
     [SerializeField]
-    [Range(0.1f, 2f)]
+    [Range(1f, 2f)]
     private float PulseMagnitude;
 
+    [SerializeField]
+    [Range(1f, 2f)]
+    private float PulseFrequency;
+
     private Tweener dissolveTween;
+    private Tweener PulseTween;
     private float pulse_modifier = 1.0f;
 
-    public bool isTweening
+    public bool isDissolving
     {
         get
         {
@@ -47,6 +52,17 @@ public class PhotoController : MonoBehaviour
                 return false;
 
             return dissolveTween.IsPlaying();
+        }
+    }
+
+    public bool isPulsing
+    {
+        get
+        {
+            if (PulseTween == null)
+                return false;
+
+            return PulseTween.IsPlaying();
         }
     }
     #endregion
@@ -69,14 +85,21 @@ public class PhotoController : MonoBehaviour
         Debug.Log("PhotoController State: " + state);
         Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
-        //Tween effect init
+        //Dissolve tween effect init
         dissolveTween = DOVirtual.Float(0f, 0.85f, TransitionTime, v =>
         {
             time = v;
             material.SetFloat("_T", v);
         }).SetAutoKill(false);
 
+        //Pulse tween effect init
+        PulseTween = DOVirtual.Float(1f, PulseMagnitude, PulseFrequency, v =>
+        {
+            pulse_modifier = v;
+        }).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
+
         dissolveTween.Pause();
+        PulseTween.Pause();
     }
 
     void Update()
@@ -89,6 +112,19 @@ public class PhotoController : MonoBehaviour
         if(state != CharacterComponents.instance.heldPhoto.heldPhoto.state)
         {
             ChangeState();
+        }
+    }
+
+    public void Pulse(bool b)
+    {
+        if (b)
+        {
+            PulseTween.Play();
+        }
+        else
+        {
+            PulseTween.Pause();
+            PulseTween.Goto(0f);
         }
     }
 

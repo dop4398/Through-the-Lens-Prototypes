@@ -7,12 +7,14 @@ public struct StationInfo
     public bool success;
     public float glow;
     public float vignette;
+    public float pulse;
 
-    public StationInfo(bool _success, float _glow, float _vignette)
+    public StationInfo(bool _success, float _glow, float _vignette, float _pulse)
     {
         success = _success;
         glow = _glow;
         vignette = _vignette;
+        pulse = _pulse;
     }
 }
 
@@ -157,8 +159,7 @@ public class Station : MonoBehaviour
     public StationInfo CheckPlayer()
     {
         bool success = false;
-        float glow = 0f;
-        float vignette = 0f;
+        float glow = 0f, vignette = 0f, pulse = 0f;
 
         // #1 Check Photo ID
         if (CharacterComponents.instance.heldPhoto.heldPhoto != null && CharacterComponents.instance.heldPhoto.heldPhoto.ID == id)
@@ -174,13 +175,15 @@ public class Station : MonoBehaviour
             float distanceH = Vector2.Distance(new Vector2(playerPos.x, playerPos.z), new Vector2(trigger.transform.position.x, trigger.transform.position.z));
             glow = CalculateIntensity(distanceH, radius, Mathf.Max(triggerSize.x, triggerSize.z));
 
-            //if within radius
-            if(distanceH <= radius && CharacterComponents.instance.heldPhoto.IsInFocus())
-            {
-                // #3 Calculate Angle Difference and Vignette
-                angleDifference = Quaternion.Angle(Quaternion.Euler(CharacterComponents.instance.controller.playerCamera.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
+            // #3 Calculate Angle Difference and Vignette
+            angleDifference = Quaternion.Angle(Quaternion.Euler(CharacterComponents.instance.controller.playerCamera.transform.rotation.eulerAngles.x, CharacterComponents.instance.transform.rotation.eulerAngles.y, 0), Quaternion.Euler(rot));
 
-                vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
+            pulse = CalculateIntensity(angleDifference, tolerance_rot, vig_rot);
+
+            //if within radius
+            if (distanceH <= radius && CharacterComponents.instance.heldPhoto.IsInFocus())
+            {
+                vignette = CalculateIntensity(angleDifference, tolerance_rot, vig_rot) * vignetteScalar;
 
                 // #4 Change state if successfully aligned
                 if (angleDifference < tolerance_rot)
@@ -191,7 +194,7 @@ public class Station : MonoBehaviour
         }
 
 
-        return new StationInfo(success, glow, vignette);
+        return new StationInfo(success, glow, vignette, pulse);
     }
 
     private float CalculateIntensity(float value, float min, float max)
@@ -211,7 +214,7 @@ public class Station : MonoBehaviour
             }
         }
 
-        return f * vignetteScalar;
+        return f;
     }
 
     private void OnDrawGizmos()
