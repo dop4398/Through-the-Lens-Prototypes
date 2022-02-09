@@ -120,7 +120,7 @@ Material:
     m_Colors:
     - Vector2_3ef7e75c51dc4acba4f06e1c5a30c547: {r: 0.18, g: -0.8, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.022694906, g: 0.9622642, b: 0.07663446, a: 1}
+    - _Color: {r: 1, g: 0.1745283, b: 0.41926864, a: 1}
     - _DissolveColor: {r: 5.992157, g: 3.7802737, b: 1.035294, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
