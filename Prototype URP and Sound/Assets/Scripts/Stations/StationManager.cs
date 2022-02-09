@@ -67,10 +67,16 @@ public class StationManager : MonoBehaviour
             PhotoController.instance.SetGlow(this.glow);
             PPVController.instance.SetVignette(this.vig);
 
-            if(pulse > 0)
+            if (pulse > 0)
+            {
                 PhotoController.instance.Pulse(true);
+                PhotoController.instance.SetPulseSpeed(pulse);
+            }
             else
+            {
                 PhotoController.instance.Pulse(false);
+                PhotoController.instance.SetPulseSpeed(0f);
+            }
 
         }
         else

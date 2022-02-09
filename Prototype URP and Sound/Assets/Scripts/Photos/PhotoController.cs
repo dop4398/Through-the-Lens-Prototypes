@@ -128,6 +128,12 @@ public class PhotoController : MonoBehaviour
         }
     }
 
+    public void SetPulseSpeed(float f)
+    {
+        f = Mathf.Clamp(f, 0f, 1f);
+        PulseTween.timeScale = 1f + f;
+    }
+
     #region Helper Functions
     public void SetMainTexture(Texture t)
     {
