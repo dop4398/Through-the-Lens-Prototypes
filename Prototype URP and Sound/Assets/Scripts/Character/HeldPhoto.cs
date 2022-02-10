@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// HeldPhoto is the core photo mechanic.
@@ -13,13 +14,16 @@ public class HeldPhoto : MonoBehaviour
     #region Fields
     public Photo heldPhoto;
     public int heldPhotoIndex;
-    [SerializeField] private bool photoInFocus;
+
+    private bool photoInFocus;
+    [HideInInspector]
     public bool swapHasTriggered;
     private bool photoLoaded;
 
     // placeholder vectors to be phased out when we put the held photo on the UI
     public Vector3 restPosition;
     public Vector3 focusedPosition;
+    public float focusTime;
     #endregion
 
     void Start()
@@ -45,7 +49,7 @@ public class HeldPhoto : MonoBehaviour
         {
             FocusPhoto();
         }
-        else if(PlayerInput.playerInput.unfocusPhoto)
+        if(PlayerInput.playerInput.unfocusPhoto)
         {
             UnfocusPhoto();
         }
@@ -74,8 +78,16 @@ public class HeldPhoto : MonoBehaviour
     /// </summary>
     public void FocusPhoto()
     {
-        PhotoController.instance.transform.localPosition = focusedPosition; // physically moving the instance here.
-        photoInFocus = true;
+        //PhotoController.instance.transform.localPosition = focusedPosition; // physically moving the instance here.
+        PhotoController.instance.transform.DOLocalMove(focusedPosition, focusTime).SetEase(Ease.OutCubic).OnComplete(() => SetFocusState(true));
+        //photoInFocus = true;
+    }
+
+    public void SetFocusState(bool state)
+    {
+        photoInFocus = state;
+        if (state == false)
+            swapHasTriggered = false;
     }
 
     /// <summary>
@@ -83,9 +95,11 @@ public class HeldPhoto : MonoBehaviour
     /// </summary>
     public void UnfocusPhoto()
     {
-        PhotoController.instance.transform.localPosition = restPosition;
-        photoInFocus = false;
-        swapHasTriggered = false;
+        //PhotoController.instance.transform.localPosition = restPosition;
+        //photoInFocus = false;
+        //swapHasTriggered = false;
+        PhotoController.instance.transform.DOPause();
+        PhotoController.instance.transform.DOLocalMove(restPosition, focusTime).SetEase(Ease.OutCubic).OnStart(() => SetFocusState(false));
     }
 
     /// <summary>
