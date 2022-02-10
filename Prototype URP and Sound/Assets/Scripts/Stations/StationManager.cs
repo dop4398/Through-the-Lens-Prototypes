@@ -36,23 +36,27 @@ public class StationManager : MonoBehaviour
     {
         if (stations.Count > 0)
         {
-            float glow = 0f;
-            float vig = 0;
+            float glow = 0f, vig = 0, pulse = 0f;
 
             foreach (Station s in stations)
             {
                 StationInfo info = s.CheckPlayer();
+
                 if (info.glow > glow)
                     glow = info.glow;
                 if (info.vignette > vig)
                     vig = info.vignette;
+                if (info.pulse > pulse)
+                    pulse = info.pulse;
+
                 if (info.success)
                 {
-                    if (PhotoController.instance.GetPhotoStatus() && !CharacterComponents.instance.heldPhoto.swapHasTriggered)
+                    if (PhotoController.instance.GetPhotoStatus() && !CharacterComponents.instance.heldPhoto.swapHasTriggered && this.vig > 0.97f)
                     {
                         //PhotoController.instance.ChangeState();
                         CharacterComponents.instance.heldPhoto.swapHasTriggered = true; // Here to only swap once per focus
                         CharacterComponents.instance.heldPhoto.SwapPhotoContent();
+                        PhotoController.instance.PlaySuccessParticle();
                         s.ToggleState();
                     }
                 }
@@ -63,6 +67,17 @@ public class StationManager : MonoBehaviour
 
             PhotoController.instance.SetGlow(this.glow);
             PPVController.instance.SetVignette(this.vig);
+
+            if (pulse > 0)
+            {
+                PhotoController.instance.Pulse(true);
+                PhotoController.instance.SetPulseSpeed(pulse);
+            }
+            else
+            {
+                PhotoController.instance.Pulse(false);
+            }
+
         }
         else
         {

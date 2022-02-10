@@ -29,12 +29,24 @@ public class PhotoController : MonoBehaviour
     private float time;
 
     [SerializeField]
-    [Range(0.1f, 2f)]
+    [Range(0.1f, 4f)]
     private float TransitionTime;
 
-    private Tweener dissolveTween;
+    [SerializeField]
+    [Range(1f, 4f)]
+    private float PulseMagnitude;
 
-    public bool isTweening
+    [SerializeField]
+    [Range(0.5f, 4f)]
+    private float PulseFrequency;
+
+    public ParticleController successParticle;
+
+    private Tweener dissolveTween;
+    private Tweener PulseTween;
+    private float pulse_modifier = 1.0f;
+
+    public bool isDissolving
     {
         get
         {
@@ -42,6 +54,17 @@ public class PhotoController : MonoBehaviour
                 return false;
 
             return dissolveTween.IsPlaying();
+        }
+    }
+
+    public bool isPulsing
+    {
+        get
+        {
+            if (PulseTween == null)
+                return false;
+
+            return PulseTween.IsPlaying();
         }
     }
     #endregion
@@ -60,31 +83,58 @@ public class PhotoController : MonoBehaviour
         material = gameObject.GetComponent<MeshRenderer>().material;
         Debug.Log("PhotoController State: " + state);
         SetState(CharacterComponents.instance.heldPhoto.heldPhoto.state);
-        //state = PhotoState.Past;
+
         Debug.Log("PhotoController State: " + state);
         Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
-        //Tween effect init
-        dissolveTween = DOVirtual.Float(0f, 0.85f, TransitionTime, v =>
+        //Dissolve tween effect init
+        dissolveTween = DOVirtual.Float(0f, 0.75f, TransitionTime, v =>
         {
             time = v;
             material.SetFloat("_T", v);
         }).SetAutoKill(false);
 
+        //Pulse tween effect init
+        PulseTween = DOVirtual.Float(1f, PulseMagnitude, PulseFrequency, v =>
+        {
+            pulse_modifier = v;
+        }).SetAutoKill(false).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
+
         dissolveTween.Pause();
+        PulseTween.Pause();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ChangeState();
+            //ChangeState();
+            PlaySuccessParticle();
         }
 
         if(state != CharacterComponents.instance.heldPhoto.heldPhoto.state)
         {
             ChangeState();
         }
+    }
+
+    public void Pulse(bool b)
+    {
+        if (b)
+        {
+            PulseTween.Play();
+        }
+        else
+        {
+            PulseTween.Pause();
+            PulseTween.Rewind();
+        }
+    }
+
+    public void SetPulseSpeed(float f)
+    {
+        f = Mathf.Clamp(f, 0f, 1f);
+        PulseTween.timeScale = 1f + f;
     }
 
     #region Helper Functions
@@ -101,7 +151,7 @@ public class PhotoController : MonoBehaviour
     //Set frame's glow intensity
     public void SetGlow(float intensity)
     {
-        intensity = intensity * glow_intensity;
+        intensity = intensity * glow_intensity * pulse_modifier;
         material.SetFloat("_EmissionIntensity", intensity);
     }
 
@@ -184,6 +234,11 @@ public class PhotoController : MonoBehaviour
     public bool GetPhotoStatus()
     {
         return !dissolveTween.IsPlaying();
+    }
+
+    public void PlaySuccessParticle()
+    {
+        successParticle.Play();
     }
     #endregion
 
