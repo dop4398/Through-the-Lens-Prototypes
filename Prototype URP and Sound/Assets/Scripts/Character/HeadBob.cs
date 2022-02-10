@@ -35,7 +35,11 @@ public class HeadBob : MonoBehaviour
 
     void Update()
     {
-        HeadBobbing();
+        // If the player is moving:
+        if (PlayerInput.playerInput.input != Vector2.zero)
+        {
+            HeadBobbing();
+        }
     }
 
 
@@ -72,42 +76,38 @@ public class HeadBob : MonoBehaviour
     /// </summary>
     private void HeadBobbing()
     {
-        // If the player is moving:
-        if(PlayerInput.playerInput.input != Vector2.zero)
+        Debug.Log("walk sequence: " + walkSequence.IsPlaying() + "\nrun sequence: " + runSequence.IsPlaying());
+        // if no sequence is playing:
+        if (!walkSequence.IsPlaying() && !runSequence.IsPlaying())
         {
-            Debug.Log("walk sequence: " + walkSequence.IsPlaying() + "\nrun sequence: " + runSequence.IsPlaying());
-            // if no sequence is playing:
-            if (!walkSequence.IsPlaying() && !runSequence.IsPlaying())
+            if (PlayerInput.playerInput.run)
             {
-                if (PlayerInput.playerInput.run)
-                {
-                    //DOTween.Play(runSequence);
-                    runSequence.Restart();
-                }
-                else
-                {
-                    //DOTween.Play(walkSequence);
-                    walkSequence.Restart();
-                }
-            }
-
-            // Shifting from walking to running currently jumps instead of smoothly transitions.
-
-            // If walk is playing and playerInput.run becomes true:
-            if(walkSequence.IsPlaying() && PlayerInput.playerInput.run)
-            {
-                walkSequence.Complete();
                 //DOTween.Play(runSequence);
                 runSequence.Restart();
             }
-
-            // If run is playing and playerInput.run becomes false:
-            if(runSequence.IsPlaying() && !PlayerInput.playerInput.run)
+            else
             {
-                runSequence.Complete();
                 //DOTween.Play(walkSequence);
                 walkSequence.Restart();
             }
+        }
+
+        // Shifting from walking to running currently jumps instead of smoothly transitions.
+
+        // If walk is playing and playerInput.run becomes true:
+        if (walkSequence.IsPlaying() && PlayerInput.playerInput.run)
+        {
+            walkSequence.Complete();
+            //DOTween.Play(runSequence);
+            runSequence.Restart();
+        }
+
+        // If run is playing and playerInput.run becomes false:
+        if (runSequence.IsPlaying() && !PlayerInput.playerInput.run)
+        {
+            runSequence.Complete();
+            //DOTween.Play(walkSequence);
+            walkSequence.Restart();
         }
     }
     #endregion
