@@ -51,7 +51,7 @@ public class FPController : MonoBehaviour
 
     void Update()
     {
-        if (canMove)
+        if (canMove && characterController.enabled)
             Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
 
         if (canLook)

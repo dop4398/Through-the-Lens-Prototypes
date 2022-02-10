@@ -88,7 +88,7 @@ public class PhotoController : MonoBehaviour
         Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
         //Dissolve tween effect init
-        dissolveTween = DOVirtual.Float(0f, 0.8f, TransitionTime, v =>
+        dissolveTween = DOVirtual.Float(0f, 0.75f, TransitionTime, v =>
         {
             time = v;
             material.SetFloat("_T", v);

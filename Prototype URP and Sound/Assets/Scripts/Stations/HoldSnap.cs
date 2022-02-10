@@ -11,21 +11,15 @@ public class HoldSnap : MonoBehaviour
     public float snapTime;
     public float backTime;
 
-    private Tween tweenX;
-    private Tween tweenZ;
-    private Tween tweenXB;
-    private Tween tweenZB;
+    private Tweener tweenX;
+    private Tweener tweenZ;
 
     private Vector3 origin;
 
     // Start is called before the first frame update
     void Start()
     {
-        //tweenX = Move.player.transform.DOMoveX(transform.position.x, snapTime).Pause();
-        //tweenZ = Move.player.transform.DOMoveZ(transform.position.z, snapTime).Pause();
 
-        //tweenX.OnPlay(() => { SetPController(false); });
-        //tweenX.OnRewind(() => { SetPController(true); });
     }
 
     // Update is called once per frame
@@ -34,10 +28,10 @@ public class HoldSnap : MonoBehaviour
         if (isActive)
         {
 
-            if (Input.GetMouseButtonDown(1))
+            if (PlayerInput.playerInput.focusPhoto)
                 Snap();
 
-            if (Input.GetMouseButtonUp(1))
+            if (PlayerInput.playerInput.unfocusPhoto)
                 Return();
 
         }
@@ -45,11 +39,6 @@ public class HoldSnap : MonoBehaviour
 
     public void Snap()
     {
-        Debug.Log("Snap");
-
-        tweenXB.Pause();
-        tweenZB.Pause();
-
         tweenX = CharacterComponents.instance.transform.DOMoveX(transform.position.x, snapTime);
         tweenZ = CharacterComponents.instance.transform.DOMoveZ(transform.position.z, snapTime);
 
@@ -60,8 +49,6 @@ public class HoldSnap : MonoBehaviour
 
     public void Return()
     {
-        Debug.Log("Return");
-
         tweenX.Pause();
         tweenZ.Pause();
 

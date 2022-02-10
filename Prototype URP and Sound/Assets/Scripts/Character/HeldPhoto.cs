@@ -15,7 +15,7 @@ public class HeldPhoto : MonoBehaviour
     public Photo heldPhoto;
     public int heldPhotoIndex;
 
-    private bool photoInFocus;
+    public bool photoInFocus;
     [HideInInspector]
     public bool swapHasTriggered;
     private bool photoLoaded;
@@ -24,6 +24,9 @@ public class HeldPhoto : MonoBehaviour
     public Vector3 restPosition;
     public Vector3 focusedPosition;
     public float focusTime;
+
+    private Tweener focusTween;
+    private Tweener unfocusTween;
     #endregion
 
     void Start()
@@ -32,6 +35,13 @@ public class HeldPhoto : MonoBehaviour
         restPosition = new Vector3(0.34f, -0.25f, 0.64f);
         focusedPosition = new Vector3(0, 0, 0.185f);
         swapHasTriggered = false;
+
+        //init tweeners
+        //focusTween = PhotoController.instance.transform.DOLocalMove(focusedPosition, focusTime).SetEase(Ease.OutCubic).OnComplete(() => SetFocusState(true));
+        unfocusTween = PhotoController.instance.transform.DOLocalMove(restPosition, focusTime).SetEase(Ease.OutCubic).OnStart(() => SetFocusState(false)).SetAutoKill(false);
+
+        //focusTween.Pause();
+        unfocusTween.Pause();
 
         // If the player starts with any photos, the first one they have in the album will be set as the held photo.
         LoadFirstPhoto();
@@ -51,6 +61,7 @@ public class HeldPhoto : MonoBehaviour
         }
         if(PlayerInput.playerInput.unfocusPhoto)
         {
+            
             UnfocusPhoto();
         }
 
@@ -79,7 +90,8 @@ public class HeldPhoto : MonoBehaviour
     public void FocusPhoto()
     {
         //PhotoController.instance.transform.localPosition = focusedPosition; // physically moving the instance here.
-        PhotoController.instance.transform.DOLocalMove(focusedPosition, focusTime).SetEase(Ease.OutCubic).OnComplete(() => SetFocusState(true));
+        PhotoController.instance.transform.DOKill();
+        PhotoController.instance.transform.DOLocalMove(focusedPosition, focusTime).SetEase(Ease.OutCubic).OnComplete(() => SetFocusState(true)).SetAutoKill(false);
         //photoInFocus = true;
     }
 
@@ -98,8 +110,9 @@ public class HeldPhoto : MonoBehaviour
         //PhotoController.instance.transform.localPosition = restPosition;
         //photoInFocus = false;
         //swapHasTriggered = false;
-        PhotoController.instance.transform.DOPause();
-        PhotoController.instance.transform.DOLocalMove(restPosition, focusTime).SetEase(Ease.OutCubic).OnStart(() => SetFocusState(false));
+        PhotoController.instance.transform.DOKill();
+        PhotoController.instance.transform.DOLocalMove(restPosition, focusTime).SetEase(Ease.OutCubic).OnStart(() => SetFocusState(false)).SetAutoKill(false);
+        Debug.Log("Unfocus");
     }
 
     /// <summary>
@@ -135,7 +148,6 @@ public class HeldPhoto : MonoBehaviour
     public void SwapPhotoContent()
     {
         heldPhoto.ToggleState();
-
         //PhotoController.instance.GetComponent<MeshRenderer>().material = heldPhoto.GetMaterial_Current();
         PhotoController.instance.ChangeState();
     }

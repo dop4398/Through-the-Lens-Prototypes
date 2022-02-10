@@ -51,7 +51,6 @@ public class StationManager : MonoBehaviour
 
                 if (info.success)
                 {
-                    Debug.Log(vig);
                     if (PhotoController.instance.GetPhotoStatus() && !CharacterComponents.instance.heldPhoto.swapHasTriggered && this.vig > 0.97f)
                     {
                         //PhotoController.instance.ChangeState();
