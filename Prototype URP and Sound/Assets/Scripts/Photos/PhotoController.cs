@@ -240,6 +240,10 @@ public class PhotoController : MonoBehaviour
     {
         successParticle.Play();
     }
+    public float GetTransitionTime()
+    {
+        return TransitionTime;
+    }
     #endregion
 
 }
