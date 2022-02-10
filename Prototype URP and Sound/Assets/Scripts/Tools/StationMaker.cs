@@ -205,9 +205,10 @@ public class StationMaker : MonoBehaviour
             new_path = path + name + "_" + id + ".prefab";
             id++;
         }
-
+#if (UNITY_EDITOR)
         //Save object as prefab
         PrefabUtility.SaveAsPrefabAsset(obj, new_path);
+#endif
     }
 
     public void Close()
