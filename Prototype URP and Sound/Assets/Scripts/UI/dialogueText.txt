@@ -1,0 +1,6 @@
+0|Do we really need a gate, Mom?|3
+0|It feels like it cuts us off from the world|4
+0||1
+0|The gate makes it our home, child|3
+0|It helps draw a line between our safe haven and the outside|5
+1||1
