@@ -18,6 +18,7 @@ public class CharacterComponents : MonoBehaviour
     public HeldPhoto heldPhoto;
     public Album album;
     public Inventory inventory;
+    public FootstepsSFX footstepsSFX;
     #endregion
 
     private void Awake()
@@ -59,6 +60,10 @@ public class CharacterComponents : MonoBehaviour
             if(inventory == null)
             {
                 inventory = this.GetComponent<Inventory>();
+            }
+            if(footstepsSFX == null)
+            {
+                footstepsSFX = this.GetComponent<FootstepsSFX>();
             }
 
             componentsFound = true;
