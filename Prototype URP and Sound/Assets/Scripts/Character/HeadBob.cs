@@ -27,44 +27,49 @@ public class HeadBob : MonoBehaviour
         yPos = gameObject.transform.position.y;
 
         // Make the necessary sequences here
-
+        CreateWalkSequence();
+        CreateRunSequence();
     }
 
     void Update()
     {
-        t = CharacterComponents.instance.footstepsSFX.GetFootstepSpeed();
+        HeadBobbing();
 
-        if (PlayerInput.playerInput.input != Vector2.zero && !togglePlaying)
-        {
-            //DOTween.Play(gameObject.transform);
+        //t = CharacterComponents.instance.footstepsSFX.GetFootstepSpeed();
 
-            // The current y position is not always at yPos (full height), so sometimes a new tween starts with this lower position and makes the player stay lower
-            DOTween.Kill(gameObject.transform);
-            gameObject.transform.DOLocalMoveY(yPos - stepOffset, t).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
-            togglePlaying = true;
-            // We should try a sequence here for going down then up, so the up destination is always yPos
-        }
-        else if(PlayerInput.playerInput.input == Vector2.zero && togglePlaying)
-        {
-            //DOTween.Pause(gameObject.transform);
-            // DOTween.Complete(gameObject.transform); // no effect on tweens with infinite loops
-
-            DOTween.Kill(gameObject.transform);
-            gameObject.transform.DOLocalMoveY(yPos, t).SetEase(Ease.InOutQuad); // Single tweener that we kill later, just to get us back to yPos
-            togglePlaying = false;
-        }
-        //else if(PlayerInput.playerInput.run && togglePlaying)
+        //if (PlayerInput.playerInput.input != Vector2.zero && !togglePlaying)
         //{
+        //    //DOTween.Play(gameObject.transform);
+
+        //    // The current y position is not always at yPos (full height), so sometimes a new tween starts with this lower position and makes the player stay lower
         //    DOTween.Kill(gameObject.transform);
         //    gameObject.transform.DOLocalMoveY(yPos - stepOffset, t).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
+        //    togglePlaying = true;
+        //    // We should try a sequence here for going down then up, so the up destination is always yPos
         //}
+        //else if(PlayerInput.playerInput.input == Vector2.zero && togglePlaying)
+        //{
+        //    //DOTween.Pause(gameObject.transform);
+        //    // DOTween.Complete(gameObject.transform); // no effect on tweens with infinite loops
 
-        // We still need cases for when a player starts running mid-walk or walking mid-run?
+        //    DOTween.Kill(gameObject.transform);
+        //    gameObject.transform.DOLocalMoveY(yPos, t).SetEase(Ease.InOutQuad); // Single tweener that we kill later, just to get us back to yPos
+        //    togglePlaying = false;
+        //}
+        ////else if(PlayerInput.playerInput.run && togglePlaying)
+        ////{
+        ////    DOTween.Kill(gameObject.transform);
+        ////    gameObject.transform.DOLocalMoveY(yPos - stepOffset, t).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutQuad);
+        ////}
+
+        //// We still need cases for when a player starts running mid-walk or walking mid-run?
     }
+
 
     #region Helper Methods
     private Sequence CreateWalkSequence()
     {
+        t = CharacterComponents.instance.footstepsSFX.WalkSpeed;
         walkSequence = DOTween.Sequence();
         walkSequence.Append(gameObject.transform.DOLocalMoveY(yPos - stepOffset, t));
         return walkSequence;
@@ -72,7 +77,47 @@ public class HeadBob : MonoBehaviour
 
     private Sequence CreateRunSequence()
     {
+        t = CharacterComponents.instance.footstepsSFX.RunSpeed;
+        runSequence = DOTween.Sequence();
+        walkSequence.Append(gameObject.transform.DOLocalMoveY(yPos - stepOffset, t));
         return runSequence;
+    }
+
+    // loop walk sequence while walking. Complete() when no longer moving.
+    // When run is true, either complete, pause, or kill walk sequence to start run sequence. loop that and complete when no longer moving or running.
+    // if running into walking, complete run and restart walk sequence.
+    private void HeadBobbing()
+    {
+        // If the player is moving:
+        if(PlayerInput.playerInput.input != Vector2.zero)
+        {
+            // if no sequence is playing:
+            if (!walkSequence.IsPlaying() && !runSequence.IsPlaying())
+            {
+                if (PlayerInput.playerInput.run)
+                {
+                    DOTween.Play(runSequence);
+                }
+                else
+                {
+                    DOTween.Play(walkSequence);
+                }
+            }
+
+            // If walk is playing and playerInput.run becomes true:
+            if(walkSequence.IsPlaying() && PlayerInput.playerInput.run)
+            {
+                walkSequence.Complete();
+                DOTween.Play(runSequence);
+            }
+
+            // If run is playing and playerInput.run becomes false:
+            if(runSequence.IsPlaying() && !PlayerInput.playerInput.run)
+            {
+                runSequence.Complete();
+                DOTween.Play(walkSequence);
+            }
+        }
     }
     #endregion
 }

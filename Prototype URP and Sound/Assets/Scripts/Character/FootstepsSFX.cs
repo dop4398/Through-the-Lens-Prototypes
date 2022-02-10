@@ -22,8 +22,16 @@ public class FootstepsSFX : MonoBehaviour
     private float footstepSpeed = 0.75f;
     [SerializeField]
     private float walkSpeed = 0.75f;
+    public float WalkSpeed
+    {
+        get { return walkSpeed; }
+    }
     [SerializeField]
     private float runSpeed = 0.25f;
+    public float RunSpeed
+    {
+        get { return runSpeed; }
+    }
     #endregion
 
     void Start()
