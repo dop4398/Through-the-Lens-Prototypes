@@ -56,8 +56,10 @@ public class StationManager : MonoBehaviour
                         //PhotoController.instance.ChangeState();
                         CharacterComponents.instance.heldPhoto.swapHasTriggered = true; // Here to only swap once per focus
                         CharacterComponents.instance.heldPhoto.SwapPhotoContent();
+                        CharacterComponents.instance.controller.LockCameraAndInput(s.rot, PhotoController.instance.GetTransitionTime());
                         PhotoController.instance.PlaySuccessParticle();
                         s.ToggleState();
+
                     }
                 }
             }

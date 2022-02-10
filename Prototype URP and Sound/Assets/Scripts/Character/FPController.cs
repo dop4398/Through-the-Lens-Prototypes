@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// Class <c>FPController</c>.
@@ -116,6 +118,46 @@ public class FPController : MonoBehaviour
         transform.rotation *= Quaternion.Euler(0, mouseLook.x * lookSpeed, 0);
     }
 
+    public async void LockCameraAndInput(Vector3 euler, float duration)
+    {
+        float end = Time.time + duration;
+        PlayerInput.playerInput.isDisabled = true;
+        float y = transform.rotation.eulerAngles.y;
+        float x = playerCamera.transform.rotation.eulerAngles.x;
+
+        transform.DORotate(new Vector3(0, euler.y, 0), duration);
+        playerCamera.transform.DOLocalRotate(new Vector3(euler.x, 0, 0), duration);
+        Debug.Log(euler);
+
+        while (Time.time < end)
+        {
+            //x = Mathf.Lerp(x, euler.x, Time.deltaTime);
+            //y = Mathf.Lerp(y, euler.y, Time.deltaTime);
+            //SetPlayerDirection(new Vector3(x, y, 0));
+            await Task.Yield();
+        }
+
+        PlayerInput.playerInput.isDisabled = false;
+        CharacterComponents.instance.heldPhoto.UnfocusPhoto();
+
+        if(characterController.enabled == false) //resolve a conflict with lerp focus
+        {
+            characterController.enabled = true;
+        }
+    }
+
+    public Vector3 GetPlayerDirection()
+    {
+        return new Vector3(playerCamera.transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 0);
+    }
+
+    public void SetPlayerDirection(Vector3 dir)
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0, dir.y, 0));
+        playerCamera.transform.rotation = Quaternion.Euler(new Vector3(dir.x, 0, 0));
+    }
+
+
 
     /// <summary>
     /// Deals with inputs to let the player look and move around the scene. To be called every frame in Update().
@@ -160,70 +202,6 @@ public class FPController : MonoBehaviour
     //        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
     //        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
     //    }
-    //}
-
-    /// <summary>
-    /// Method for retrieving the Photo that the player is holding, if any.
-    /// </summary>
-    /// <returns>The index of the Photo being held by the player, or null if none.</returns>
-    //public string GetHeldPhotoID()
-    //{
-    //    return currentPhoto.GetID();
-    //}
-
-    ///// <summary>
-    ///// Method for adding a Photo object to the album.
-    ///// </summary>
-    ///// <param name="photo">The Photo object being added.</param>
-    //public void AddPhotoToAlbum(Photo photo)
-    //{
-    //    album.Add(photo);
-    //    currentPhoto = album[album.Count - 1];
-    //    photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
-    //}
-
-    ///// <summary>
-    ///// Changes the currently held photo by cycling through the list of all the player's photos (their album).
-    ///// This is a quick and dirty solution and should be improved upon for future prototypes.
-    ///// </summary>
-    //public void CyclePhoto()
-    //{
-    //    albumIndex++;
-    //    if(albumIndex >= album.Count)
-    //    {
-    //        albumIndex = 0;
-    //    }
-
-    //    currentPhoto = album[albumIndex];
-    //    Debug.Log(currentPhoto.GetID() + " - " + albumIndex);
-
-    //    photoObject.GetComponent<MeshRenderer>().material = currentPhoto.GetMaterial_Current();
-    //}
-
-    ///// <summary>
-    ///// Bring the currently held photo into focus in the center of the screen, blocking a good section of the player's vision.
-    ///// </summary>
-    //public void FocusPhoto()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.Mouse1))
-    //    {
-    //        photoObject.transform.localPosition = new Vector3(0, 0, 0.5f);
-    //        photoInFocus = true;
-    //    }
-    //    else if(Input.GetKeyUp(KeyCode.Mouse1))
-    //    {
-    //        photoObject.transform.localPosition = new Vector3(0.75f, -0.4f, 1.5f);
-    //        photoInFocus = false;
-    //    }
-    //}
-
-    ///// <summary>
-    ///// Public method for checking whether the player has a photo in focus.
-    ///// </summary>
-    ///// <returns>True if a photo is in focus, false if not.</returns>
-    //public bool IsInFocus()
-    //{
-    //    return photoInFocus;
     //}
     #endregion
 }

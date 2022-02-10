@@ -61,7 +61,6 @@ public class HeldPhoto : MonoBehaviour
         }
         if(PlayerInput.playerInput.unfocusPhoto)
         {
-            
             UnfocusPhoto();
         }
 
@@ -112,7 +111,6 @@ public class HeldPhoto : MonoBehaviour
         //swapHasTriggered = false;
         PhotoController.instance.transform.DOKill();
         PhotoController.instance.transform.DOLocalMove(restPosition, focusTime).SetEase(Ease.OutCubic).OnStart(() => SetFocusState(false)).SetAutoKill(false);
-        Debug.Log("Unfocus");
     }
 
     /// <summary>
