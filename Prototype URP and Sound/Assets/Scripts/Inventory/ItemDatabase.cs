@@ -45,7 +45,13 @@ public class ItemDatabase : MonoBehaviour
                 {
                     { "Name", "Relic 3" },
                     { "Description", "What's wrong buddy?"}
-                }, "Relic")
+                }, "Relic"),
+                new Item(3, "AmongUs", "A cowboy",
+                new Dictionary<string, string>
+                {
+                    { "Name", "Relic 3" },
+                    { "Description", "A strange spaceman figurine. Perhaps it was a toy of one of the children?"}
+                }, "Collectable"),
             };
     }
 }
