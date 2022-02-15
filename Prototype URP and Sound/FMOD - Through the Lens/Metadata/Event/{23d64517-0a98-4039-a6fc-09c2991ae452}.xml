@@ -115,10 +115,16 @@
 			<value>1</value>
 		</property>
 		<property name="minimumTimeBetweenSounds">
-			<value>16000</value>
+			<value>10000</value>
 		</property>
 		<property name="maximumTimeBetweenSounds">
-			<value>26000</value>
+			<value>20000</value>
+		</property>
+		<property name="minimumScatterDistance">
+			<value>0</value>
+		</property>
+		<property name="maximumScatterDistance">
+			<value>0</value>
 		</property>
 		<property name="pitchRandomization">
 			<value>1</value>
