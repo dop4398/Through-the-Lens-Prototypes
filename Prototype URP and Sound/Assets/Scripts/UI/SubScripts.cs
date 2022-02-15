@@ -114,7 +114,7 @@ public class SubScripts : MonoBehaviour
     public void Run(int x)
     {
         StartCoroutine(TextSequence(x));
-        x++;
+        
     }
 
     //testing out the text showing up

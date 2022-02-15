@@ -10,6 +10,7 @@ using UnityEngine;
 public class StationManager : MonoBehaviour
 {
     public static StationManager instance;
+    SubScripts subtitles;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class StationManager : MonoBehaviour
     void Start()
     {
         stations = new List<Station>();
+        subtitles = this.GetComponent<SubScripts>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,9 @@ public class StationManager : MonoBehaviour
                         CharacterComponents.instance.controller.LockCameraAndInput(s.rot, PhotoController.instance.GetTransitionTime());
                         PhotoController.instance.PlaySuccessParticle();
                         s.ToggleState();
+
+                        //Insert station's id instead of 0 pls
+                        subtitles.Run(0);
 
                     }
                 }
