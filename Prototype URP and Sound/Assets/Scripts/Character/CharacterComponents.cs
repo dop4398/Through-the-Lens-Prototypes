@@ -17,8 +17,9 @@ public class CharacterComponents : MonoBehaviour
     public FPController controller;
     public HeldPhoto heldPhoto;
     public Album album;
-    public Inventory inventory;
+    public CollectableInventory inventory;
     public FootstepsSFX footstepsSFX;
+    public Interactor interactor;
     #endregion
 
     private void Awake()
@@ -59,11 +60,15 @@ public class CharacterComponents : MonoBehaviour
             }
             if(inventory == null)
             {
-                inventory = this.GetComponent<Inventory>();
+                inventory = this.GetComponent<CollectableInventory>();
             }
             if(footstepsSFX == null)
             {
                 footstepsSFX = this.GetComponent<FootstepsSFX>();
+            }
+            if(interactor == null)
+            {
+                interactor = this.GetComponent<Interactor>();
             }
 
             componentsFound = true;

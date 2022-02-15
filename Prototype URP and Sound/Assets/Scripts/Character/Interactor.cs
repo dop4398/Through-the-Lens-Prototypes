@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
     public LayerMask layer = 7;
+    public float radius = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class Interactor : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1f, layer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, radius, layer))
         {
             if (PlayerInput.playerInput.interact)
             {
