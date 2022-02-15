@@ -73,7 +73,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool interact
     {
-        get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.E); }
+        get { if (this.isDisabled) return false; return Input.GetMouseButtonDown(0); }
     }
 
     public bool focusPhoto
@@ -90,10 +90,7 @@ public class PlayerInput : MonoBehaviour
     //{
     //    get { return Input.GetMouseButton(1); }
     //}
-    public bool inventory
-    {
-        get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.Q); }
-    }
+
     public bool album
     {
         get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.Tab); }
@@ -101,7 +98,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool swap
     {
-        get { if (this.isDisabled) return false; return Input.GetAxis("Mouse ScrollWheel") > 0f; }
+        get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.E); }
     }
 
     public bool jump
