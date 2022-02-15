@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+[System.Serializable]
 //Item Base class, could be upgraded into an abstract class that parents photos, relics, and general consumables
 public class Item
 {

@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+[ExecuteInEditMode]
 public class ItemDatabase : MonoBehaviour
 {
+    public static ItemDatabase database;
+
+    [SerializeField]
     public List<Item> items = new List<Item>();
 
     public void Awake()
     {
-        BuildDatabase();
+        database = this;
+        //BuildDatabase();
     }
 
     //access item based on ID

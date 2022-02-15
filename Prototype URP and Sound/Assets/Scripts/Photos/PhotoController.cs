@@ -67,6 +67,8 @@ public class PhotoController : MonoBehaviour
             return PulseTween.IsPlaying();
         }
     }
+
+    private FMOD.Studio.EventInstance swapSFX;
     #endregion
 
     private void Awake()
@@ -239,10 +241,20 @@ public class PhotoController : MonoBehaviour
     public void PlaySuccessParticle()
     {
         successParticle.Play();
+        PlayPhotoSwapSFX((int)state);
     }
     public float GetTransitionTime()
     {
         return TransitionTime;
+    }
+
+    private void PlayPhotoSwapSFX(int direction)
+    {
+        swapSFX = FMODUnity.RuntimeManager.CreateInstance("event:/Player/Photo Swap");
+        swapSFX.setParameterByName("TimeDirection", direction);
+        swapSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        swapSFX.start();
+        swapSFX.release();
     }
     #endregion
 

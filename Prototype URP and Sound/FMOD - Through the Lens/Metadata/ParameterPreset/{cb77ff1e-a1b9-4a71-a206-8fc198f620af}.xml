@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{cb77ff1e-a1b9-4a71-a206-8fc198f620af}">
+		<property name="name">
+			<value>TimeDirection</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a567b334-cb26-410a-a00a-896399f77843}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3cf9ff47-67b9-43dd-9c53-27f9d0cdc2d4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3cf9ff47-67b9-43dd-9c53-27f9d0cdc2d4}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Forward</value>
+			<value>Backward</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
