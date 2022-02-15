@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 //cannot revert back to inventory :(
 
 
-public class UIItem : MonoBehaviour, IPointerClickHandler
+public class UIItem : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     public Item item;
     private Image spriteImage;
@@ -27,6 +27,8 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         thoughtsText = GameObject.Find("ThoughtsText");
         inventoryPanel = GameObject.Find("InventoryPanel");
         thoughtsPanel = GameObject.Find("ThoughtsPanel");
+
+
     }
 
     public void Start()
@@ -37,11 +39,15 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
     //I think this is where it breaks ??
     public void UpdateItem(Item item)
     {
+     
+
         this.item = item;
         if (this.item != null)
-        {            
+        {
+            
             spriteImage.color = Color.white;
             spriteImage.sprite = this.item.icon;
+
         }
         else 
         {
@@ -57,14 +63,26 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         //Debug.Log(this.item.title);
         if (this.item != null)
         {
-            thoughtsPanel.gameObject.SetActive(true);
-            selectedItem.UpdateItem(this.item);                   
-            thoughtsText.GetComponent<Text>().text = selectedItem.item.info["Description"];
-            inventoryPanel.gameObject.SetActive(false);
+            if (selectedItem.item != null)
+            {
+                                
+                    thoughtsPanel.gameObject.SetActive(true);
+                    selectedItem.UpdateItem(this.item);                   
+                    thoughtsText.GetComponent<Text>().text = selectedItem.item.info["Description"];
+                    inventoryPanel.gameObject.SetActive(false);
+            
+            }
         }
         else if (selectedItem.item != null)
-        {          
+        {
+          
             selectedItem.UpdateItem(null);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("Hover");
+        //throw new System.NotImplementedException();
     }
 }

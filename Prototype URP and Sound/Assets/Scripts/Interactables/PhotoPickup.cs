@@ -11,7 +11,7 @@ using UnityEngine;
 public class PhotoPickup : MonoBehaviour, IInteractable
 {
     #region Fields
-    //public float radius { get; set; }
+    public float radius { get; set; }
     public string ID; // unique identifier for each item
     public Photo photo;
     #endregion
@@ -22,7 +22,7 @@ public class PhotoPickup : MonoBehaviour, IInteractable
 
     void Start()
     {
-        //radius = 1.0f;
+        radius = 1.0f;
 
         if (ID == null)
         {
@@ -36,6 +36,26 @@ public class PhotoPickup : MonoBehaviour, IInteractable
     }
 
     #region Helper Methods
+    //public void OnMouseOver()
+    //{
+    //    //if (Vector3.Distance(CharacterComponents.instance.controller.transform.position, this.gameObject.transform.position) <= radius)
+    //    if (true)
+    //    {
+    //        // Call UI method here
+    //        Debug.Log("can pick up");
+
+    //        if (PlayerInput.playerInput.interact)
+    //        {
+    //            Interaction();
+    //        }
+    //    }
+    //}
+
+    //public void OnMouseExit()
+    //{
+    //    // Turn off UI popup here
+    //}
+
     /// <summary>
     /// Put it in the bag.
     /// </summary>
@@ -51,7 +71,7 @@ public class PhotoPickup : MonoBehaviour, IInteractable
 
     public void OnDrawGizmos()
     {
-        //Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
     #endregion
 }

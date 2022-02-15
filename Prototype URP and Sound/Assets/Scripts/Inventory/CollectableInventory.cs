@@ -15,8 +15,8 @@ public class CollectableInventory : MonoBehaviour
 
     private void Start()
     {
-        //GiveItem(0);
-        //GiveItem(2);
+        GiveItem(0);
+        GiveItem(2);
         ui.SetActive(inventoryUI.isShowing);
     }
 

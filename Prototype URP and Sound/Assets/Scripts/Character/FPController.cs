@@ -30,11 +30,9 @@ public class FPController : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 90.0f;
 
-
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
-    bool inventoryOn = false;
 
     //[HideInInspector] public bool canMove = true; // part of old Movement() method
     #endregion
@@ -66,27 +64,6 @@ public class FPController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        if (PlayerInput.playerInput.inventory)
-        {
-            inventoryOn = !inventoryOn;
-            this.GetComponent<CollectableInventory>().DisplayInventory();
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            //pause movement control hehe
-            if (inventoryOn == true)
-            {
-                canMove = false;
-                canLook = false;
-            }
-            else
-            {
-                canMove = true;
-                canLook = true;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
-        
     }
 
 
