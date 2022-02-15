@@ -19,6 +19,7 @@ public class CharacterComponents : MonoBehaviour
     public Album album;
     public CollectableInventory inventory;
     public FootstepsSFX footstepsSFX;
+    public Interactor interactor;
     #endregion
 
     private void Awake()
@@ -64,6 +65,10 @@ public class CharacterComponents : MonoBehaviour
             if(footstepsSFX == null)
             {
                 footstepsSFX = this.GetComponent<FootstepsSFX>();
+            }
+            if(interactor == null)
+            {
+                interactor = this.GetComponent<Interactor>();
             }
 
             componentsFound = true;

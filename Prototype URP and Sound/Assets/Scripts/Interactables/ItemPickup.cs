@@ -11,20 +11,14 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour, IInteractable
 {
     #region Fields
-
     public ItemDatabase itemData;
-
-    public float radius { get; set; }
+    //public float radius { get; set; }
     public string name;
     public int ID; // unique identifier for each item
     #endregion
 
     void Start()
     {
-        radius = 10.0f;
-
-        
-
     }
 
     void Update()
@@ -33,25 +27,6 @@ public class ItemPickup : MonoBehaviour, IInteractable
     }
 
     #region Helper Methods
-    public void OnMouseOver()
-    {
-        if (Vector3.Distance(CharacterComponents.instance.controller.transform.position, this.gameObject.transform.position) <= radius)
-        {
-            // Call UI method here
-            Debug.Log("Close enough :)");
-
-            if(PlayerInput.playerInput.interact)
-            {
-                Interaction();
-            }
-        }
-    }
-
-    public void OnMouseExit()
-    {
-        // Turn off UI popup here
-    }
-
     /// <summary>
     /// Put it in the bag.
     /// </summary>
