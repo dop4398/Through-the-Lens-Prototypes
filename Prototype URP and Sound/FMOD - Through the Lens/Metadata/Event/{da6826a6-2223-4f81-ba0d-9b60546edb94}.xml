@@ -132,7 +132,7 @@
 			<value>2</value>
 		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Crow Caws</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{67bfc7e2-4ee1-4cb3-9aa0-1a537b1b5f92}</destination>
@@ -163,10 +163,8 @@
 	<object class="MultiSound" id="{18fed0d2-3153-4894-b538-f43ca3111d9a}">
 		<relationship name="sounds">
 			<destination>{69166644-2e94-429d-9589-a3793453e4b2}</destination>
-			<destination>{79084fe7-de08-457c-ba87-ce5777675cba}</destination>
 			<destination>{435d7cbe-7d4a-4179-bf83-57935e8ccfd1}</destination>
 			<destination>{fb3ffc2e-c4c1-4ddf-a750-99cdf8e9cad1}</destination>
-			<destination>{587f53b0-e57a-46d2-917d-2689fc54518d}</destination>
 			<destination>{a2ec271f-2b94-44cc-806c-98f086015458}</destination>
 			<destination>{cab6b486-f102-4b17-8ae3-46d2e1b6de5d}</destination>
 		</relationship>
@@ -197,11 +195,6 @@
 			<destination>{ddea1509-a98d-44db-8ed3-228ca299fbce}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{79084fe7-de08-457c-ba87-ce5777675cba}">
-		<relationship name="audioFile">
-			<destination>{a4d916b4-9024-4ec1-936f-3be84985aed8}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{435d7cbe-7d4a-4179-bf83-57935e8ccfd1}">
 		<relationship name="audioFile">
 			<destination>{809c5504-d56a-4b8a-8f18-ded7710d212c}</destination>
@@ -210,11 +203,6 @@
 	<object class="SingleSound" id="{fb3ffc2e-c4c1-4ddf-a750-99cdf8e9cad1}">
 		<relationship name="audioFile">
 			<destination>{22a68b42-df47-4344-8c11-828e219a39fa}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{587f53b0-e57a-46d2-917d-2689fc54518d}">
-		<relationship name="audioFile">
-			<destination>{6cb81b6a-60e5-4f07-a5ef-9695f896350e}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{a2ec271f-2b94-44cc-806c-98f086015458}">
