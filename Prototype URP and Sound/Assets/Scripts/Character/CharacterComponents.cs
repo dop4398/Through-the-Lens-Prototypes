@@ -17,7 +17,7 @@ public class CharacterComponents : MonoBehaviour
     public FPController controller;
     public HeldPhoto heldPhoto;
     public Album album;
-    public Inventory inventory;
+    public CollectableInventory inventory;
     public FootstepsSFX footstepsSFX;
     #endregion
 
@@ -59,7 +59,7 @@ public class CharacterComponents : MonoBehaviour
             }
             if(inventory == null)
             {
-                inventory = this.GetComponent<Inventory>();
+                inventory = this.GetComponent<CollectableInventory>();
             }
             if(footstepsSFX == null)
             {
