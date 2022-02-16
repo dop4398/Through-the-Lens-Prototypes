@@ -647,7 +647,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "28a2d56316d84242b2b8ffc5c9b90f73",
     "m_Id": 0,
-    "m_DisplayName": "Float",
+    "m_DisplayName": "Intensity",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
