@@ -24,7 +24,7 @@ public class LoadApartmentOne : MonoBehaviour
     void Update()
     {
         //if in trigger box AND pressing correct key, do this
-        if (collision && Input.GetKeyDown(KeyCode.Backslash))
+        if (collision && Input.GetKeyDown(KeyCode.E))
         {
             toEnableApartment.gameObject.SetActive(true);
             disableEnvironment.gameObject.SetActive(false);
