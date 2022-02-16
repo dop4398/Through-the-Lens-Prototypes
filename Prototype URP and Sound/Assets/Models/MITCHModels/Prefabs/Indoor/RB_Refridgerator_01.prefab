@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8948417445081057371}
   - component: {fileID: 3943141302956933192}
   - component: {fileID: 4277394478801295805}
-  - component: {fileID: 8685059601878442396}
+  - component: {fileID: 3667249570292336230}
   m_Layer: 0
   m_Name: Refridgerator_01
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8685059601878442396
+--- !u!64 &3667249570292336230
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 543519497379860821, guid: 30865433972cdc449afd3cc14f6a70fb, type: 3}
+  m_Mesh: {fileID: -1846155984365441495, guid: 515f3dadba104d744a8ba0dc11bb5c89, type: 3}
 --- !u!1 &7722690648000814112
 GameObject:
   m_ObjectHideFlags: 0

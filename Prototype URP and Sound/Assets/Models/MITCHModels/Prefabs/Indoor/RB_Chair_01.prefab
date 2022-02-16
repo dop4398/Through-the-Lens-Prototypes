@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1380945894177763439}
   - component: {fileID: 2631722227446382538}
   - component: {fileID: 243535390758144768}
-  - component: {fileID: 1486367665806301664}
+  - component: {fileID: 973481253687613722}
   m_Layer: 0
   m_Name: RB_Chair_01
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1486367665806301664
+--- !u!64 &973481253687613722
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,4 +95,4 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: -4223614269625702362, guid: 972e76f160ecb3549b17e2622d9ead38, type: 3}
+  m_Mesh: {fileID: -4656543235399111299, guid: 88be06607581806478a4d762b4761f8c, type: 3}
