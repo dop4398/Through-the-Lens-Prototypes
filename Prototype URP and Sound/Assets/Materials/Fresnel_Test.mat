@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fresnel_Test
-  m_Shader: {fileID: -6465566751694194690, guid: c82872104b539aa4ba3f9757a9a1dbdc, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 538b734fec18586429ff76dc53d15534, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,6 +32,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_d3cd57b9e2f441579fa0a37cb0966e67:
+        m_Texture: {fileID: 2800000, guid: dd61af2ec9847eb4d8e17529fa61b143, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_f8a7166f8cec426b95f430e49086f5dd:
+        m_Texture: {fileID: 2800000, guid: d608c45da8580c9408ee50eb9a8c40f3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,6 +98,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_0db31d2a0109433abe93b7a570499c4b: 5
+    - Vector1_36a0106192084fafaefd9d9aeb502649: 0
+    - Vector1_64fc3370735d4a1eb2a8e22a1c9a02c1: 3.72
+    - Vector1_9e4a2561ace14bf4bb0c78af363ada22: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -116,11 +127,14 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _intensity: 2
     m_Colors:
+    - Color_118f9e2b73ab448fbb8a6eba24f09185: {r: 1, g: 0.7651629, b: 0.41981128, a: 0}
     - Color_14980a28f56f4b0286d10adabfd96c5b: {r: 0.509434, g: 0.509434, b: 0.509434, a: 0}
     - Color_3c2e271dd5824a5db8d10c5eb9f6aec6: {r: 1, g: 0.6614892, b: 0.14631218, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _color: {r: 1, g: 0.6871588, b: 0.2783019, a: 0}
   m_BuildTextureStacks: []
