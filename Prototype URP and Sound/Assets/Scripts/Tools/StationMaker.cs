@@ -169,6 +169,14 @@ public class StationMaker : MonoBehaviour
         trigger.transform.position = new Vector3(0f, -0.5f, 0f);
         station.trigger = trigger;
 
+        //Snap Object
+        GameObject snap = new GameObject("Snap");
+        SphereCollider snapTrigger = snap.AddComponent<SphereCollider>();
+        snapTrigger.isTrigger = true;
+        snapTrigger.radius = 0.23f;
+        snap.transform.parent = g.transform;
+
+
         //Set correct radius
         station.radius = 0.25f;
 
