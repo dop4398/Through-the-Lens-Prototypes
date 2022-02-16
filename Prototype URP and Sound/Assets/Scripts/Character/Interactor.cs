@@ -17,7 +17,7 @@ public class Interactor : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, radius, layer))
+        if (Physics.Raycast(CharacterComponents.instance.controller.playerCamera.transform.position, CharacterComponents.instance.controller.playerCamera.transform.forward, out hit, radius, layer))
         {
             if (PlayerInput.playerInput.interact)
             {
