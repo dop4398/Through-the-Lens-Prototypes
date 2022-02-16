@@ -1,13 +1,6 @@
-0|Home Sweet Home|3
-0|God my feet are killing me|4
-0|I need to sit down|3
-1|Hey Kiddo, can't play right now. Where's your ma?|5
+0|Do we really need a gate, Mom?|3
+0|It feels like it cuts us off from the world|4
+0||1
+0|The gate makes it our home, child|3
+0|It helps draw a line between our safe haven and the outside|5
 1||1
-1|She's in the house. Said somethin about fixing up for the party? I dunno|6
-2|Damn it where'd I put my key|1
-2|Oh! It's unlocked|2
-2|Honey! I'm home!|2
-2||1
-2|Welcome back, dear|1
-3||1
-3||1

@@ -63,7 +63,7 @@ public class StationManager : MonoBehaviour
                         s.ToggleState();
 
                         //Insert station's id instead of 0 pls
-                        subtitles.Run(s.id);
+                        subtitles.Run(0);
 
                     }
                 }
