@@ -16,7 +16,8 @@ public class HeadBob : MonoBehaviour
     //private float t = 0.5f;
     [SerializeField]
     private float yPos = 1.64f;
-    private float stepOffset = 0.1f;
+    [SerializeField]
+    private float stepOffset = 0.05f;
     //private bool togglePlaying = false;
     private Sequence walkSequence;
     private Sequence runSequence;
@@ -76,7 +77,7 @@ public class HeadBob : MonoBehaviour
     /// </summary>
     private void HeadBobbing()
     {
-        Debug.Log("walk sequence: " + walkSequence.IsPlaying() + "\nrun sequence: " + runSequence.IsPlaying());
+        //Debug.Log("walk sequence: " + walkSequence.IsPlaying() + "\nrun sequence: " + runSequence.IsPlaying());
         // if no sequence is playing:
         if (!walkSequence.IsPlaying() && !runSequence.IsPlaying())
         {
