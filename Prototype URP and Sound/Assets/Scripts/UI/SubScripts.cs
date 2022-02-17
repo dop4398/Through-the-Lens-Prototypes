@@ -13,9 +13,9 @@ public class SubScripts : MonoBehaviour
     public string fileName;
     public int x = 0;
     //string[][] dialogueText;
-    List<String>[] dialogueText = new List<String>[2];
-    List<int>[] timers = new List<int>[2];
-    int[] stationCount = new int[1];
+    List<String>[] dialogueText = new List<String>[10];
+    List<int>[] timers = new List<int>[10];
+    int[] stationCount = new int[10];
   
     public int lineCount;
 
