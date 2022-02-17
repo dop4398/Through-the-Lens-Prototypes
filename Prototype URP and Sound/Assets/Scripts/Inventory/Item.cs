@@ -18,10 +18,9 @@ public class Item
     public int ID;
     public string title;
     public Sprite icon;
+    public string info;
 
-    public Dictionary<string, string> info = new Dictionary<string, string>();
-
-    public Item(int id, string title, string description, Dictionary<string, string> info, string type)
+    public Item(int id, string title, string description, string info, string type)
     {
         this.ID = id;
         this.title = title;
