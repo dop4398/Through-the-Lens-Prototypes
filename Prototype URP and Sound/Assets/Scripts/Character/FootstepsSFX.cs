@@ -19,15 +19,15 @@ public class FootstepsSFX : MonoBehaviour
     private FMOD.Studio.EventInstance footsteps;
     private float timer = 0.0f;
     [SerializeField]
-    private float footstepSpeed = 0.75f;
+    private float footstepSpeed = 0.6f;
     [SerializeField]
-    private float walkSpeed = 0.75f;
+    private float walkSpeed = 0.6f;
     public float WalkSpeed
     {
         get { return walkSpeed; }
     }
     [SerializeField]
-    private float runSpeed = 0.25f;
+    private float runSpeed = 0.5f;
     public float RunSpeed
     {
         get { return runSpeed; }
