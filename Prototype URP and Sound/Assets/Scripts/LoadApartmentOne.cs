@@ -21,7 +21,7 @@ public class LoadApartmentOne : MonoBehaviour
     }
 
     // Update is called once per frame
-    //on backslash press (interact key), set apartment active and disable outer environment
+    //on (interact key), set apartment active and disable outer environment
     void Update()
     {
         //if in trigger box AND pressing correct key, do this

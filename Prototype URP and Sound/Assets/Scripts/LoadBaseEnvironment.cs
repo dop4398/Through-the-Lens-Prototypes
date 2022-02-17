@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class LoadBaseEnvironment : MonoBehaviour
@@ -20,15 +21,28 @@ public class LoadBaseEnvironment : MonoBehaviour
     }
 
     // Update is called once per frame
-    //on backslash press (interact key), set environment active and disable intended apartment
+    //on (interact key), set environment active and disable intended apartment
     void Update()
     {
         //if in trigger box AND pressing correct key, do this
-        if (collision && Input.GetKeyDown(KeyCode.E))
+        if (collision && PlayerInput.playerInput.interact)
         {
-            toEnableEnvironment.gameObject.SetActive(true);
-            disableApartment.gameObject.SetActive(false);
-            playerChar.transform.position = new Vector3(-9.28f, 2.749f, 5.457f);
+            EnterRoom();
         }
+    }
+
+    async void EnterRoom()
+    {
+        float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
+        Transitioner.instance.DoRoomTransition();
+
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+
+        toEnableEnvironment.gameObject.SetActive(true);
+        disableApartment.gameObject.SetActive(false);
+        playerChar.transform.position = new Vector3(-9.28f, 2.749f, 5.457f);
     }
 }
