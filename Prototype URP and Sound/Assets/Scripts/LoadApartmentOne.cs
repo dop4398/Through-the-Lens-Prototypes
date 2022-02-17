@@ -38,7 +38,7 @@ public class LoadApartmentOne : MonoBehaviour
 
         while(Time.time < end)
         {
-            Task.Yield();
+            await Task.Yield();
         }
 
         toEnableApartment.gameObject.SetActive(true);
