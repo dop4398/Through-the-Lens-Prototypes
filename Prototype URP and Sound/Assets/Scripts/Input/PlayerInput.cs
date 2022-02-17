@@ -99,9 +99,9 @@ public class PlayerInput : MonoBehaviour
         get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.Tab); }
     }
 
-    public bool swap
+    public int swap
     {
-        get { if (this.isDisabled) return false; return Input.GetAxis("Mouse ScrollWheel") > 0f; }
+        get { if (this.isDisabled) return 0; return Input.GetAxis("Mouse ScrollWheel") == 0 ? 0 : (Input.GetAxis("Mouse ScrollWheel") > 0f ? 1 : -1); }
     }
 
     public bool jump

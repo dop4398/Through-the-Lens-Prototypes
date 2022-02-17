@@ -8,7 +8,6 @@ public class LoadApartmentOne : MonoBehaviour
     private bool collision; //variable to make sure player is in trigger box
     public GameObject toEnableApartment;
     public GameObject disableEnvironment;
-    public GameObject playerChar;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,6 +34,7 @@ public class LoadApartmentOne : MonoBehaviour
     {
         float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
         Transitioner.instance.DoRoomTransition();
+        CharacterComponents.instance.controller.LockInput(2f);
 
         while(Time.time < end)
         {
@@ -43,6 +43,6 @@ public class LoadApartmentOne : MonoBehaviour
 
         toEnableApartment.gameObject.SetActive(true);
         disableEnvironment.gameObject.SetActive(false);
-        playerChar.transform.position = new Vector3(-11.42f, 2.992f, 5.592f);
+        CharacterComponents.instance.transform.position = new Vector3(-11.42f, 2.992f, 5.592f);
     }
 }

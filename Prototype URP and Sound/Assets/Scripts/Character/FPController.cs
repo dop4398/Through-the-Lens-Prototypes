@@ -31,7 +31,7 @@ public class FPController : MonoBehaviour
     public float lookXLimit = 90.0f;
 
 
-    CharacterController characterController;
+    public CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
     bool inventoryOn = false;
@@ -150,13 +150,9 @@ public class FPController : MonoBehaviour
 
         transform.DORotate(new Vector3(0, euler.y, 0), duration);
         playerCamera.transform.DOLocalRotate(new Vector3(euler.x, 0, 0), duration);
-        Debug.Log(euler);
 
         while (Time.time < end)
         {
-            //x = Mathf.Lerp(x, euler.x, Time.deltaTime);
-            //y = Mathf.Lerp(y, euler.y, Time.deltaTime);
-            //SetPlayerDirection(new Vector3(x, y, 0));
             await Task.Yield();
         }
 
@@ -167,6 +163,20 @@ public class FPController : MonoBehaviour
         {
             characterController.enabled = true;
         }
+    }
+
+    public async void LockInput(float duration)
+    {
+        float end = Time.time + duration;
+
+        PlayerInput.playerInput.isDisabled = true;
+
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+
+        PlayerInput.playerInput.isDisabled = false;
     }
 
     public Vector3 GetPlayerDirection()

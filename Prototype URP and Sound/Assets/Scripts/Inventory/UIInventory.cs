@@ -24,6 +24,7 @@ public class UIInventory : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
         {
             GameObject instance = Instantiate(slotPrefab);
             instance.transform.SetParent(slotPanel);
+            instance.transform.localScale = Vector3.one;
             uIItems.Add(instance.GetComponentInChildren<UIItem>());
         }
     }

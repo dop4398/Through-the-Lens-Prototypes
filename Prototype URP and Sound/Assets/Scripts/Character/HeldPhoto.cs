@@ -46,20 +46,20 @@ public class HeldPhoto : MonoBehaviour
         // If the player starts with any photos, the first one they have in the album will be set as the held photo.
         LoadFirstPhoto();
     }
-    
+
     void Update()
     {
         LoadFirstPhoto();
 
-        if (PlayerInput.playerInput.swap)
+        if (PlayerInput.playerInput.swap != 0)
         {
-            CyclePhoto();
+            CyclePhoto(PlayerInput.playerInput.swap);
         }
-        if(PlayerInput.playerInput.focusPhoto)
+        if (PlayerInput.playerInput.focusPhoto)
         {
             FocusPhoto();
         }
-        if(PlayerInput.playerInput.unfocusPhoto)
+        if (PlayerInput.playerInput.unfocusPhoto)
         {
             UnfocusPhoto();
         }
@@ -126,15 +126,28 @@ public class HeldPhoto : MonoBehaviour
     /// Changes the currently held photo by cycling through the list of all the player's photos (their album).
     /// This is a quick and dirty solution and should be improved upon for future prototypes.
     /// </summary>
-    public void CyclePhoto()
+    public void CyclePhoto(int direction)
     {
-        heldPhotoIndex++;
+        if (direction >= 0)
+        {
+            heldPhotoIndex++;
+        }
+        else
+        {
+            heldPhotoIndex--;
+        }
+
         if (heldPhotoIndex >= CharacterComponents.instance.album.GetAlbumSize())
         {
             heldPhotoIndex = 0;
         }
 
-        if(CharacterComponents.instance.album.GetAlbumSize() > 0)
+        if (heldPhotoIndex < 0)
+        {
+            heldPhotoIndex = CharacterComponents.instance.album.GetAlbumSize() - 1;
+        }
+
+        if (CharacterComponents.instance.album.GetAlbumSize() > 0)
         {
             SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
         }
