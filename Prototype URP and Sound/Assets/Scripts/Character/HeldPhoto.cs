@@ -25,8 +25,7 @@ public class HeldPhoto : MonoBehaviour
     public Vector3 focusedPosition;
     public float focusTime;
 
-    private Tweener focusTween;
-    private Tweener unfocusTween;
+    private Tweener swapTween;
     #endregion
 
     void Start()
@@ -36,12 +35,7 @@ public class HeldPhoto : MonoBehaviour
         focusedPosition = new Vector3(0, 0, 0.185f);
         swapHasTriggered = false;
 
-        //init tweeners
-        //focusTween = PhotoController.instance.transform.DOLocalMove(focusedPosition, focusTime).SetEase(Ease.OutCubic).OnComplete(() => SetFocusState(true));
-        unfocusTween = PhotoController.instance.transform.DOLocalMove(restPosition, focusTime).SetEase(Ease.OutCubic).OnStart(() => SetFocusState(false)).SetAutoKill(false);
-
-        //focusTween.Pause();
-        unfocusTween.Pause();
+        swapTween = DOVirtual.Float(restPosition.y - 0.1f, restPosition.y, 0.5f, y => { PhotoController.instance.transform.localPosition = new Vector3(restPosition.x, y, restPosition.z); }).Pause().SetEase(Ease.InOutQuad).SetAutoKill(false);
 
         // If the player starts with any photos, the first one they have in the album will be set as the held photo.
         LoadFirstPhoto();
@@ -128,6 +122,11 @@ public class HeldPhoto : MonoBehaviour
     /// </summary>
     public void CyclePhoto(int direction)
     {
+        if (IsInFocus())
+            return;
+
+        swapTween.Restart();
+
         if (direction >= 0)
         {
             heldPhotoIndex++;
