@@ -9,7 +9,6 @@ public class HoldSnap : MonoBehaviour
     public bool isActive;
 
     public float snapTime;
-    public float backTime;
 
     private Tweener tweenX;
     private Tweener tweenZ;
@@ -19,7 +18,7 @@ public class HoldSnap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        target = transform.position;
     }
 
     // Update is called once per frame

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class LoadApartmentOne : MonoBehaviour
@@ -24,11 +25,24 @@ public class LoadApartmentOne : MonoBehaviour
     void Update()
     {
         //if in trigger box AND pressing correct key, do this
-        if (collision && Input.GetKeyDown(KeyCode.E))
+        if (collision && PlayerInput.playerInput.interact)
         {
-            toEnableApartment.gameObject.SetActive(true);
-            disableEnvironment.gameObject.SetActive(false);
-            playerChar.transform.position = new Vector3(-11.42f, 2.992f, 5.592f);
+            EnterRoom();
         }
+    }
+
+    async void EnterRoom()
+    {
+        float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
+        Transitioner.instance.DoRoomTransition();
+
+        while(Time.time < end)
+        {
+            Task.Yield();
+        }
+
+        toEnableApartment.gameObject.SetActive(true);
+        disableEnvironment.gameObject.SetActive(false);
+        playerChar.transform.position = new Vector3(-11.42f, 2.992f, 5.592f);
     }
 }

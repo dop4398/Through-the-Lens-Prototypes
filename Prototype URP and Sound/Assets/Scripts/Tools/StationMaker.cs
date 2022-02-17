@@ -171,9 +171,15 @@ public class StationMaker : MonoBehaviour
 
         //Snap Object
         GameObject snap = new GameObject("Snap");
+
+        //Setup collider for hold snap
         SphereCollider snapTrigger = snap.AddComponent<SphereCollider>();
         snapTrigger.isTrigger = true;
         snapTrigger.radius = 0.23f;
+
+        //Setup hold snap feature
+        HoldSnap hold = snap.AddComponent<HoldSnap>();
+        hold.snapTime = 0.5f;
         snap.transform.parent = g.transform;
 
 

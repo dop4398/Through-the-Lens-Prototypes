@@ -21,6 +21,8 @@ public class Transitioner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
+
         black = GetComponent<Image>();
 
         time = transitionTime;
@@ -32,13 +34,10 @@ public class Transitioner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerInput.playerInput.interact)
-        {
-            DoRoomTransition();
-        }
+
     }
 
-    async void DoRoomTransition()
+    public async void DoRoomTransition()
     {
         float end = Time.time + waitTime + transitionTime;
 
