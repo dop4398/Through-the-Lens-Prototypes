@@ -10,6 +10,7 @@ public class ExitGame : MonoBehaviour
     {
         if(Input.GetKeyDown("escape"))
         {
+            Application.OpenURL("https://rit.az1.qualtrics.com/jfe/form/SV_a4tJKLVLepw8sFE");
             Application.Quit();
         }
     }
