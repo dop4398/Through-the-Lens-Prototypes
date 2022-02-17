@@ -35,8 +35,9 @@ public class LoadApartmentOne : MonoBehaviour
         float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
         Transitioner.instance.DoRoomTransition();
         CharacterComponents.instance.controller.LockInput(2f);
+        collision = false;
 
-        while(Time.time < end)
+        while (Time.time < end)
         {
             await Task.Yield();
         }
