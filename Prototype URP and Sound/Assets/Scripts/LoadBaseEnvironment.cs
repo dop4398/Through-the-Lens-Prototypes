@@ -32,6 +32,7 @@ public class LoadBaseEnvironment : MonoBehaviour
 
     async void EnterRoom()
     {
+        Debug.Log("I'm out");
         float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
         Transitioner.instance.DoRoomTransition();
         CharacterComponents.instance.controller.LockInput(2f);
@@ -44,6 +45,8 @@ public class LoadBaseEnvironment : MonoBehaviour
 
         toEnableEnvironment.gameObject.SetActive(true);
         disableApartment.gameObject.SetActive(false);
+        CharacterComponents.instance.controller.characterController.enabled = false;
         CharacterComponents.instance.transform.position = new Vector3(-9.28f, 2.749f, 5.457f);
+        CharacterComponents.instance.controller.characterController.enabled = true;
     }
 }
