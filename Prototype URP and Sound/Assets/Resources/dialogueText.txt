@@ -1,13 +1,18 @@
-0|Home Sweet Home|3
-0|God my feet are killing me|4
-0|I need to sit down|3
-1|Hey Kiddo, can't play right now. Where's your ma?|5
-1||1
-1|She's in the house. Said somethin about fixing up for the party? I dunno|6
-2|Damn it where'd I put my key|1
-2|Oh! It's unlocked|2
-2|Honey! I'm home!|2
-2||1
-2|Welcome back, dear|1
-3||1
-3||1
+0|Stephanie: So this is what 40 years of neglect looks like.|3
+0|Stephanie: I can kind of see it, though....|3
+0|Stephanie: Mom, as a kid, and the rest of her family.|3
+0|Stephanie: I'm glad Grandpa took these photos. They let me see how things were, back then.|3
+0|Stephanie: It's almost like I'm there.|3
+1|Stephanie: A throne restored to its former glory.|3
+1|Stephanie: Funny. I never would've pegged Grandpa as the rocking chair-type.|3
+1|Stephanie: But, hey, I never knew him.|3
+2|Stephanie: So, this, more specifically, was "home."|3
+2|Stephanie: Doesn't seem like much room for raising four kids.|3
+2|Stephanie: I guess that wasn't a problem for too long, though.|3
+3|Everyone: Happy Birthday to you~|3
+3|Amanda: Close your eyes and make a wish, Phoebe!!|3
+3|Amanda: ... Hector, the phone. It’s ringing. Don't answer it.|3
+3|Hector: I’m just going to step outside for a minute–|3
+3|Amanda: Hector, it’s her birthday...|3
+3|Hector: Honey, I have to. Important decisions at the Mayor’s Office recently.|3
+3|Hector: I’ll just be right outside. Let her wear my hat.|3
