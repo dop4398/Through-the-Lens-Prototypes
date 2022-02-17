@@ -70,20 +70,20 @@ public class FPController : MonoBehaviour
         {
             inventoryOn = !inventoryOn;
             this.GetComponent<CollectableInventory>().DisplayInventory();
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
             //pause movement control hehe
             if (inventoryOn == true)
             {
                 canMove = false;
                 canLook = false;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 canMove = true;
                 canLook = true;
-                Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
         

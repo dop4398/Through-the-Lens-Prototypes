@@ -42,6 +42,7 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         {            
             spriteImage.color = Color.white;
             spriteImage.sprite = this.item.icon;
+            spriteImage.preserveAspect = true;
         }
         else 
         {
@@ -59,7 +60,7 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         {
             thoughtsPanel.gameObject.SetActive(true);
             selectedItem.UpdateItem(this.item);                   
-            thoughtsText.GetComponent<Text>().text = selectedItem.item.info["Description"];
+            thoughtsText.GetComponent<Text>().text = selectedItem.item.info;
             inventoryPanel.gameObject.SetActive(false);
         }
         else if (selectedItem.item != null)
