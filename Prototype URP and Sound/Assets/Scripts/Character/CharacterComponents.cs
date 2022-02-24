@@ -14,12 +14,14 @@ public class CharacterComponents : MonoBehaviour
     #region Fields
     private bool componentsFound = false;
     public static CharacterComponents instance;
+    [HideInInspector]
     public FPController controller;
     public HeldPhoto heldPhoto;
     public Album album;
     public CollectableInventory inventory;
     public FootstepsSFX footstepsSFX;
     public Interactor interactor;
+    public CharacterState playerstate;
     #endregion
 
     private void Awake()
@@ -69,6 +71,10 @@ public class CharacterComponents : MonoBehaviour
             if(interactor == null)
             {
                 interactor = this.GetComponent<Interactor>();
+            }
+            if(playerstate == null)
+            {
+                playerstate = this.GetComponent<CharacterState>();
             }
 
             componentsFound = true;

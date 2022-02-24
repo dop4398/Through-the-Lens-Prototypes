@@ -45,20 +45,21 @@ public class HeldPhoto : MonoBehaviour
     {
         LoadFirstPhoto();
 
-        if (PlayerInput.playerInput.swap != 0)
+        if(CharacterComponents.instance.playerstate.GetState() == PlayerState.normal)
         {
-            CyclePhoto(PlayerInput.playerInput.swap);
+            if (PlayerInput.playerInput.swap != 0)
+            {
+                CyclePhoto(PlayerInput.playerInput.swap);
+            }
+            if (PlayerInput.playerInput.focusPhoto)
+            {
+                FocusPhoto();
+            }
+            if (PlayerInput.playerInput.unfocusPhoto)
+            {
+                UnfocusPhoto();
+            }
         }
-        if (PlayerInput.playerInput.focusPhoto)
-        {
-            FocusPhoto();
-        }
-        if (PlayerInput.playerInput.unfocusPhoto)
-        {
-            UnfocusPhoto();
-        }
-
-        //Debug.Log("Held Photo State: " + heldPhoto.state);
     }
 
     #region Helper Methods

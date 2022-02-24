@@ -55,38 +55,35 @@ public class FPController : MonoBehaviour
 
     void Update()
     {
-        if (canMove && characterController.enabled)
-            Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
+        if (CharacterComponents.instance.playerstate.GetState() == PlayerState.normal)
+        {
+            if (characterController.enabled)
+            {
+                Move(PlayerInput.playerInput.input, PlayerInput.playerInput.run, PlayerInput.playerInput.jump);
+            }
 
-        if (canLook)
             Look(PlayerInput.playerInput.mouseLook);
 
-        if (PlayerInput.playerInput.interact)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        if (PlayerInput.playerInput.inventory)
-        {
-            inventoryOn = !inventoryOn;
-            this.GetComponent<CollectableInventory>().DisplayInventory();
-            //pause movement control hehe
-            if (inventoryOn == true)
+            //if (PlayerInput.playerInput.interact)
+            //{
+            //    Cursor.lockState = CursorLockMode.Locked;
+            //    Cursor.visible = false;
+            //}
+
+            if (PlayerInput.playerInput.inventory)
             {
-                canMove = false;
-                canLook = false;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                canMove = true;
-                canLook = true;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                this.GetComponent<CollectableInventory>().DisplayInventory();
+                CharacterComponents.instance.playerstate.SetState(PlayerState.inventory);
             }
         }
-        
+        else if (CharacterComponents.instance.playerstate.GetState() == PlayerState.inventory)
+        {
+            if (PlayerInput.playerInput.inventory)
+            {
+                this.GetComponent<CollectableInventory>().DisplayInventory();
+                CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
+            }
+        }
     }
 
 
@@ -159,7 +156,7 @@ public class FPController : MonoBehaviour
         PlayerInput.playerInput.isDisabled = false;
         CharacterComponents.instance.heldPhoto.UnfocusPhoto();
 
-        if(characterController.enabled == false) //resolve a conflict with lerp focus
+        if (characterController.enabled == false) //resolve a conflict with lerp focus
         {
             characterController.enabled = true;
         }

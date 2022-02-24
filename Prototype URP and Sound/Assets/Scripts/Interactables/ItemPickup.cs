@@ -35,7 +35,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
         // Add the item to the inventory
         CharacterComponents.instance.controller.GetComponent<CollectableInventory>().GiveItem(ID);
         // Set inactive in the scene
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
     }
     #endregion
 }

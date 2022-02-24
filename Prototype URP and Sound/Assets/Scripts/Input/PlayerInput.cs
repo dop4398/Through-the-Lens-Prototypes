@@ -73,7 +73,7 @@ public class PlayerInput : MonoBehaviour
 
     public bool interact
     {
-        get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.E); }
+        get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0); }
     }
 
     public bool focusPhoto
