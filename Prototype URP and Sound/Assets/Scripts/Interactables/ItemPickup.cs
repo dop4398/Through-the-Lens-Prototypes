@@ -8,7 +8,7 @@ using UnityEngine;
 /// <author>
 /// David Patch
 /// </author>
-public class ItemPickup : MonoBehaviour, IInteractable
+public class ItemPickup : PickUp, IInteractable
 {
     #region Fields
     public ItemDatabase itemData;
@@ -19,6 +19,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
 
     void Start()
     {
+        base.Start();
     }
 
     void Update()
@@ -32,6 +33,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     /// </summary>
     public void Interaction()
     {
+        base.Interaction();
         // Add the item to the inventory
         CharacterComponents.instance.controller.GetComponent<CollectableInventory>().GiveItem(ID);
         // Set inactive in the scene
