@@ -6,8 +6,8 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TerrainSidewalk
-  m_DiffuseTexture: {fileID: 2800000, guid: bdc644001541ff84981b42f2359b528c, type: 3}
+  m_Name: TerrainSidewalkGrass
+  m_DiffuseTexture: {fileID: 2800000, guid: fee0621a419fd5b499f0cda19c5965ba, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: a078978b7518f054a8465dc6b150962d, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 1, y: 1}
@@ -15,7 +15,7 @@ TerrainLayer:
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
   m_Smoothness: 0
-  m_NormalScale: 1
+  m_NormalScale: 2
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
