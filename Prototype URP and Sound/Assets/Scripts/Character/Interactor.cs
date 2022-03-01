@@ -24,6 +24,12 @@ public class Interactor : MonoBehaviour
                 hit.collider.gameObject.GetComponent<IInteractable>().Interaction();
             }
         }
+    }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(CharacterComponents.instance.controller.playerCamera.transform.position,
+            CharacterComponents.instance.controller.playerCamera.transform.position + CharacterComponents.instance.controller.playerCamera.transform.forward * radius);
     }
 }
