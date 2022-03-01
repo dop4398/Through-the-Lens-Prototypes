@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1541541327}
   - component: {fileID: 1541541330}
-  - component: {fileID: 1541541329}
   - component: {fileID: 1541541328}
   m_Layer: 6
   m_Name: Cam_Photo
@@ -76,14 +75,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1541541329
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541541326}
-  m_Enabled: 1
 --- !u!114 &1541541328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2554393319570293736}
   - component: {fileID: 2030526725393709793}
-  - component: {fileID: 6158314694331871955}
   - component: {fileID: 4547153035728726023}
   - component: {fileID: 1058652030}
   - component: {fileID: 1165430670}
@@ -289,14 +279,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6158314694331871955
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354341238499410152}
-  m_Enabled: 0
 --- !u!114 &4547153035728726023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,8 +662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HandWithPhoto: {fileID: 0}
-  walkingSpeed: 2
-  runningSpeed: 3
+  walkingSpeed: 3
+  runningSpeed: 4
   canJump: 0
   canMove: 1
   canLook: 1
