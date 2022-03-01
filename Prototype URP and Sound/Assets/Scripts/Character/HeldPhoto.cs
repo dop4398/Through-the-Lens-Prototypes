@@ -7,7 +7,7 @@ using DG.Tweening;
 /// HeldPhoto is the core photo mechanic.
 /// </summary>
 /// <author>
-/// David Patch
+/// David Patch & Alfie Luo
 /// </author>
 public class HeldPhoto : MonoBehaviour
 {

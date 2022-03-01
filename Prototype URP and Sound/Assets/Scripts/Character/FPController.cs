@@ -8,10 +8,9 @@ using DG.Tweening;
 /// <summary>
 /// Class <c>FPController</c>.
 /// A first-person controller for the player that deals with movement and the camera.
-/// This script was originally sourced from <a href="https://sharpcoderblog.com/blog/unity-3d-fps-controller">here</a>.
 /// </summary>
 /// <author>
-/// David Patch
+/// David Patch & Alfie Luo
 /// </author>
 public class FPController : MonoBehaviour
 {
