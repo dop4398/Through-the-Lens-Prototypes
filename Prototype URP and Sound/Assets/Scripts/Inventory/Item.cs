@@ -13,7 +13,7 @@ public class Item
     //Photos are placed in a separate list and accessed differently
     //Maybe child classes???
 
-    public enum Type {collectable, relic, photo};
+    public enum Type {collectable, relic, photo, notes};
     public Type myType;
     public int ID;
     public string title;

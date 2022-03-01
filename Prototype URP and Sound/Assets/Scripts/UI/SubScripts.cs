@@ -79,7 +79,7 @@ public class SubScripts : MonoBehaviour
                     dialogueText[station] = new List<string>();
                 }
                 dialogueText[station].Add(temp[1].Trim());
-                Debug.Log("Finished Text");
+                //Debug.Log("Finished Text");
 
 
                 //add each strings time to the array
@@ -91,16 +91,16 @@ public class SubScripts : MonoBehaviour
                     timers[station] = new List<int>();
                 }
                 timers[station].Add(tempInt);
-                Debug.Log("Finished Timers");
+                //Debug.Log("Finished Timers");
 
-                Debug.Log("Station 0's count: " + stationCount[0]);
+                //Debug.Log("Station 0's count: " + stationCount[0]);
 
             }
             
         }
         catch(Exception e)
         {
-            Debug.Log("Something went wrong with reading the file: " + e);
+            //Debug.Log("Something went wrong with reading the file: " + e);
             
         }
         finally
