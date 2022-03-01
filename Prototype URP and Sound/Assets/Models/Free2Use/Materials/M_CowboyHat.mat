@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_CowboyHat
-  m_Shader: {fileID: -6465566751694194690, guid: 538b734fec18586429ff76dc53d15534, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 31aafd0f75eb16b4f8dbffb7195541d4, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _OCCLUSIONMAP _PARALLAXMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -59,12 +59,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: d3542507e42bfbc449f0d168040e8c71, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MetallicMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 2800000, guid: deb3a7b06a8f53741b5819f21f5a3a63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 2800000, guid: 5ccf5680b19882145a63cf76806f384d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SmoothnessMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -84,9 +92,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_04a1047ef25a4507bbb9b0b00a1de69c: 2
     - Vector1_36a0106192084fafaefd9d9aeb502649: 0
     - Vector1_9e4a2561ace14bf4bb0c78af363ada22: 0
     - Vector1_f1d3f5ba653146a1b95dbe667b6bbf19: 2
+    - Vector1_faa565edb8ad4488b153bebca425f5aa: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -101,7 +111,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Intensity: 2
     - _Metallic: 0
+    - _Occlusion: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
@@ -117,7 +129,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.6037736, g: 0.27731812, b: 0.09967959, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _color: {r: 1, g: 0.7651629, b: 0.41981128, a: 0}
   m_BuildTextureStacks: []

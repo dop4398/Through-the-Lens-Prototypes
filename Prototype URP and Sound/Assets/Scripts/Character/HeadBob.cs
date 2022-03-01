@@ -37,7 +37,7 @@ public class HeadBob : MonoBehaviour
     void Update()
     {
         // If the player is moving:
-        if (PlayerInput.playerInput.input != Vector2.zero)
+        if (PlayerInput.playerInput.input != Vector2.zero && CharacterComponents.instance.playerstate.GetState() == PlayerState.normal)
         {
             HeadBobbing();
         }

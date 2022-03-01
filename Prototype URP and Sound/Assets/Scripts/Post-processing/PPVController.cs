@@ -10,6 +10,7 @@ public class PPVController : MonoBehaviour
     private Volume v;
     private Bloom b;
     private Vignette vg;
+    private DepthOfField dof;
 
     [SerializeField]
     [Range(0.1f, 0.2f)]
@@ -32,6 +33,7 @@ public class PPVController : MonoBehaviour
         v = GetComponent<Volume>();
         v.profile.TryGet(out b);
         v.profile.TryGet(out vg);
+        v.profile.TryGet(out dof);
     }
 
     // Update is called once per frame
@@ -43,5 +45,10 @@ public class PPVController : MonoBehaviour
     public void SetVignette(float intensity)
     {
         vg.intensity.value = baseVig + intensity * maxVig;
+    }
+
+    public void SetDoF(bool b)
+    {
+        dof.active = b;
     }
 }
