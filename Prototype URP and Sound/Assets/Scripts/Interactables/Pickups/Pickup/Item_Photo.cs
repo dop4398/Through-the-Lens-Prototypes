@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item_Photo : PickUp, IInteractable
+public class Item_Photo : PickUp
 {
     #region Fields
     //public float radius { get; set; }
@@ -30,6 +30,11 @@ public class Item_Photo : PickUp, IInteractable
         base.Interaction();
         // Add the item to the album
         CharacterComponents.instance.album.AddPhoto(photo);
+    }
+
+    public override void Use()
+    {
+        base.Use();
     }
     #endregion
 }
