@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Non_pickup : MonoBehaviour
+public class Non_pickup : MonoBehaviour, IInteractable
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Interaction()
     {
-        
-    }
+        if (!GetComponent<Animation>())
+            return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!GetComponent<Animation>().isPlaying)
+            GetComponent<Animation>().Play();
     }
 }

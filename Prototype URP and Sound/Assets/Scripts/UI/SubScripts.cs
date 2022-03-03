@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class SubScripts : MonoBehaviour
 {
+    public static SubScripts instance;
+
     public GameObject textBox;
     StreamReader reader = null;
     public string fileName;
@@ -18,6 +20,11 @@ public class SubScripts : MonoBehaviour
     int[] stationCount = new int[10];
   
     public int lineCount;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -113,8 +120,8 @@ public class SubScripts : MonoBehaviour
 
     public void Run(int x)
     {
+        StopAllCoroutines();
         StartCoroutine(TextSequence(x));
-        
     }
 
     //testing out the text showing up
@@ -140,7 +147,7 @@ public class SubScripts : MonoBehaviour
     //theoretically
     IEnumerator TextSequence(int x)
     {
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
 
         //loop through the given station's line count, change the subtitles based on the necessary text and with the right time length
         //StationCount[0] = 0

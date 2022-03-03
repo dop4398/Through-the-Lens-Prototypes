@@ -7,7 +7,7 @@ public class PickUp : MonoBehaviour, IInteractable
 {
     [SerializeField]
     protected List<Material> materials;
-    public InteractableType type;
+    public InteractableType type = InteractableType.Pickup;
     public bool usable;
 
     // Start is called before the first frame update
@@ -28,7 +28,6 @@ public class PickUp : MonoBehaviour, IInteractable
             if (mr.Length != 0)
             {
                 Debug.Log("Have multiple MR");
-
             }
 
             foreach (MeshRenderer renderer in mr)
@@ -36,8 +35,6 @@ public class PickUp : MonoBehaviour, IInteractable
                 materials.Add(renderer.material);
             }
         }
-
-        type = InteractableType.Pickup;
     }
 
     public virtual void Interaction()

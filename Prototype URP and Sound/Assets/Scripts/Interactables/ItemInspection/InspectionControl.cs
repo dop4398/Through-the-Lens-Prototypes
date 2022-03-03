@@ -78,6 +78,7 @@ public class InspectionControl : MonoBehaviour
     private void ResetRotation()
     {
         transform.DORotate(Vector3.zero, 0.5f);
+        //transform.DOLocalRotate(Vector3.zero, 0.5f);
     }
 
     private void ExitInspection()
