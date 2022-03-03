@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class SubScripts : MonoBehaviour
 {
+    public static SubScripts instance;
+
     public GameObject textBox;
     StreamReader reader = null;
     public string fileName;
@@ -18,6 +20,11 @@ public class SubScripts : MonoBehaviour
     int[] stationCount = new int[10];
   
     public int lineCount;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -79,7 +86,7 @@ public class SubScripts : MonoBehaviour
                     dialogueText[station] = new List<string>();
                 }
                 dialogueText[station].Add(temp[1].Trim());
-                Debug.Log("Finished Text");
+                //Debug.Log("Finished Text");
 
 
                 //add each strings time to the array
@@ -91,16 +98,16 @@ public class SubScripts : MonoBehaviour
                     timers[station] = new List<int>();
                 }
                 timers[station].Add(tempInt);
-                Debug.Log("Finished Timers");
+                //Debug.Log("Finished Timers");
 
-                Debug.Log("Station 0's count: " + stationCount[0]);
+                //Debug.Log("Station 0's count: " + stationCount[0]);
 
             }
             
         }
         catch(Exception e)
         {
-            Debug.Log("Something went wrong with reading the file: " + e);
+            //Debug.Log("Something went wrong with reading the file: " + e);
             
         }
         finally
@@ -113,8 +120,8 @@ public class SubScripts : MonoBehaviour
 
     public void Run(int x)
     {
+        StopAllCoroutines();
         StartCoroutine(TextSequence(x));
-        
     }
 
     //testing out the text showing up
@@ -140,7 +147,7 @@ public class SubScripts : MonoBehaviour
     //theoretically
     IEnumerator TextSequence(int x)
     {
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
 
         //loop through the given station's line count, change the subtitles based on the necessary text and with the right time length
         //StationCount[0] = 0

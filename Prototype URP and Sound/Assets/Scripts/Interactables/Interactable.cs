@@ -9,6 +9,16 @@ using UnityEngine;
 /// <author>
 /// David Patch
 /// </author>
+/// 
+
+public enum InteractableType
+{
+    Pickup,
+    Teleporter,
+    Examinable,
+    NonPickup
+}
+
 public interface IInteractable
 {
     #region Fields
