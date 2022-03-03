@@ -17,7 +17,7 @@ public class HeadBob : MonoBehaviour
     [SerializeField]
     private float yPos = 1.64f;
     [SerializeField]
-    private float stepOffset = 0.05f;
+    private float stepOffset = 0.02f;
     //private bool togglePlaying = false;
     private Sequence walkSequence;
     private Sequence runSequence;
@@ -25,7 +25,7 @@ public class HeadBob : MonoBehaviour
 
     void Start()
     {
-        yPos = gameObject.transform.position.y;
+        //yPos = gameObject.transform.position.y;
 
         // Make the walk and run sequences
         CreateWalkSequence(yPos, stepOffset, CharacterComponents.instance.footstepsSFX.WalkSpeed);

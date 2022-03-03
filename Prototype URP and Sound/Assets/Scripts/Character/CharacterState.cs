@@ -10,6 +10,9 @@ public enum PlayerState
     inspecting,
     dev_design
 }
+/// <summary>
+/// update summary and function headers
+/// </summary>
 public class CharacterState : MonoBehaviour
 {
     [SerializeField]
