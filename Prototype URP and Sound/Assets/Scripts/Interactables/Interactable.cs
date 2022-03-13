@@ -16,7 +16,8 @@ public enum InteractableType
     Pickup,
     Teleporter,
     Examinable,
-    NonPickup
+    NonPickup,
+    None
 }
 
 public interface IInteractable

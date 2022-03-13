@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Teleporter : MonoBehaviour, IInteractable
+public class Teleporter : Interactable, IInteractable
 {
-
-    public InteractableType type = InteractableType.Teleporter;
-
     public Transform transform_enter;
     public Transform transform_exit;
 
     public List<GameObject> obj_enter;
     public List<GameObject> obj_exit;
 
-    public bool requireKey = false;
+    //public bool requireKey = false;
     public int key_id;
+    public bool isLocked = true;
 
     public float transitionTime;
 
     private bool active;
     private bool flag = true;
 
+    private void Start()
+    {
+        type = InteractableType.Teleporter;
+    }
+
     public void Interaction()
     {
-        if (requireKey)
+        if (isLocked)
         {
             if (CharacterComponents.instance.inventory.CheckForItem(key_id) != null)
             {
+                isLocked = false;
                 Teleport();
             }
             else
@@ -112,5 +116,10 @@ public class Teleporter : MonoBehaviour, IInteractable
     void LockedBehavior()
     {
         Debug.Log("Door's locked");
+    }
+
+    public bool CanUnlock()
+    {
+        return CharacterComponents.instance.inventory.CheckForItem(key_id) != null && isLocked;
     }
 }

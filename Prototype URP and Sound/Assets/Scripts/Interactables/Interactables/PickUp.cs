@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PickUp : MonoBehaviour, IInteractable
+public class PickUp : Interactable, IInteractable
 {
     [SerializeField]
     protected List<Material> materials;
-    public InteractableType type = InteractableType.Pickup;
     public bool usable;
 
     // Start is called before the first frame update
     protected void Start()
     {
         materials = new List<Material>();
+
+        type = InteractableType.Pickup;
 
         if (gameObject.GetComponent<MeshRenderer>() != null)
         {
