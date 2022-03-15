@@ -105,11 +105,15 @@ public class Teleporter : Interactable, IInteractable
     {
         if (flag)
         {
+            CharacterComponents.instance.controller.characterController.enabled = false;
             CharacterComponents.instance.gameObject.transform.position = transform_enter.position;
+            CharacterComponents.instance.controller.characterController.enabled = true;
         }
         else
         {
+            CharacterComponents.instance.controller.characterController.enabled = false;
             CharacterComponents.instance.gameObject.transform.position = transform_exit.position;
+            CharacterComponents.instance.controller.characterController.enabled = true;
         }
     }
 

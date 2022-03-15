@@ -23,7 +23,9 @@ public class Inspector : MonoBehaviour
         controller = GetComponent<InspectionControl>();
 
         EventSystem.instance.OnItemInspection += TurnCameraOn;
+        EventSystem.instance.OnItemInspection += TurnIndicatorOff;
         EventSystem.instance.OnItemInspectionExit += TurnCameraOff;
+        EventSystem.instance.OnItemInspectionExit += TurnIndicatorOn;
     }
 
     void TurnCameraOn()
@@ -34,5 +36,15 @@ public class Inspector : MonoBehaviour
     void TurnCameraOff()
     {
         camera.enabled = false;
+    }
+
+    void TurnIndicatorOn()
+    {
+        Indicator.instance.gameObject.SetActive(true);
+    }
+
+    void TurnIndicatorOff()
+    {
+        Indicator.instance.gameObject.SetActive(false);
     }
 }
