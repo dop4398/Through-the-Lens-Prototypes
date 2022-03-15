@@ -26,7 +26,6 @@ public class CharacterState : MonoBehaviour
 
     public void SetState(PlayerState s)
     {
-        Debug.Log(s);
         state = s;
         switch (s)
         {
