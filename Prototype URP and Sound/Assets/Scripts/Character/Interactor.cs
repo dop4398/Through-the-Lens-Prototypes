@@ -19,10 +19,16 @@ public class Interactor : MonoBehaviour
 
         if (Physics.Raycast(CharacterComponents.instance.controller.playerCamera.transform.position, CharacterComponents.instance.controller.playerCamera.transform.forward, out hit, radius, layer))
         {
+            Indicator.instance.SetSprite(hit.collider.gameObject);
+
             if (PlayerInput.playerInput.interact)
             {
                 hit.collider.gameObject.GetComponent<IInteractable>().Interaction();
             }
+        }
+        else
+        {
+            Indicator.instance.SetSprite();
         }
     }
 

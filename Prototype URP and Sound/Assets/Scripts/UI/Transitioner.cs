@@ -40,6 +40,7 @@ public class Transitioner : MonoBehaviour
     public async void DoRoomTransition()
     {
         float end = Time.time + waitTime + transitionTime;
+        Indicator.instance.gameObject.SetActive(false);
 
         if (!blackOut.IsPlaying())
         {
@@ -51,6 +52,7 @@ public class Transitioner : MonoBehaviour
             await Task.Yield();
         }
 
+        Indicator.instance.gameObject.SetActive(true);
         fadeIn.Restart();
     }
 
