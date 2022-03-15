@@ -12,7 +12,7 @@ public class SubScripts : MonoBehaviour
 
     public GameObject textBox;
     StreamReader reader = null;
-    public string fileName;
+    string fileName;
     public int x = 0;
     //string[][] dialogueText;
     List<String>[] dialogueText = new List<String>[100];
@@ -28,7 +28,7 @@ public class SubScripts : MonoBehaviour
 
     private void Start()
     {
-
+        fileName = Path.Combine(Application.streamingAssetsPath, "dialogueText.txt");
         //These need to be changed to a better option than hardcoding :)
       
 
