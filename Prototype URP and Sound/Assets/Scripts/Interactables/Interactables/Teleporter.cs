@@ -126,4 +126,21 @@ public class Teleporter : Interactable, IInteractable
     {
         return CharacterComponents.instance.inventory.CheckForItem(key_id) != null && isLocked;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+        if (transform_enter)
+        {
+            Gizmos.DrawWireSphere(transform_enter.position, 0.5f);
+        }
+
+        Gizmos.color = Color.red;
+
+        if (transform_exit)
+        {
+            Gizmos.DrawWireSphere(transform_exit.position, 0.5f);
+        }
+    }
 }

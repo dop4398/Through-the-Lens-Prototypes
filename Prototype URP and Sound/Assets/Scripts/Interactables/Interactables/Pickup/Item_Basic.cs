@@ -27,7 +27,9 @@ public class Item_Basic : PickUp
 
     public override void Use()
     {
-        base.Use();
+        if (!usable)
+            return;
+
         if (!GetComponent<Animation>().isPlaying)
             GetComponent<Animation>().Play();
     }
