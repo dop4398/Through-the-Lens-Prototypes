@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class NoteLoader : MonoBehaviour
 {
     string s;
+    public TextAsset text;
+    
     // Start is called before the first frame update
     void Start()
     {
-        ReadString("Assets/Resources/TextFiles/file1.txt");
+        ReadString(text);
     }
 
     // Update is called once per frame
@@ -23,5 +25,10 @@ public class NoteLoader : MonoBehaviour
         StreamReader reader = new StreamReader(path);
         GetComponent<Text>().text = reader.ReadToEnd();
         reader.Close();
+    }
+
+    public void ReadString(TextAsset txt)
+    {
+        GetComponent<Text>().text = txt.text;
     }
 }
