@@ -8,7 +8,7 @@ public class HoldSnap : MonoBehaviour
     public Vector3 target;
     public bool isActive;
 
-    public float snapTime;
+    public float snapTime = 0.5f;
 
     private Tweener tweenX;
     private Tweener tweenZ;

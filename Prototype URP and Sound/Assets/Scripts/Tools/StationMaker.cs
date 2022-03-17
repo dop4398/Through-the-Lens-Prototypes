@@ -99,13 +99,13 @@ public class StationMaker : MonoBehaviour
         {
             if (flag)
             {
-                CharacterComponents.instance.controller.canLook = false;
+                PlayerInput.playerInput.isDisabled = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-                CharacterComponents.instance.controller.canLook = true;
+                PlayerInput.playerInput.isDisabled = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
