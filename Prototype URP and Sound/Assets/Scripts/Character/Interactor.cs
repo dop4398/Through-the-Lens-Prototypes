@@ -21,7 +21,7 @@ public class Interactor : MonoBehaviour
         {
             Indicator.instance.SetSprite(hit.collider.gameObject);
 
-            if (PlayerInput.playerInput.interact)
+            if (PlayerInput.playerInput.interact && CharacterComponents.instance.playerstate.GetState() == PlayerState.normal)
             {
                 hit.collider.gameObject.GetComponent<IInteractable>().Interaction();
             }
@@ -34,8 +34,8 @@ public class Interactor : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.green;
-        //Gizmos.DrawLine(CharacterComponents.instance.controller.playerCamera.transform.position,
-        //    CharacterComponents.instance.controller.playerCamera.transform.position + CharacterComponents.instance.controller.playerCamera.transform.forward * radius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(CharacterComponents.instance.controller.playerCamera.transform.position,
+            CharacterComponents.instance.controller.playerCamera.transform.position + CharacterComponents.instance.controller.playerCamera.transform.forward * radius);
     }
 }
