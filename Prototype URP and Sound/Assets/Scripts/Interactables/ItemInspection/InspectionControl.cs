@@ -27,7 +27,8 @@ public class InspectionControl : MonoBehaviour
             if (PlayerInput.playerInput.interact)
             {
                 // rotating flag
-                _isRotating = true;
+                if(!NoteDisplay.instance.IsReading())
+                    _isRotating = true;
 
                 // store mouse
                 _mouseReference = Input.mousePosition;

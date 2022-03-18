@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item_Relic : PickUp
 {
     #region Fields
-    public ItemDatabase itemData;
+    public Item itemData;
     public int ID; // unique identifier for each item
     #endregion
 

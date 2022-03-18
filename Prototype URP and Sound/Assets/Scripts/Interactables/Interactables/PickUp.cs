@@ -51,7 +51,6 @@ public class PickUp : Interactable, IInteractable
 
     public virtual void Use()
     {
-        if (!usable)
-            return;
+
     }
 }

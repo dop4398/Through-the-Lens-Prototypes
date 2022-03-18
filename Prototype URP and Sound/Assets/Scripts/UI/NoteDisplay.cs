@@ -6,8 +6,6 @@ public class NoteDisplay : MonoBehaviour
 {
     public static NoteDisplay instance;
 
-    public bool active = false;
-
     private GameObject note_view;
     private NoteLoader loader;
 
@@ -20,6 +18,8 @@ public class NoteDisplay : MonoBehaviour
     {
         note_view = gameObject.transform.GetChild(0).gameObject;
         loader = note_view.GetComponentInChildren<NoteLoader>();
+        EventSystem.instance.OnItemInspectionExit += Disable;
+        note_view.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,17 +28,19 @@ public class NoteDisplay : MonoBehaviour
         
     }
 
-    public void ShowNote(bool b)
+    public void ShowNote(TextAsset text)
     {
-        active = b;
+        note_view.SetActive(true);
+        loader.ReadString(text);
+    }
 
-        if (active)
-        {
-            note_view.SetActive(active);
-        }
-        else
-        {
-            note_view.SetActive(active);
-        }
+    public void Disable()
+    {
+        note_view.SetActive(false);
+    }
+
+    public bool IsReading()
+    {
+        return note_view.active;
     }
 }

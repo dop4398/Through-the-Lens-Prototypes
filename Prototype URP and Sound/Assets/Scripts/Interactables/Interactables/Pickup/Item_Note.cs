@@ -5,8 +5,10 @@ using UnityEngine;
 public class Item_Note : PickUp
 {
     #region Fields
-    public ItemDatabase itemData;
+    public Item itemData;
     public int ID; // unique identifier for each item
+    public TextAsset text;
+    private bool flag = true;
     #endregion
 
     void Start()
@@ -27,7 +29,18 @@ public class Item_Note : PickUp
 
     public override void Use()
     {
-        base.Use();
+        if (!usable)
+            return;
+        if (flag)
+        {
+            NoteDisplay.instance.ShowNote(text);
+        }
+        else
+        {
+            NoteDisplay.instance.Disable();
+        }
+
+        flag = !flag;
     }
     #endregion
 }
