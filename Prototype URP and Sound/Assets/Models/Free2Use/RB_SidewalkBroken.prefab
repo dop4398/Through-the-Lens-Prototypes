@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 2486027320382125184}
   - component: {fileID: 6122384877085594655}
   - component: {fileID: 4804924705440210411}
+  - component: {fileID: 7890700225089856242}
   m_Layer: 0
   m_Name: RB_SidewalkBroken
   m_TagString: Untagged
@@ -163,3 +164,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7890700225089856242
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8658658341988068324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4900199256387495954, guid: 554186b9834fd234fa5ea135475b88ea, type: 3}

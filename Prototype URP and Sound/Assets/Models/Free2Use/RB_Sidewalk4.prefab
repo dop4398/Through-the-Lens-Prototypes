@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2136226306091306519}
   - component: {fileID: 5654059740261361716}
   - component: {fileID: 2236097697160314437}
+  - component: {fileID: 2817326905945701831}
   m_Layer: 0
   m_Name: RB_Sidewalk4
   m_TagString: Untagged
@@ -82,6 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2817326905945701831
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540597419737551519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 830999515247721025, guid: 554186b9834fd234fa5ea135475b88ea, type: 3}
 --- !u!1 &7368901780254401454
 GameObject:
   m_ObjectHideFlags: 0

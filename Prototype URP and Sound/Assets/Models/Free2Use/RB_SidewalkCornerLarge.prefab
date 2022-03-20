@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3268928313957233585}
   - component: {fileID: 3583443237542748730}
   - component: {fileID: 3004682936076195216}
+  - component: {fileID: 7614961535369643147}
   m_Layer: 0
   m_Name: RB_SidewalkCornerLarge
   m_TagString: Untagged
@@ -82,6 +83,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7614961535369643147
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957267965603726241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1655751450332588839, guid: 554186b9834fd234fa5ea135475b88ea, type: 3}
 --- !u!1 &6325977366489631450
 GameObject:
   m_ObjectHideFlags: 0
