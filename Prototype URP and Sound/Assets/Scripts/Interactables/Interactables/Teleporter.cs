@@ -15,7 +15,7 @@ public class Teleporter : Interactable, IInteractable
     public int key_id;
     public bool isLocked = true;
 
-    public float transitionTime;
+    //public float transitionTime;
 
     private bool active;
     private bool flag = true;

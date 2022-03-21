@@ -6,18 +6,11 @@ public class Item_Photo : PickUp
 {
     #region Fields
     //public float radius { get; set; }
-    public string ID; // unique identifier for photos
     public Photo photo;
     #endregion
 
     new void Start()
     {
-        if (ID == null)
-        {
-            ID = this.name;
-        }
-        photo.ID = ID;
-
         type = InteractableType.Pickup;
     }
 
