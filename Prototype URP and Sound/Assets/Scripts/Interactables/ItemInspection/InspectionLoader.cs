@@ -31,6 +31,8 @@ public class InspectionLoader : MonoBehaviour
             Destroy(item);
         }
 
+        EventSystem.instance.ItemInspection();
+
         item = obj;
         item.transform.parent = transform;
         transform.rotation = Quaternion.Euler(Vector3.zero);

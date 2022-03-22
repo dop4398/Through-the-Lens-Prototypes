@@ -94,6 +94,7 @@ MonoBehaviour:
     title: 
     icon: {fileID: 0}
     info: 
+    prefab: {fileID: 0}
   selectedItem: {fileID: 0}
   thoughtsText: {fileID: 0}
   inventoryPanel: {fileID: 0}

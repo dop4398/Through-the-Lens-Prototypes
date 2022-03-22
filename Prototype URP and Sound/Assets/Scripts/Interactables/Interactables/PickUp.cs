@@ -46,7 +46,6 @@ public class PickUp : Interactable, IInteractable
         }
         CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);
         Inspector.instance.loader.LoadObject(gameObject);
-        EventSystem.instance.ItemInspection();
     }
 
     public virtual void Use()
