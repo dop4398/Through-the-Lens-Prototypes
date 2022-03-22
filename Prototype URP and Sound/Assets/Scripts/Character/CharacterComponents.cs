@@ -20,6 +20,7 @@ public class CharacterComponents : MonoBehaviour
     public Album album;
     public CollectableInventory inventory;
     public FootstepsSFX footstepsSFX;
+    public StationGuideSFX stationGuideSFX;
     public Interactor interactor;
     public CharacterState playerstate;
     #endregion
@@ -75,6 +76,10 @@ public class CharacterComponents : MonoBehaviour
             if(playerstate == null)
             {
                 playerstate = this.GetComponent<CharacterState>();
+            }
+            if(stationGuideSFX == null)
+            {
+                stationGuideSFX = this.GetComponent<StationGuideSFX>();
             }
 
             componentsFound = true;
