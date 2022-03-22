@@ -12,27 +12,57 @@ using UnityEngine;
 public class StationGuideSFX : MonoBehaviour
 {
     /* Requirements:
-     * 1. Determine when we are within a specific radius of a station
-     * 2. Determine whether we are holding the corresponding photo
-     * 3. Unmute the sound while 1 and 2 are true (it is always playing regardless)
-     * 4. Scale sound with radius (closer = louder)
+     * 1. Determine when we are within a specific radius of the station of the currently held photo
+     * 2. Unmute the sound while 1 is true (it is always playing regardless)
+     * 3. Scale sound with radius (closer = louder)
      */
 
     #region Fields
-
+    private FMOD.Studio.EventInstance proxSFX;
+    [SerializeField]
+    [Range(0.5f, 10.0f)]
+    private float radius = 6;
+    private float proximity;
     #endregion
 
     void Start()
     {
-
+        // Start the looping event and set proximity (volume) to 0.
+        proxSFX = FMODUnity.RuntimeManager.CreateInstance("event:/Environment/Station Proximity 2D");
+        proxSFX.setParameterByName("ProximityToStation", 0);
     }
 
     void Update()
     {
-
+        SetVolume();
     }
 
     #region Helper Methods
+    /// <summary>
+    /// Determines whether the player is within the given radius of the current photo's station.
+    /// </summary>
+    /// <returns>True if within radius; false otherwise.</returns>
+    private bool IsInRadius()
+    {
+        //proximity = Vector3.Distance(this.transform.position, CharacterComponents.instance.heldPhoto.)
+        if(proximity <= radius)
+        {
+            return true;
+        }
+        return false;
+    }
 
+    private void SetVolume()
+    {
+        if(IsInRadius())
+        {
+            // some inverse of distance to station trigger: | distance / radius - 1 |
+            proxSFX.setParameterByName("ProximityToStation", Mathf.Abs(proximity / radius - 1));
+        }
+        else
+        {
+            proxSFX.setParameterByName("ProximityToStation", 0);
+        }
+    }
     #endregion
 }
