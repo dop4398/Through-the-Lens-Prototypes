@@ -12,12 +12,12 @@ public class Inventory : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        ui_inventory = GameObject.Find("InventoryPanel");
+        ui_thoughts = GameObject.Find("ThoughtsPanel");
     }
 
     private void Start()
     {
-        ui_inventory = GameObject.Find("InventoryPanel");
-        ui_thoughts = GameObject.Find("ThoughtsPanel");
     }
 
     public void TogglePanel()
