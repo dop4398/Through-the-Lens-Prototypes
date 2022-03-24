@@ -12,7 +12,7 @@ using UnityEngine;
 public class Album : MonoBehaviour
 {
     #region Fields
-    [SerializeField] private List<Photo> album;
+    [SerializeField] public List<Photo> album;
     #endregion
 
     void Start()
