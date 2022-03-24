@@ -12,7 +12,7 @@ public class InteractSFX : Interactable, IInteractable
     void Start()
     {
         emitter = GetComponent<FMODUnity.StudioEventEmitter>();
-        type = InteractableType.Examinable;
+        type = InteractableType.NonPickup;
     }
 
     
