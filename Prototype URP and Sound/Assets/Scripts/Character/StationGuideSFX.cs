@@ -42,19 +42,25 @@ public class StationGuideSFX : MonoBehaviour
     /// Determines whether the player is within the given radius of the current photo's station.
     /// </summary>
     /// <returns>True if within radius; false otherwise.</returns>
-    private bool IsInRadius()
+    private float CalculateProximity()
     {
-        //proximity = Vector3.Distance(this.transform.position, CharacterComponents.instance.heldPhoto.)
-        if(proximity <= radius)
+        // StationManager's station list will only ever have a station in it while the player is inside that station's trigger box.
+        // Assume that while the list is empty, the player is not close enough to any station for the sound to trigger.
+        if(StationManager.instance.DetectedStationTrigger() != null)
         {
-            return true;
+            proximity = Vector3.Distance(this.transform.position, StationManager.instance.DetectedStationTrigger().transform.position);
         }
-        return false;
+        else
+        {
+            proximity = 100000000;
+        }
+        
+        return proximity;
     }
 
     private void SetVolume()
     {
-        if(IsInRadius())
+        if(CalculateProximity() <= radius)
         {
             // some inverse of distance to station trigger: | distance / radius - 1 |
             proxSFX.setParameterByName("ProximityToStation", Mathf.Abs(proximity / radius - 1));

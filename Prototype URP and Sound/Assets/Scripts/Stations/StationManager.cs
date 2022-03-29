@@ -118,4 +118,13 @@ public class StationManager : MonoBehaviour
     {
         stations.Remove(s);
     }
+
+    public GameObject DetectedStationTrigger()
+    {
+        if(stations.Count > 0)
+        {
+            return stations[0].trigger;
+        }
+        return null;
+    }
 }
