@@ -13,16 +13,18 @@ public class Album : MonoBehaviour
 {
     #region Fields
     [SerializeField] public List<Photo> album;
+    [SerializeField] public List<int> hand;
+    public int max_hand = 3;
     #endregion
 
     void Start()
     {
-        
+        hand.Add(0);
     }
-    
+
     void Update()
     {
-        
+
     }
 
     #region Helper Methods
@@ -39,6 +41,43 @@ public class Album : MonoBehaviour
     public int GetAlbumSize()
     {
         return album.Count;
+    }
+
+    public void AddPhotoToHand(int index)
+    {
+        if (!hand.Contains(index) && hand.Count < max_hand)
+            hand.Add(index);
+    }
+
+    public void RemovePhotoFromHand(int index)
+    {
+        if (hand.Contains(index) && hand.Count > 1)
+        {
+            if (index == CharacterComponents.instance.album.hand[CharacterComponents.instance.heldPhoto.heldPhotoIndex])
+            {
+                hand.Remove(index);
+                CharacterComponents.instance.heldPhoto.LoadFirstPhoto();
+            }
+            else
+            {
+                hand.Remove(index);
+            }
+        }
+    }
+
+    public bool IsInHand(int index)
+    {
+        return hand.Contains(index);
+    }
+
+    public Photo GetHandAtIndex(int i)
+    {
+        return album[hand[i]];
+    }
+
+    public int GetHandSize()
+    {
+        return hand.Count;
     }
     #endregion
 }
