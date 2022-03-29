@@ -20,9 +20,12 @@ public class StationGuideSFX : MonoBehaviour
     #region Fields
     private FMOD.Studio.EventInstance proxSFX;
     [SerializeField]
-    [Range(0.5f, 10.0f)]
-    private float radius = 6;
+    private float radius = 3;
+    [SerializeField]
     private float proximity;
+
+    private Vector3 playerLoc = Vector3.zero;
+    private Vector3 stationLoc = Vector3.zero;
     #endregion
 
     void Start()
@@ -30,6 +33,8 @@ public class StationGuideSFX : MonoBehaviour
         // Start the looping event and set proximity (volume) to 0.
         proxSFX = FMODUnity.RuntimeManager.CreateInstance("event:/Environment/Station Proximity 2D");
         proxSFX.setParameterByName("ProximityToStation", 0);
+        proxSFX.start();
+        proxSFX.release();
     }
 
     void Update()
@@ -48,22 +53,40 @@ public class StationGuideSFX : MonoBehaviour
         // Assume that while the list is empty, the player is not close enough to any station for the sound to trigger.
         if(StationManager.instance.DetectedStationTrigger() != null)
         {
-            proximity = Vector3.Distance(this.transform.position, StationManager.instance.DetectedStationTrigger().transform.position);
+            playerLoc.x = this.transform.position.x;
+            playerLoc.z = this.transform.position.z;
+            stationLoc.x = StationManager.instance.DetectedStationTrigger().transform.position.x;
+            stationLoc.z = StationManager.instance.DetectedStationTrigger().transform.position.z;
+
+            proximity = Vector3.Distance(playerLoc, stationLoc);
         }
         else
         {
             proximity = 100000000;
         }
-        
         return proximity;
+    }
+
+    private float CalculateRadius()
+    {
+        if (StationManager.instance.DetectedStationTrigger() != null)
+        {
+            radius = StationManager.instance.DetectedStationTrigger().GetComponent<BoxCollider>().size.x / 2;
+        }
+        else
+        {
+            radius = -1;
+        }
+        return radius;
     }
 
     private void SetVolume()
     {
-        if(CalculateProximity() <= radius)
+        if(CalculateProximity() <= CalculateRadius())
         {
             // some inverse of distance to station trigger: | distance / radius - 1 |
             proxSFX.setParameterByName("ProximityToStation", Mathf.Abs(proximity / radius - 1));
+
         }
         else
         {

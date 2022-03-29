@@ -32,6 +32,7 @@ public class StationManager : MonoBehaviour
     void Update()
     {
         UpdateStations();
+        Debug.Log("stations.Count = " + stations.Count);
     }
 
     private void UpdateStations()
@@ -123,7 +124,13 @@ public class StationManager : MonoBehaviour
     {
         if(stations.Count > 0)
         {
-            return stations[0].trigger;
+            foreach(Station s in stations)
+            {
+                if(s.id == CharacterComponents.instance.heldPhoto.heldPhotoIndex.ToString())
+                {
+                    return s.trigger;
+                }
+            }
         }
         return null;
     }
