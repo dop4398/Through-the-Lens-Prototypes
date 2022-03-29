@@ -24,6 +24,14 @@ public class Photo
     /// Getter for the photo's material (the picture itself).
     /// </summary>
     /// <returns>Material for the photo image.</returns>
+    /// 
+    public Photo(Photo photo)
+    {
+        ID = photo.ID;
+        tex_old = photo.tex_old;
+        tex_new = photo.tex_new;
+        state = photo.state;
+    }
     public Texture2D GetTexture_Old()
     {
         return tex_old;
