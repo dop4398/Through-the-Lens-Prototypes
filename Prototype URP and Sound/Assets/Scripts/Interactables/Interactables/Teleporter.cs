@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Teleporter : Interactable, IInteractable
 {
+    #region Fields
     public Transform transform_enter;
     public Transform transform_exit;
 
@@ -19,6 +20,10 @@ public class Teleporter : Interactable, IInteractable
 
     private bool active;
     private bool flag = true;
+
+    public FMOD.Studio.EventInstance openDoorSFX;
+    public FMOD.Studio.EventInstance lockedDoorSFX;
+    #endregion
 
     private void Start()
     {
@@ -48,6 +53,12 @@ public class Teleporter : Interactable, IInteractable
     async void Teleport()
     {
         Debug.Log("Teleportation happenning");
+        //SFX
+        openDoorSFX = FMODUnity.RuntimeManager.CreateInstance("event:/Interactions/Door Enter");
+        openDoorSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        openDoorSFX.start();
+        openDoorSFX.release();
+
         float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
         Transitioner.instance.DoRoomTransition();
         CharacterComponents.instance.controller.LockInput(2f);
@@ -120,6 +131,11 @@ public class Teleporter : Interactable, IInteractable
     void LockedBehavior()
     {
         Debug.Log("Door's locked");
+        // SFX
+        lockedDoorSFX = FMODUnity.RuntimeManager.CreateInstance("event:/Interactions/Locked Door Rattle");
+        lockedDoorSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+        lockedDoorSFX.start();
+        lockedDoorSFX.release();
     }
 
     public bool CanUnlock()
