@@ -8,6 +8,7 @@ public class AlbumUI : MonoBehaviour
 {
     public List<GameObject> photo_slots;
     public List<Photo> photos;
+    public GameObject parent;
 
     private int page = 1;
 
@@ -24,7 +25,7 @@ public class AlbumUI : MonoBehaviour
             photo_slots.Add(gameObject.transform.GetChild(i).gameObject);
         }
         InitUI();
-        //UpdateUI();
+        parent.SetActive(false);
     }
 
     // Update is called once per frame

@@ -15,6 +15,8 @@ public class Album : MonoBehaviour
     [SerializeField] public List<Photo> album;
     [SerializeField] public List<int> hand;
     public int max_hand = 3;
+
+    public GameObject albumUI;
     #endregion
 
     void Start()
@@ -56,7 +58,8 @@ public class Album : MonoBehaviour
             if (index == CharacterComponents.instance.album.hand[CharacterComponents.instance.heldPhoto.heldPhotoIndex])
             {
                 hand.Remove(index);
-                CharacterComponents.instance.heldPhoto.LoadFirstPhoto();
+                CharacterComponents.instance.heldPhoto.heldPhotoIndex = 0;
+                CharacterComponents.instance.heldPhoto.SetHeldPhoto(CharacterComponents.instance.album.GetHandAtIndex(0));
             }
             else
             {
@@ -78,6 +81,11 @@ public class Album : MonoBehaviour
     public int GetHandSize()
     {
         return hand.Count;
+    }
+
+    public void ToggleUI()
+    {
+        albumUI.SetActive(!albumUI.activeSelf);
     }
     #endregion
 }
