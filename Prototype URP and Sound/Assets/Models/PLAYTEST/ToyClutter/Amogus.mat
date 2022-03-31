@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Amogus
-  m_Shader: {fileID: -6465566751694194690, guid: 31aafd0f75eb16b4f8dbffb7195541d4, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: df03676b2bc15a346adc5de186645c2e, type: 3}
   m_ShaderKeywords: _METALLICSPECGLOSSMAP _NORMALMAP _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -34,6 +34,10 @@ Material:
     m_TexEnvs:
     - Texture2D_d3cd57b9e2f441579fa0a37cb0966e67:
         m_Texture: {fileID: 2800000, guid: 6f911b7ab8d9d8a40b3cfee769095102, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_e104061fb1d94373820239e5b95f2619:
+        m_Texture: {fileID: 2800000, guid: 94932e0bf7f3cd544a3e61c1a5d7da33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_f8a7166f8cec426b95f430e49086f5dd:
@@ -58,6 +62,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DirtTex:
+        m_Texture: {fileID: 2800000, guid: 0f26a580f3aaaf44cb8c720d26f1897f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -108,7 +116,9 @@ Material:
     - Vector1_04a1047ef25a4507bbb9b0b00a1de69c: 2
     - Vector1_36a0106192084fafaefd9d9aeb502649: 0
     - Vector1_9e4a2561ace14bf4bb0c78af363ada22: 0
+    - Vector1_acc49635b75040e09ede82140bf77f0d: 0.74
     - Vector1_f1d3f5ba653146a1b95dbe667b6bbf19: 0
+    - Vector1_f976d50e718144e7850e7814cdf15a97: 4.9
     - Vector1_faa565edb8ad4488b153bebca425f5aa: 2
     - _AlphaClip: 0
     - _Blend: 0
@@ -124,11 +134,12 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 2
+    - _Intensity: 0
     - _Metallic: 0.85
     - _Occlusion: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _Power: 2
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 1
@@ -140,6 +151,7 @@ Material:
     - _ZWrite: 1
     - _intensity: 2
     m_Colors:
+    - Color_ddf87df8fc744514afe136f05051a1aa: {r: 0.6037736, g: 0.41271737, b: 0.116767526, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.8773585, g: 0.4962758, b: 0.13656996, a: 1}
