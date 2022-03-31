@@ -14,8 +14,8 @@ public class Photo
 {
     #region Fields
     public string ID;
-    public Texture tex_old;
-    public Texture tex_new;
+    public Texture2D tex_old;
+    public Texture2D tex_new;
     public PhotoState state;
     #endregion
 
@@ -24,15 +24,23 @@ public class Photo
     /// Getter for the photo's material (the picture itself).
     /// </summary>
     /// <returns>Material for the photo image.</returns>
-    public Texture GetTexture_Old()
+    /// 
+    public Photo(Photo photo)
+    {
+        ID = photo.ID;
+        tex_old = photo.tex_old;
+        tex_new = photo.tex_new;
+        state = photo.state;
+    }
+    public Texture2D GetTexture_Old()
     {
         return tex_old;
     }
-    public Texture GetTexture_New()
+    public Texture2D GetTexture_New()
     {
         return tex_new;
     }
-    public Texture GetTexture_Current()
+    public Texture2D GetTexture_Current()
     {
         return state == PhotoState.Past ? tex_old : tex_new;
     }

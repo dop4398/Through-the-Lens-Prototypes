@@ -137,19 +137,19 @@ public class HeldPhoto : MonoBehaviour
             heldPhotoIndex--;
         }
 
-        if (heldPhotoIndex >= CharacterComponents.instance.album.GetAlbumSize())
+        if (heldPhotoIndex >= CharacterComponents.instance.album.GetHandSize())
         {
             heldPhotoIndex = 0;
         }
 
         if (heldPhotoIndex < 0)
         {
-            heldPhotoIndex = CharacterComponents.instance.album.GetAlbumSize() - 1;
+            heldPhotoIndex = CharacterComponents.instance.album.GetHandSize() - 1;
         }
 
-        if (CharacterComponents.instance.album.GetAlbumSize() > 0)
+        if (CharacterComponents.instance.album.GetHandSize() > 0)
         {
-            SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
+            SetHeldPhoto(CharacterComponents.instance.album.GetHandAtIndex(heldPhotoIndex));
         }
     }
 
@@ -166,10 +166,10 @@ public class HeldPhoto : MonoBehaviour
 
     public void LoadFirstPhoto()
     {
-        if (!photoLoaded && CharacterComponents.instance.album.GetAlbumSize() > 0)
+        if (!photoLoaded && CharacterComponents.instance.album.GetHandSize() > 0)
         {
             heldPhotoIndex = 0;
-            SetHeldPhoto(CharacterComponents.instance.album.GetPhotoAtIndex(heldPhotoIndex));
+            SetHeldPhoto(CharacterComponents.instance.album.GetHandAtIndex(heldPhotoIndex));
             photoLoaded = true;
         }
     }
