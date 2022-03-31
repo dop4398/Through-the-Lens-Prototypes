@@ -62,13 +62,13 @@ public class AlbumUI : MonoBehaviour
 
     public void UpdatePage()
     {
-        page = Mathf.CeilToInt(CharacterComponents.instance.album.album.Count / 4);
+        page = Mathf.CeilToInt(CharacterComponents.instance.album.album.Count / 4f);
     }
 
     public void ChangePage(int i)
     {
         page_current += i;
-        page_current = Mathf.Clamp(page_current, 0, page);
+        page_current = Mathf.Clamp(page_current, 0, page - 1);
 
         UpdateUI();
     }
