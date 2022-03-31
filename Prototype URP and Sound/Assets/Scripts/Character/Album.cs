@@ -86,6 +86,7 @@ public class Album : MonoBehaviour
     public void ToggleUI()
     {
         albumUI.SetActive(!albumUI.activeSelf);
+        albumUI.GetComponentInChildren<AlbumUI>().UpdateUI();
     }
     #endregion
 }
