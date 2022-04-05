@@ -7,7 +7,7 @@ using UnityEngine;
 /// When a photo is picked up, it is added to the Album.
 /// </summary>
 /// <author>
-/// David Patch
+/// David Patch & Alfie Luo
 /// </author>
 public class Album : MonoBehaviour
 {
