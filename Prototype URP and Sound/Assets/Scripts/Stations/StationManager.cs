@@ -13,10 +13,10 @@ public class StationManager : MonoBehaviour
     SubScripts subtitles;
     [SerializeField]
     [Range(1, 10)]
-    public float vig_speed;
+    public float vig_speed = 1.0f;
     [SerializeField]
     [Range(1, 10)]
-    public float glow_speed;
+    public float glow_speed = 1.0f;
 
     private void Awake()
     {

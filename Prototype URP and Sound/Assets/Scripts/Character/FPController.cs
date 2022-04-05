@@ -71,27 +71,24 @@ public class FPController : MonoBehaviour
 
             if (PlayerInput.playerInput.inventory)
             {
-                this.GetComponent<CollectableInventory>().DisplayInventory();
-                CharacterComponents.instance.playerstate.SetState(PlayerState.inventory);
+                GameManager.instance.UpdateGameState(GameState.Inventory);
             }
             if (PlayerInput.playerInput.album)
             {
-                CharacterComponents.instance.album.ToggleUI();
-                CharacterComponents.instance.playerstate.SetState(PlayerState.inventory);
+                GameManager.instance.UpdateGameState(GameState.Album);
             }
         }
-        else if (CharacterComponents.instance.playerstate.GetState() == PlayerState.inventory)
+        else if (CharacterComponents.instance.playerstate.GetState() == PlayerState.ui)
         {
+            //Debug.Log("awodijoad");
             if (PlayerInput.playerInput.inventory)
             {
-                this.GetComponent<CollectableInventory>().DisplayInventory();
-                CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
+                GameManager.instance.UpdateGameState(GameState.Game);
             }
 
             if (PlayerInput.playerInput.album)
             {
-                CharacterComponents.instance.album.ToggleUI();
-                CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
+                GameManager.instance.UpdateGameState(GameState.Game);
             }
         }
     }

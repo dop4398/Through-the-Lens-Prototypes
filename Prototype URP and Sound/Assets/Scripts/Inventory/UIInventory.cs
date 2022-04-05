@@ -10,31 +10,22 @@ using UnityEngine.EventSystems;
 public class UIInventory : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     public List<UIItem> uIItems = new List<UIItem>();
-    public GameObject slotPrefab;
     public Transform slotPanel;
     public int numberOfSlots = 4;
     public int numOfSlotsUsed = 0;
-    public bool isShowing = false;
   
 
     private void Awake()
     {
-
+        for (int i = 0; i < numberOfSlots; i++)
+        {
+            uIItems.Add(slotPanel.GetChild(i).GetComponent<UIItem>());
+        }
     }
 
     private void Start()
     {
-        for (int i = 0; i < numberOfSlots; i++)
-        {
-            GameObject instance = Instantiate(slotPrefab);
-            instance.transform.SetParent(slotPanel);
-            instance.transform.localScale = Vector3.one;
-            uIItems.Add(instance.GetComponentInChildren<UIItem>());
-            uIItems[i].enabled = true;
-            uIItems[i].Init();
-        }
 
-        gameObject.SetActive(false);
     }
 
     //Update the visual slot item with the image of the piece given to it, this allows us to show the player exactly what they have
@@ -68,7 +59,6 @@ public class UIInventory : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-       // Debug.Log("Hover");
-        //throw new System.NotImplementedException();
+
     }
 }

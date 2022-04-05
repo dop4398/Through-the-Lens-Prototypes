@@ -25,7 +25,6 @@ public class AlbumUI : MonoBehaviour
             photo_slots.Add(gameObject.transform.GetChild(i).gameObject);
         }
         InitUI();
-        parent.SetActive(false);
     }
 
     // Update is called once per frame
