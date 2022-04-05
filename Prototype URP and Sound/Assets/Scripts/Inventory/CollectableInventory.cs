@@ -15,9 +15,6 @@ public class CollectableInventory : MonoBehaviour
 
     private void Start()
     {
-        //GiveItem(0);
-        //GiveItem(2);
-        ui.SetActive(inventoryUI.isShowing);
     }
 
     //give the player an Item that they can access and view
@@ -77,6 +74,6 @@ public class CollectableInventory : MonoBehaviour
     public void DisplayInventory()
     {
         inventoryUI.isShowing = !inventoryUI.isShowing;
-        ui.SetActive(inventoryUI.isShowing);
+        inventoryUI.gameObject.SetActive(inventoryUI.isShowing);
     }
 }

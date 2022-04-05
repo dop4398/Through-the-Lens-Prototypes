@@ -7,7 +7,10 @@ public class ThoughtsPanelScript : MonoBehaviour, IPointerClickHandler
 {
     public GameObject inventoryPanel;
 
-
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {

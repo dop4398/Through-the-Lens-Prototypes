@@ -10,7 +10,7 @@ public class PickUp : Interactable, IInteractable
     public bool usable;
 
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         materials = new List<Material>();
 
@@ -18,7 +18,6 @@ public class PickUp : Interactable, IInteractable
 
         if (gameObject.GetComponent<MeshRenderer>() != null)
         {
-            Debug.Log("Have MR");
             materials.Add(gameObject.GetComponent<MeshRenderer>().material);
 
         }
@@ -28,7 +27,6 @@ public class PickUp : Interactable, IInteractable
 
             if (mr.Length != 0)
             {
-                Debug.Log("Have multiple MR");
             }
 
             foreach (MeshRenderer renderer in mr)
@@ -40,17 +38,21 @@ public class PickUp : Interactable, IInteractable
 
     public virtual void Interaction()
     {
-        foreach (Material m in materials)
-        {
-            m.SetFloat("_Intensity", 0f);
-        }
+        RemoveHighlight();
         CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);
         Inspector.instance.loader.LoadObject(gameObject);
-        EventSystem.instance.ItemInspection();
     }
 
     public virtual void Use()
     {
 
+    }
+
+    public virtual void RemoveHighlight()
+    {
+        foreach (Material m in materials)
+        {
+            m.SetFloat("_Intensity", 0f);
+        }
     }
 }

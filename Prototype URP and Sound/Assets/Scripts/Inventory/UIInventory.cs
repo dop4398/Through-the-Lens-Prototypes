@@ -11,7 +11,6 @@ public class UIInventory : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 {
     public List<UIItem> uIItems = new List<UIItem>();
     public GameObject slotPrefab;
-    public GameObject thoughtsPrefab;
     public Transform slotPanel;
     public int numberOfSlots = 4;
     public int numOfSlotsUsed = 0;
@@ -20,13 +19,22 @@ public class UIInventory : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 
     private void Awake()
     {
+
+    }
+
+    private void Start()
+    {
         for (int i = 0; i < numberOfSlots; i++)
         {
             GameObject instance = Instantiate(slotPrefab);
             instance.transform.SetParent(slotPanel);
             instance.transform.localScale = Vector3.one;
             uIItems.Add(instance.GetComponentInChildren<UIItem>());
+            uIItems[i].enabled = true;
+            uIItems[i].Init();
         }
+
+        gameObject.SetActive(false);
     }
 
     //Update the visual slot item with the image of the piece given to it, this allows us to show the player exactly what they have

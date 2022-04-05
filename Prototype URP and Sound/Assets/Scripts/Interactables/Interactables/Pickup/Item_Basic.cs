@@ -9,7 +9,12 @@ public class Item_Basic : PickUp
     public int ID; // unique identifier for each item
     #endregion
 
-    void Start()
+    private void Awake()
+    {
+        itemData = ItemDatabase.database.GetItem(ID);
+    }
+
+    protected override void Start()
     {
         base.Start();
     }

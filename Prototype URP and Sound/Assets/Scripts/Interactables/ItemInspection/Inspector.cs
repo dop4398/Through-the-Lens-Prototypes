@@ -24,8 +24,17 @@ public class Inspector : MonoBehaviour
 
         EventSystem.instance.OnItemInspection += TurnCameraOn;
         EventSystem.instance.OnItemInspection += TurnIndicatorOff;
+        EventSystem.instance.OnItemInspection += () =>
+        {
+            Inventory.instance.ui_thoughts.SetActive(true);
+            Inventory.instance.ui_inventory.SetActive(false);
+        };
         EventSystem.instance.OnItemInspectionExit += TurnCameraOff;
         EventSystem.instance.OnItemInspectionExit += TurnIndicatorOn;
+        EventSystem.instance.OnItemInspectionExit += () => { 
+            Inventory.instance.ui_thoughts.SetActive(false);
+            Inventory.instance.ui_inventory.GetComponent<UIInventory>().isShowing = false;
+        };
     }
 
     void TurnCameraOn()

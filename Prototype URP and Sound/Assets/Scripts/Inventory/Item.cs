@@ -19,6 +19,7 @@ public class Item
     public string title;
     public Sprite icon;
     public string info;
+    public GameObject prefab;
 
     public Item(int id, string title, string description, string info, string type)
     {

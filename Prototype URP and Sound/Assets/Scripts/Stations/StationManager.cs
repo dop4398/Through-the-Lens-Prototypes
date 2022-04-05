@@ -11,6 +11,12 @@ public class StationManager : MonoBehaviour
 {
     public static StationManager instance;
     SubScripts subtitles;
+    [SerializeField]
+    [Range(1, 10)]
+    public float vig_speed;
+    [SerializeField]
+    [Range(1, 10)]
+    public float glow_speed;
 
     private void Awake()
     {
@@ -70,8 +76,9 @@ public class StationManager : MonoBehaviour
                 }
             }
 
-            this.glow = Mathf.Lerp(this.glow, glow, Time.deltaTime);
-            this.vig = Mathf.Lerp(this.vig, vig, Time.deltaTime);
+            //increase
+            this.glow = Mathf.Lerp(this.glow, glow, Time.deltaTime * glow_speed);
+            this.vig = Mathf.Lerp(this.vig, vig, Time.deltaTime * vig_speed);
 
             PhotoController.instance.SetGlow(this.glow);
             PPVController.instance.SetVignette(this.vig);
@@ -89,6 +96,7 @@ public class StationManager : MonoBehaviour
         }
         else
         {
+            //glow & vig decay
             if (this.glow > 0f)
             {
                 this.glow = Mathf.Lerp(this.glow, 0f, Time.deltaTime);
