@@ -38,6 +38,7 @@ public class StationManager : MonoBehaviour
     void Update()
     {
         UpdateStations();
+        Debug.Log("stations.Count = " + stations.Count);
     }
 
     private void UpdateStations()
@@ -125,5 +126,20 @@ public class StationManager : MonoBehaviour
     public void RemoveStation(Station s)
     {
         stations.Remove(s);
+    }
+
+    public GameObject DetectedStationTrigger()
+    {
+        if(stations.Count > 0)
+        {
+            foreach(Station s in stations)
+            {
+                if(s.id == CharacterComponents.instance.heldPhoto.heldPhotoIndex.ToString())
+                {
+                    return s.trigger;
+                }
+            }
+        }
+        return null;
     }
 }

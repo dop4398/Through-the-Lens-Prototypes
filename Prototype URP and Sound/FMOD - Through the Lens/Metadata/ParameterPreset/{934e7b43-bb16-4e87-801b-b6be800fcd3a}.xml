@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{934e7b43-bb16-4e87-801b-b6be800fcd3a}">
+		<property name="name">
+			<value>ProximityToStation</value>
+		</property>
+		<relationship name="folder">
+			<destination>{a567b334-cb26-410a-a00a-896399f77843}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{6993ef98-557c-4174-8405-1ac6191b58c4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{6993ef98-557c-4174-8405-1ac6191b58c4}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
