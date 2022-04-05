@@ -15,8 +15,6 @@ public class Album : MonoBehaviour
     [SerializeField] public List<Photo> album;
     [SerializeField] public List<int> hand;
     public int max_hand = 3;
-
-    public GameObject albumUI;
     #endregion
 
     void Start()
@@ -83,10 +81,5 @@ public class Album : MonoBehaviour
         return hand.Count;
     }
 
-    public void ToggleUI()
-    {
-        albumUI.SetActive(!albumUI.activeSelf);
-        albumUI.GetComponentInChildren<AlbumUI>().UpdateUI();
-    }
     #endregion
 }

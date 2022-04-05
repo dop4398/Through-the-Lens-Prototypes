@@ -70,10 +70,4 @@ public class CollectableInventory : MonoBehaviour
             inventoryUI.RemoveItem(item);
         }
     }
-
-    public void DisplayInventory()
-    {
-        inventoryUI.isShowing = !inventoryUI.isShowing;
-        inventoryUI.gameObject.SetActive(inventoryUI.isShowing);
-    }
 }

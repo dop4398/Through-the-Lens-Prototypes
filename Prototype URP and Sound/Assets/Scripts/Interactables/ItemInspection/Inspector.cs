@@ -26,14 +26,12 @@ public class Inspector : MonoBehaviour
         EventSystem.instance.OnItemInspection += TurnIndicatorOff;
         EventSystem.instance.OnItemInspection += () =>
         {
-            Inventory.instance.ui_thoughts.SetActive(true);
-            Inventory.instance.ui_inventory.SetActive(false);
+            GameManager.instance.UpdateGameState(GameState.Game);
         };
         EventSystem.instance.OnItemInspectionExit += TurnCameraOff;
         EventSystem.instance.OnItemInspectionExit += TurnIndicatorOn;
-        EventSystem.instance.OnItemInspectionExit += () => { 
-            Inventory.instance.ui_thoughts.SetActive(false);
-            Inventory.instance.ui_inventory.GetComponent<UIInventory>().isShowing = false;
+        EventSystem.instance.OnItemInspectionExit += () => {
+            GameManager.instance.UpdateGameState(GameState.Game);
         };
     }
 

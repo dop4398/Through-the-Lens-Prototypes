@@ -40,9 +40,22 @@ public class StationMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             flag = !flag;
+
+            //Unlock Cursor while holding down TAB
+            if (CharacterComponents.instance)
+            {
+                if (flag)
+                {
+                    CharacterComponents.instance.playerstate.SetState(PlayerState.dev_design);
+                }
+                else
+                {
+                    CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
+                }
+            }
         }
     }
 
@@ -94,22 +107,7 @@ public class StationMaker : MonoBehaviour
         // Make a background box
         GUI.Box(new Rect(xPos + 10, yPos + 10, 130, 110), "Cool Station Tool");
 
-        //Unlock Cursor while holding down TAB
-        if (CharacterComponents.instance)
-        {
-            if (flag)
-            {
-                PlayerInput.playerInput.isDisabled = true;
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                PlayerInput.playerInput.isDisabled = false;
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
+
 
         // Make the first button. If it is pressed, Application.Loadlevel (1) will be executed
         isPhotoMode = GUI.Toggle(new Rect(xPos + 20, yPos + 30, 120, 20), isPhotoMode, "Screenshot Mode");

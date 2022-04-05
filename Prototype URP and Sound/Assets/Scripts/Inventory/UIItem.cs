@@ -12,9 +12,6 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
 {
     public Item item;
     public Image spriteImage;
-    public Text thoughtsText;
-    public GameObject inventoryPanel;
-    public GameObject thoughtsPanel;
     public bool examining = false;
 
 
@@ -25,16 +22,13 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
 
     public void Start()
     {
-
+        Init();
     }
 
     public void Init()
     {
         spriteImage = GetComponent<Image>();
         UpdateItem(null);
-        thoughtsText = Inventory.instance.ui_thoughts.GetComponentInChildren<Text>();
-        inventoryPanel = Inventory.instance.ui_inventory;
-        thoughtsPanel = Inventory.instance.ui_thoughts;
     }
 
     //Change the item's slot item to match the underlying inventory
@@ -62,7 +56,7 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         //Debug.Log(this.item.title);
         if (this.item != null)
         {             
-            thoughtsText.text = this.item.info;
+            Inventory.instance.ui_thoughts.GetComponentInChildren<Text>().text = this.item.info;
             CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);
             Inspector.instance.loader.LoadObject(Instantiate(item.prefab, new Vector3(0, 1000, 0), Quaternion.identity));
         }

@@ -6,7 +6,7 @@ public enum PlayerState
 {
     normal,
     restricted,
-    inventory,
+    ui,
     inspecting,
     dev_design
 }
@@ -30,14 +30,25 @@ public class CharacterState : MonoBehaviour
         switch (s)
         {
             case PlayerState.normal:
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                PlayerInput.playerInput.isDisabled = false;
+                break;
             case PlayerState.restricted:
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+                PlayerInput.playerInput.isDisabled = true;
                 break;
-            case PlayerState.inventory:
+            case PlayerState.ui:
             case PlayerState.inspecting:
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                PlayerInput.playerInput.isDisabled = false;
+                break;
+            case PlayerState.dev_design:
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                PlayerInput.playerInput.isDisabled = true;
                 break;
         }
     }
