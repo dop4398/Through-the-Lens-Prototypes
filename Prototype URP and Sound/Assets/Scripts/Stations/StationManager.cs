@@ -38,7 +38,7 @@ public class StationManager : MonoBehaviour
     void Update()
     {
         UpdateStations();
-        Debug.Log("stations.Count = " + stations.Count);
+        //Debug.Log("stations.Count = " + stations.Count);
     }
 
     private void UpdateStations()
