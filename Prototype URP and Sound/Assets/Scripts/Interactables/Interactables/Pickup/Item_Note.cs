@@ -31,6 +31,7 @@ public class Item_Note : PickUp
     {
         if (!usable)
             return;
+
         if (flag)
         {
             NoteDisplay.instance.ShowNote(text);

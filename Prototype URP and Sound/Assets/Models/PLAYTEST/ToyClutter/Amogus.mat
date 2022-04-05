@@ -133,12 +133,14 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DirtArea: 0.8
+    - _DirtIntensity: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 0
+    - _Intensity: 2
     - _Metallic: 0.85
     - _Occlusion: 1
     - _OcclusionStrength: 1

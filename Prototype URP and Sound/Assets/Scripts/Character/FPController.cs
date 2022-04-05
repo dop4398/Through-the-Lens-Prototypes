@@ -47,8 +47,8 @@ public class FPController : MonoBehaviour
     void Start()
     {
         // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
 
