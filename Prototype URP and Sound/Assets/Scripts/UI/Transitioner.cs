@@ -29,6 +29,8 @@ public class Transitioner : MonoBehaviour
 
         blackOut = DOVirtual.Float(0f, 1f, time, x => black.color = new Color(0, 0, 0, x)).SetAutoKill(false).Pause();
         fadeIn = DOVirtual.Float(1f, 0f, time, x => black.color = new Color(0, 0, 0, x)).SetAutoKill(false).Pause();
+
+        DoFadeIn();
     }
 
     // Update is called once per frame
@@ -54,6 +56,34 @@ public class Transitioner : MonoBehaviour
 
         Indicator.instance.gameObject.SetActive(true);
         fadeIn.Restart();
+    }
+
+    public async void DoFadeIn()
+    {
+        float end = Time.time + waitTime + transitionTime;
+        Indicator.instance.gameObject.SetActive(false);
+
+
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+
+        fadeIn.Restart();
+        end = Time.time + waitTime + transitionTime;
+
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+
+        Indicator.instance.gameObject.SetActive(true);
+
+    }
+
+    public async void DoFadeOut()
+    {
+        blackOut.Restart();
     }
 
 }

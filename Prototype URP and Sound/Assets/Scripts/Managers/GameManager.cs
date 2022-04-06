@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState{
     Mainmenu,
@@ -45,7 +46,7 @@ public class GameManager : MonoBehaviour
                 CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
                 break;
             case GameState.Mainmenu:
-                CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
+                SceneManager.LoadScene("StartScene");
                 break;
             case GameState.Pausemenu:
                 CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Album:
                 CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
+                AlbumUI.instance.UpdateUI();
                 break;
             case GameState.Inspection:
                 CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class AlbumUI : MonoBehaviour
 {
+    public static AlbumUI instance;
+
     public List<GameObject> photo_slots;
     public List<Photo> photos;
     public GameObject parent;
@@ -16,13 +18,18 @@ public class AlbumUI : MonoBehaviour
     private int page_current = 0;
     private const int photo_per_page = 4;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         photos = new List<Photo>(4);
-        for (int i = 0; i < gameObject.transform.childCount; i++)
+        for (int i = 0; i < parent.transform.childCount; i++)
         {
-            photo_slots.Add(gameObject.transform.GetChild(i).gameObject);
+            photo_slots.Add(parent.transform.GetChild(i).gameObject);
         }
         InitUI();
     }

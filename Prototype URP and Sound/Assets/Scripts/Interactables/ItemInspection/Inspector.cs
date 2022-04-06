@@ -26,7 +26,7 @@ public class Inspector : MonoBehaviour
         EventSystem.instance.OnItemInspection += TurnIndicatorOff;
         EventSystem.instance.OnItemInspection += () =>
         {
-            GameManager.instance.UpdateGameState(GameState.Game);
+            GameManager.instance.UpdateGameState(GameState.Inspection);
         };
         EventSystem.instance.OnItemInspectionExit += TurnCameraOff;
         EventSystem.instance.OnItemInspectionExit += TurnIndicatorOn;

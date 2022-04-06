@@ -109,6 +109,11 @@ public class PlayerInput : MonoBehaviour
         get { if (this.isDisabled) return false; return Input.GetKeyDown(KeyCode.Space); }
     }
 
+    public bool esc
+    {
+        get { return Input.GetKeyDown(KeyCode.Escape); }
+    }
+
     private void Awake()
     {
         playerInput = this;

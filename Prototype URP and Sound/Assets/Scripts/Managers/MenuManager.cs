@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _MainmenuPanel, _PausePanel, _InventoryPanel, _AlbumPanel, _ThoughtsPanel;
+    [SerializeField] public GameObject _PausePanel, _InventoryPanel, _AlbumPanel, _ThoughtsPanel;
 
     private void Awake()
     {
@@ -18,7 +18,6 @@ public class MenuManager : MonoBehaviour
 
     private void GameManagerOnGameStateChanged(GameState state)
     {
-        _MainmenuPanel.SetActive(state == GameState.Mainmenu);
         _PausePanel.SetActive(state == GameState.Pausemenu);
         _InventoryPanel.SetActive(state == GameState.Inventory);
         _AlbumPanel.SetActive(state == GameState.Album);
@@ -28,12 +27,12 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

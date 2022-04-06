@@ -17,10 +17,7 @@ public class UIInventory : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 
     private void Awake()
     {
-        for (int i = 0; i < numberOfSlots; i++)
-        {
-            uIItems.Add(slotPanel.GetChild(i).GetComponent<UIItem>());
-        }
+
     }
 
     private void Start()

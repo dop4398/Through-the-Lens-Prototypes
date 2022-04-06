@@ -54,6 +54,11 @@ public class FPController : MonoBehaviour
 
     void Update()
     {
+        if (PlayerInput.playerInput.esc && GameManager.instance.State != GameState.Mainmenu)
+        {
+            GameManager.instance.UpdateGameState(GameState.Pausemenu);
+        }
+
         if (CharacterComponents.instance.playerstate.GetState() == PlayerState.normal)
         {
             if (characterController.enabled)
@@ -62,12 +67,6 @@ public class FPController : MonoBehaviour
             }
 
             Look(PlayerInput.playerInput.mouseLook);
-
-            //if (PlayerInput.playerInput.interact)
-            //{
-            //    Cursor.lockState = CursorLockMode.Locked;
-            //    Cursor.visible = false;
-            //}
 
             if (PlayerInput.playerInput.inventory)
             {
@@ -80,7 +79,6 @@ public class FPController : MonoBehaviour
         }
         else if (CharacterComponents.instance.playerstate.GetState() == PlayerState.ui)
         {
-            //Debug.Log("awodijoad");
             if (PlayerInput.playerInput.inventory)
             {
                 GameManager.instance.UpdateGameState(GameState.Game);
