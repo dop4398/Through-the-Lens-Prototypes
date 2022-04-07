@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{93e0254b-8c5c-4bd9-9113-3500ceb0431f}">
+	<object class="AudioFile" id="{6b28f3b6-f60c-4c4f-ab1a-ea2897e49b9c}">
 		<property name="assetPath">
-			<value>Polaroid Camera.wav</value>
+			<value>UI Select.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.6515873015873015</value>
+			<value>1.2306122448979593</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{9b5cf063-1597-4422-9b48-dca9e769e9c3}</destination>
