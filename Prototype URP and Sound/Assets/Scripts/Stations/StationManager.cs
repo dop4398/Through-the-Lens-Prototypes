@@ -134,7 +134,7 @@ public class StationManager : MonoBehaviour
         {
             foreach(Station s in stations)
             {
-                if(s.id == CharacterComponents.instance.heldPhoto.heldPhotoIndex.ToString())
+                if(s.id == CharacterComponents.instance.heldPhoto.heldPhoto.ID)
                 {
                     return s.trigger;
                 }
