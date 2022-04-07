@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class SubScripts : MonoBehaviour
 {
     public static SubScripts instance;
+    public Image backgroundColor;
 
     public GameObject textBox;
     StreamReader reader = null;
@@ -25,6 +26,9 @@ public class SubScripts : MonoBehaviour
 
     public int lineCount;
     public int tutLineCount;
+    private Color invisible = new Color(0,0,0,0);
+    private Color active = new Color(0, 0, 0, 180);
+
 
     private void Awake()
     {
@@ -33,6 +37,7 @@ public class SubScripts : MonoBehaviour
 
     private void Start()
     {
+        backgroundColor.color = invisible;
         fileName = Path.Combine(Application.streamingAssetsPath, "dialogueText.txt");
         tutorialFile = Path.Combine(Application.streamingAssetsPath, "tutorialText.txt");
         //These need to be changed to a better option than hardcoding :)
@@ -237,16 +242,19 @@ public class SubScripts : MonoBehaviour
         //yield return new WaitForSeconds(1);
         //loop through the given station's line count, change the subtitles based on the necessary text and with the right time length
         //StationCount[0] = 0
+        backgroundColor.color = active;
         for (int i = 0; i <= stationCount[x]; i++)
         {
             textBox.GetComponent<Text>().text = dialogueText[x][i];
             yield return new WaitForSeconds(timers[x][i]);
         }
         textBox.GetComponent<Text>().text = "";
+        backgroundColor.color = invisible;
     }
 
     IEnumerator TutorialSequence(int x)
     {
+        backgroundColor.color = active;
         for (int i = 0; i < tutorialStopCount[x]; i++)
         {
             textBox.GetComponent<Text>().text = tutorialText[x][i];
@@ -254,6 +262,7 @@ public class SubScripts : MonoBehaviour
 
         }
         textBox.GetComponent<Text>().text = "";
+        backgroundColor.color = invisible;
     }
 
 }
