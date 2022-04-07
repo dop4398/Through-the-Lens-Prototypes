@@ -67,6 +67,10 @@ public class StationGuideSFX : MonoBehaviour
         return proximity;
     }
 
+    /// <summary>
+    /// Determines the radius of the current station's trigger box.
+    /// </summary>
+    /// <returns>Station trigger box radius if available, -1 if not.</returns>
     private float CalculateRadius()
     {
         if (StationManager.instance.DetectedStationTrigger() != null)
@@ -86,7 +90,6 @@ public class StationGuideSFX : MonoBehaviour
         {
             // some inverse of distance to station trigger: | distance / radius - 1 |
             proxSFX.setParameterByName("ProximityToStation", Mathf.Abs(proximity / radius - 1));
-
         }
         else
         {
