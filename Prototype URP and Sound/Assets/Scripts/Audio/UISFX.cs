@@ -15,9 +15,7 @@ public class UISFX : MonoBehaviour
 
     void Start()
     {
-        select = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Select");
-        hoverOn = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Hover On");
-        hoverOff = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Hover Off");
+        
     }
 
     void Update()
@@ -28,18 +26,21 @@ public class UISFX : MonoBehaviour
 #region Helper Methods
     public void PlaySelect()
     {
+        select = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Select");
         select.start();
         select.release();
     }
 
     public void PlayHoverOn()
     {
+        hoverOn = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Hover On");
         hoverOn.start();
         hoverOn.release();
     }
 
     public void PlayHoverOff()
     {
+        hoverOff = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Hover Off");
         hoverOff.start();
         hoverOff.release();
     }
