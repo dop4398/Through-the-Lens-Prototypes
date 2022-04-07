@@ -187,7 +187,8 @@ public class StationMaker : MonoBehaviour
         //Read the current angle and position of player and record it into the new station
         station.rot.y = CharacterComponents.instance.gameObject.transform.rotation.eulerAngles.y;
         station.rot.x = CharacterComponents.instance.controller.playerCamera.transform.rotation.eulerAngles.x;
-        g.transform.position = CharacterComponents.instance.controller.playerCamera.transform.position;
+        //g.transform.position = CharacterComponents.instance.controller.playerCamera.transform.position;
+        g.transform.position = CharacterComponents.instance.gameObject.transform.position;
 
         station.vignetteScalar = 1f;
         station.isSingleUse = false;

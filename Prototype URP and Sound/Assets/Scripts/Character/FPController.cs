@@ -32,7 +32,8 @@ public class FPController : MonoBehaviour
 
     public CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
-    float rotationX = 0;
+
+    public float rotationX = 0;
     bool inventoryOn = false;
 
     //[HideInInspector] public bool canMove = true; // part of old Movement() method
@@ -147,11 +148,21 @@ public class FPController : MonoBehaviour
     {
         float end = Time.time + duration;
         PlayerInput.playerInput.isDisabled = true;
-        float y = transform.rotation.eulerAngles.y;
-        float x = playerCamera.transform.rotation.eulerAngles.x;
+        //float y = transform.rotation.eulerAngles.y;
+        //float x = playerCamera.transform.localRotation.eulerAngles.x;
 
-        transform.DORotate(new Vector3(0, euler.y, 0), duration);
-        playerCamera.transform.DOLocalRotate(new Vector3(euler.x, 0, 0), duration);
+        Debug.Log(euler);
+        transform.DORotate(new Vector3(0, euler.y, 0), duration / 2f);
+        if(euler.x > 180f)
+        {
+            rotationX = euler.x - 360f;
+        }
+        else
+        {
+            rotationX = Mathf.Abs(euler.x);
+        }
+        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+        playerCamera.transform.DOLocalRotate(new Vector3(euler.x, 0, 0), duration / 2f);
 
         while (Time.time < end)
         {

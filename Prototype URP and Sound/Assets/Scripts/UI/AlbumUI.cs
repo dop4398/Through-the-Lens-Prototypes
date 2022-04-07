@@ -12,6 +12,7 @@ public class AlbumUI : MonoBehaviour
     public List<Photo> photos;
     public GameObject parent;
 
+    [SerializeField]
     private int page = 1;
 
     [SerializeField]
@@ -54,6 +55,7 @@ public class AlbumUI : MonoBehaviour
         {
             if (i + photo_per_page * page_current < CharacterComponents.instance.album.album.Count)
             {
+                photo_slots[i].GetComponent<Image>().color = new Color(1f,1f,1f,1f);
                 Texture2D tex = CharacterComponents.instance.album.album[i + photo_per_page * page_current].GetTexture_Current();
                 photo_slots[i].GetComponent<Image>().sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
                 photo_slots[i].transform.GetChild(0).gameObject.SetActive(CharacterComponents.instance.album.IsInHand(i + photo_per_page * page_current));
@@ -62,6 +64,7 @@ public class AlbumUI : MonoBehaviour
             else
             {
                 photo_slots[i].GetComponent<Image>().sprite = null;
+                photo_slots[i].GetComponent<Image>().color = new Color(0f,0f,0f,0f);
             }
         }
     }

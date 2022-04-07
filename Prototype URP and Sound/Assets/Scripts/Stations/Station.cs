@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public struct StationInfo
@@ -111,6 +112,31 @@ public class Station : MonoBehaviour
         {
             SwitchState(State.past);
         }
+
+        if (isSingleUse)
+            Destroy(GetComponent<Station>());
+    }
+
+    public async void ToggleState_delay()
+    {
+
+        float end = Time.time + PhotoController.instance.GetTransitionTime() / 2f;
+        //Indicator.instance.gameObject.SetActive(false);
+
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+
+        if (state == State.past)
+        {
+            SwitchState(State.present);
+        }
+        else
+        {
+            SwitchState(State.past);
+        }
+
 
         if (isSingleUse)
             Destroy(GetComponent<Station>());
