@@ -44,7 +44,7 @@ public class InspectionLoader : MonoBehaviour
         if (item.GetComponent<Item_Basic>() != null)
         {
             Inventory.instance.ui_thoughts.GetComponentInChildren<Text>().text = item.GetComponent<Item_Basic>().itemData.info;
-            Debug.Log(item.GetComponent<Item_Basic>().itemData.info);
+            //Debug.Log(item.GetComponent<Item_Basic>().itemData.info);
         }
         else
         {
@@ -55,6 +55,6 @@ public class InspectionLoader : MonoBehaviour
             Inspector.instance.controller.enabled = true; 
             item.GetComponent<PickUp>().RemoveHighlight(); 
         });
-        PPVController.instance.SetDoF(true);
+
     }
 }

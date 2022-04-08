@@ -18,6 +18,11 @@ public class CharacterState : MonoBehaviour
     [SerializeField]
     private PlayerState state;
 
+    private void Awake()
+    {
+        GameManager.OnGameStateChanged += GameManagerOnGameStateChanged;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +54,23 @@ public class CharacterState : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
                 PlayerInput.playerInput.isDisabled = true;
+                break;
+        }
+    }
+
+    private void GameManagerOnGameStateChanged(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.Album:
+            case GameState.Inventory:
+                SetState(PlayerState.ui);
+                break;
+            case GameState.Game:
+                SetState(PlayerState.normal);
+                break;
+            case GameState.Inspection:
+                SetState(PlayerState.inspecting);
                 break;
         }
     }

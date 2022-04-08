@@ -5,19 +5,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum GameState{
-    Mainmenu,
-    Pausemenu,
     Game,
     Inventory,
     Album,
     Inspection
 }
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameState State;
 
     public static event Action<GameState> OnGameStateChanged;
+    public static event Action<bool> OnGamePaused;
+
+    private bool GameIsPaused = false;
 
     private void Awake()
     {
@@ -29,6 +31,21 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         UpdateGameState(GameState.Game);
+    }
+
+    private void Update()
+    {
+        if (PlayerInput.playerInput.esc)
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     public void UpdateGameState(string newState)
@@ -43,31 +60,38 @@ public class GameManager : MonoBehaviour
         switch (State)
         {
             case GameState.Game:
-                CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
-                break;
-            case GameState.Mainmenu:
-                SceneManager.LoadScene("StartScene");
-                break;
-            case GameState.Pausemenu:
-                CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
                 break;
             case GameState.Inventory:
-                CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
                 break;
             case GameState.Album:
-                CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
                 AlbumUI.instance.UpdateUI();
                 break;
             case GameState.Inspection:
-                CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);
+                PPVController.instance.SetDoF(true);
                 break;
         }
 
         OnGameStateChanged?.Invoke(newState);
     }
 
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        CharacterComponents.instance.playerstate.SetState(PlayerState.ui);
+        OnGamePaused?.Invoke(GameIsPaused);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        UpdateGameState(State);
+        OnGamePaused?.Invoke(GameIsPaused);
+    }
+
     public void Exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 }

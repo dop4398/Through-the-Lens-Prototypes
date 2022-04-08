@@ -57,7 +57,6 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         if (this.item != null)
         {             
             Inventory.instance.ui_thoughts.GetComponentInChildren<Text>().text = this.item.info;
-            CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);
             Inspector.instance.loader.LoadObject(Instantiate(item.prefab, new Vector3(0, 1000, 0), Quaternion.identity));
         }
     }

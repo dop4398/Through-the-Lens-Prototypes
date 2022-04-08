@@ -26,7 +26,7 @@ public class Indicator : MonoBehaviour
         instance = this;
     }
 
-    void Start()
+    private void Start()
     {
         image = GetComponentInChildren<Image>();
     }
@@ -75,7 +75,11 @@ public class Indicator : MonoBehaviour
 
     public void SetSprite()
     {
-        image.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(4, 4);
+        if(image == null)
+        {
+            image = GetComponentInChildren<Image>();
+        }
+        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(4, 4);
         image.sprite = dot;
     }
 }

@@ -39,7 +39,6 @@ public class PickUp : Interactable, IInteractable
     public virtual void Interaction()
     {
         RemoveHighlight();
-        CharacterComponents.instance.playerstate.SetState(PlayerState.inspecting);
         Inspector.instance.loader.LoadObject(gameObject);
     }
 

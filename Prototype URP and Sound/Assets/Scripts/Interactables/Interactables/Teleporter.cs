@@ -59,8 +59,8 @@ public class Teleporter : Interactable, IInteractable
         openDoorSFX.start();
         openDoorSFX.release();
 
-        float end = Time.time + Transitioner.instance.transitionTime + 0.5f;
-        Transitioner.instance.DoRoomTransition();
+        float end = Time.time + UIManager.instance.transitioner.transitionTime + 0.5f;
+        UIManager.instance.transitioner.DoRoomTransition();
         CharacterComponents.instance.controller.LockInput(2f);
 
         while (Time.time < end)

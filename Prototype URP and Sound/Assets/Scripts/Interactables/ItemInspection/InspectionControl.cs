@@ -47,14 +47,13 @@ public class InspectionControl : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                PPVController.instance.SetDoF(false);
+
                 ExitInspection();
             }
 
             if (Input.GetKeyDown(KeyCode.F))
             {
                 Inspector.instance.loader.item.GetComponent<PickUp>().Use();
-                Debug.Log(Inspector.instance.loader.item.GetComponent<PickUp>());
             }
 
             if (_isRotating)
@@ -84,7 +83,8 @@ public class InspectionControl : MonoBehaviour
 
     private void ExitInspection()
     {
-        CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
+        //CharacterComponents.instance.playerstate.SetState(PlayerState.normal);
+        PPVController.instance.SetDoF(false);
         EventSystem.instance.ItemInspectionExit();
         this.enabled = false;
     }

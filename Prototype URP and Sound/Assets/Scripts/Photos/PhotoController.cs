@@ -83,11 +83,8 @@ public class PhotoController : MonoBehaviour
 
         //Other init
         material = gameObject.GetComponent<MeshRenderer>().material;
-        Debug.Log("PhotoController State: " + state);
-        SetState(CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
-        Debug.Log("PhotoController State: " + state);
-        Debug.Log("HeldPhoto State: " + CharacterComponents.instance.heldPhoto.heldPhoto.state);
+        SetState(CharacterComponents.instance.heldPhoto.heldPhoto.state);
 
         //Dissolve tween effect init
         dissolveTween = DOVirtual.Float(0f, 0.75f, TransitionTime, v =>

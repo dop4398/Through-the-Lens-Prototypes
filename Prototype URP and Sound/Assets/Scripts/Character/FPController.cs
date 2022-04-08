@@ -55,11 +55,6 @@ public class FPController : MonoBehaviour
 
     void Update()
     {
-        if (PlayerInput.playerInput.esc && GameManager.instance.State != GameState.Mainmenu)
-        {
-            GameManager.instance.UpdateGameState(GameState.Pausemenu);
-        }
-
         if (CharacterComponents.instance.playerstate.GetState() == PlayerState.normal)
         {
             if (characterController.enabled)
