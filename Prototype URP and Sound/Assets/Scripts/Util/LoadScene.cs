@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class LoadScene : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +20,10 @@ public class LoadScene : MonoBehaviour
         
     }
 
+  
+
     public void DoThis(string name)
     {
-        SceneManager.LoadScene(name);
+       SceneManager.LoadScene(name);
     }
 }

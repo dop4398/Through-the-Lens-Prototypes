@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ApartmentRework.unity
     guid: 3a25e80cc83b73545ac7c68e2176556d
+  - enabled: 1
+    path: Assets/Scenes/DuckTapeVideoScene.unity
+    guid: d62352e0049d8be418a17ec0814e92f3
   m_configObjects: {}
