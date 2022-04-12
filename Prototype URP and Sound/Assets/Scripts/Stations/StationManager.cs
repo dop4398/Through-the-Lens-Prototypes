@@ -63,6 +63,7 @@ public class StationManager : MonoBehaviour
                     if (PhotoController.instance.GetPhotoStatus() && !CharacterComponents.instance.heldPhoto.swapHasTriggered && this.vig > 0.97f)
                     {
                         //PhotoController.instance.ChangeState();
+                        subtitles.Run(int.Parse(s.id));
                         CharacterComponents.instance.heldPhoto.swapHasTriggered = true; // Here to only swap once per focus
 
                         CharacterComponents.instance.heldPhoto.SwapPhotoContent();
@@ -71,7 +72,7 @@ public class StationManager : MonoBehaviour
                         s.ToggleState_delay();
 
                         //Insert station's id instead of 0 pls
-                        //subtitles.Run(int.Parse(s.id));
+                        //
                     }
                 }
             }

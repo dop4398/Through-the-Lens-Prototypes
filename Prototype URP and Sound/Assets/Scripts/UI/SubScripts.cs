@@ -27,7 +27,7 @@ public class SubScripts : MonoBehaviour
     public int lineCount;
     public int tutLineCount;
     private Color invisible = new Color(0,0,0,0);
-    private Color active = new Color(0, 0, 0, 180);
+    private Color active = new Color(0, 0, 0, .75f);
 
 
     private void Awake()
