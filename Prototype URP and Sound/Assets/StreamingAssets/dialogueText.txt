@@ -1,18 +1,38 @@
-0|Stephanie: So this is what 40 years of neglect looks like.|3
-0|Stephanie: I can kind of see it, though....|3
-0|Stephanie: Mom, as a kid, and the rest of her family.|3
-0|Stephanie: I'm glad Grandpa took these photos. They let me see how things were, back then.|3
-0|Stephanie: It's almost like I'm there.|3
-1|Stephanie: A throne restored to its former glory.|3
-1|Stephanie: Funny. I never would've pegged Grandpa as the rocking chair-type.|3
-1|Stephanie: But, hey, I never knew him.|3
-2|Stephanie: So, this, more specifically, was "home."|3
-2|Stephanie: Doesn't seem like much room for raising four kids.|3
-2|Stephanie: I guess that wasn't a problem for too long, though.|3
-3|Everyone: Happy Birthday to you~|3
-3|Amanda: Close your eyes and make a wish, Phoebe!!|3
-3|Amanda: ... Hector, the phone. It’s ringing. Don't answer it.|3
-3|Hector: I’m just going to step outside for a minute–|3
-3|Amanda: Hector, it’s her birthday...|3
-3|Hector: Honey, I have to. Important decisions at the Mayor’s Office recently.|3
-3|Hector: I’ll just be right outside. Let her wear my hat.|3
+0|Amanda: One moment, Hector.|2
+0|Amanda: Ryan, honey, what’s wrong?|2
+0|Ryan: I wanna go play games! Games! Prizes!|3
+0|Amanda: You can start playing in just a bit.|3
+0|Hector: Big smile, everyone! Come on, Benji.|3
+0|Benji: I don’t even want to be here.|2
+0|Candace: Did high school make you suddenly stop liking the street fair?|4
+0|Benji: I don’t wanna be here with everybody else.|3
+0|Benji: I mean, don’t you want to go hang out with your friends?|4
+0|Candace: Well.. I see them at school all the time. And it’s Ryan’s first time.|4
+0|Benji: Yeah, so I have to win prizes for him.|3
+0|Phoebe: I’ll play with you.|2
+0|Candace: Yeah, we can all play the games together.|3
+0|Hector: You can all pose for a picture too before you go off and clear all the prizes off the racks.|6
+0|Hector: I see a baseball throwing game!|3
+0|Benji: I don’t even pitch anymore.|2
+0|Ryan: They’re got the mousey toys there!|2
+0|Hector: I’ll make sure you get those prizes, Ryan. Count on your Pop.|4
+0|Hector: Let’s get a quick picture before we head in.|3
+0|Hector: Big smiles all around!|2
+1|Candace: Thanks for waiting for me, I was just saying bye to my friends.|4
+1|Hector: Did they have a good time at the fair too?|3
+1|Candace: Yep! We saw you sometimes.|2
+1|Candace: What prizes did you win?|2
+1|Phoebe: Apparently this candy is from the moon! And this dog.|3
+1|Ryan: I got Mr. Mouse, and Mrs. Fish, and Big Alien, and Cat Cat, and this Ball!|4
+1|Benji: And I got bubbles. |2
+1|Amanda: Ben was being a good older brother and helped his younger siblings win lots of prizes.|5
+1|Benji: Yep, and I had the best time doing it.|3
+1|Hector: How could you not have fun at the street fair?|3
+1|Candace: Benji is really good at not having fun.|3
+1|Hector: I’m glad you had a good time with your friends, Candy.|3
+1|Candace: You haven’t called me that in so long haha, it’s weird to hear.|4
+1|Candace: Did you have a good time, Phoebe?|3
+1|Phoebe: Yep! Your friends are cool. I had a good time here.|3
+1|Hector: Alright, let’s get another picture before we - Benji?|3
+1|Benji: I’m tired and have to go. Take a picture without me.|3
+2||2
