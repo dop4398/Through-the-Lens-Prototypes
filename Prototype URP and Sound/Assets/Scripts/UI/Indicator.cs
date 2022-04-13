@@ -79,7 +79,7 @@ public class Indicator : MonoBehaviour
         {
             image = GetComponentInChildren<Image>();
         }
-        gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(4, 4);
+        image.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(4, 4);
         image.sprite = dot;
     }
 }
