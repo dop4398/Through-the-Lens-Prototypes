@@ -23,11 +23,20 @@ public class SubScripts : MonoBehaviour
     List<String>[] dialogueText = new List<String>[100];
     List<int>[] timers = new List<int>[100];
     int[] stationCount = new int[10];
+    List<Color32>[] dialogueColors = new List<Color32>[100];
+    Color32 benji = new Color32(67, 100, 199, 255);
+    Color32 candace = new Color32(34, 140, 15, 255);
+    Color32 amanda = new Color32(135, 100, 192, 255);
+    Color32 phoebe = new Color32(199, 122, 210, 255);
+    Color32 ryan = new Color32(232, 147, 63, 255);
+    Color32 hector = new Color32(213, 47, 51, 255);
 
     public int lineCount;
     public int tutLineCount;
     private Color invisible = new Color(0,0,0,0);
-    private Color active = new Color(0, 0, 0, .75f);
+    private Color activeDark = new Color(0, 0, 0, .75f);
+    private Color activeLight = new Color(.5f, .5f, .5f, .75f);
+
 
 
     private void Awake()
@@ -47,6 +56,7 @@ public class SubScripts : MonoBehaviour
         textBox.GetComponent<Text>().text = "";
         int station = 0;
         int tempInt = 0;
+       
         int count = 0;
         lineCount = 0;
         tutLineCount = 0;
@@ -126,6 +136,37 @@ public class SubScripts : MonoBehaviour
                 }
                 timers[station].Add(tempInt);
 
+                if (dialogueColors[station] == null)
+                {
+                    dialogueColors[station] = new List<Color32>();
+                }
+               
+
+                switch (temp[3])
+                {
+                    case "benji":
+                        dialogueColors[station].Add(benji);                       
+                        break;
+                    case "candace":
+                        dialogueColors[station].Add(candace);                    
+                        break;
+                    case "amanda":
+                        dialogueColors[station].Add(amanda);                      
+                        break;
+                    case "phoebe":
+                        dialogueColors[station].Add(phoebe);                       
+                        break;
+                    case "ryan":
+                        dialogueColors[station].Add(ryan);                       
+                        break;
+                    case "hector":
+                        dialogueColors[station].Add(hector);                     
+                        break;
+                    default:
+                        dialogueColors[station].Add(new Color32(0, 0, 0, 0));
+                        break;
+                }
+
 
             }
 
@@ -187,6 +228,8 @@ public class SubScripts : MonoBehaviour
                     tutorialTimers[station] = new List<int>();
                 }
                 tutorialTimers[station].Add(tempInt);
+                
+       
 
 
             }
@@ -242,9 +285,10 @@ public class SubScripts : MonoBehaviour
         //yield return new WaitForSeconds(1);
         //loop through the given station's line count, change the subtitles based on the necessary text and with the right time length
         //StationCount[0] = 0
-        backgroundColor.color = active;
+        backgroundColor.color = activeDark;
         for (int i = 0; i <= stationCount[x]; i++)
         {
+            textBox.GetComponent<Text>().color = dialogueColors[x][i];
             textBox.GetComponent<Text>().text = dialogueText[x][i];
             yield return new WaitForSeconds(timers[x][i]);
         }
@@ -254,13 +298,17 @@ public class SubScripts : MonoBehaviour
 
     IEnumerator TutorialSequence(int x)
     {
-        backgroundColor.color = active;
+        
+        backgroundColor.color = activeDark;
         for (int i = 0; i < tutorialStopCount[x]; i++)
         {
+            textBox.GetComponent<Text>().color = dialogueColors[x][i];
+          
             textBox.GetComponent<Text>().text = tutorialText[x][i];
             yield return new WaitForSeconds(tutorialTimers[x][i]);
 
         }
+        textBox.GetComponent<Text>().color = new Color(255, 255, 255);
         textBox.GetComponent<Text>().text = "";
         backgroundColor.color = invisible;
     }
