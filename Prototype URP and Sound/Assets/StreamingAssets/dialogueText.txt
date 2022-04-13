@@ -36,9 +36,11 @@
 5|Hector: How could you not have fun at the street fair?|3
 5|Candace: Benji is really good at not having fun.|3
 5|Hector: I'm glad you had a good time with your friends, Candy.|3
-5|Candace: You haven’t called me that in so long haha, it's weird to hear.|4
+5|Candace: You haven't called me that in so long haha, it's weird to hear.|4
 5|Candace: Did you have a good time, Phoebe?|3
 5|Phoebe: Yep! Your friends are cool. I had a good time here.|3
 5|Hector: Alright, let's get another picture before we - Benji?|3
 5|Benji: I'm tired and have to go. Take a picture without me.|3
+5||2
+5|[END OF TUTORIAL]|15
 6||2
