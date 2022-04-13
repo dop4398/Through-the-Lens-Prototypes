@@ -1,7 +1,21 @@
-0||1
-1||1
-2||2
-3||3
+0|Stephanie: So this is what 40 years of neglect looks like.|3
+0|Stephanie: I can kind of see it, though....|3
+0|Stephanie: Mom, as a kid, and the rest of her family.|3
+0|Stephanie: I'm glad Grandpa took these photos. They let me see how things were, back then.|3
+0|Stephanie: It's almost like I'm there.|3
+1|Stephanie: A throne restored to its former glory.|3
+1|Stephanie: Funny. I never would've pegged Grandpa as the rocking chair-type.|3
+1|Stephanie: But, hey, I never knew him.|3
+2|Stephanie: So, this, more specifically, was "home."|3
+2|Stephanie: Doesn't seem like much room for raising four kids.|3
+2|Stephanie: I guess that wasn't a problem for too long, though.|3
+3|Everyone: Happy Birthday to you~|3
+3|Amanda: Close your eyes and make a wish, Phoebe!!|3
+3|Amanda: ... Hector, the phone. It's ringing. Don't answer it.|3
+3|Hector: I'm just going to step outside for a minute.|3
+3|Amanda: Hector, it's her birthday...|3
+3|Hector: Honey, I have to. Important decisions at the Mayor's Office recently.|3
+3|Hector: I'll just be right outside. Let her wear my hat.|3
 4|Amanda: One moment, Hector.|2
 4|Amanda: Ryan, honey, what's wrong?|2
 4|Ryan: I wanna go play games! Games! Prizes!|3
@@ -42,5 +56,4 @@
 5|Hector: Alright, let's get another picture before we - Benji?|3
 5|Benji: I'm tired and have to go. Take a picture without me.|3
 5||2
-5|[END OF TUTORIAL]|15
 6||2
