@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{d777a962-ef69-41df-9227-6bcc491b95c7}">
+		<property name="assetPath">
+			<value>Telephone Ring.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.7841043083900225</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9b5cf063-1597-4422-9b48-dca9e769e9c3}</destination>
+		</relationship>
+	</object>
+</objects>

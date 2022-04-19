@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{2faff117-47dc-4ee5-b66c-4b4123f84f23}">
+		<property name="assetPath">
+			<value>Glove Relic Ambient.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>20.031405895691609</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9b5cf063-1597-4422-9b48-dca9e769e9c3}</destination>
+		</relationship>
+	</object>
+</objects>
