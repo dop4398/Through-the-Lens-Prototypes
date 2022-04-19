@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{c377088c-170d-41d8-9e6e-9905f1918057}">
+		<property name="assetPath">
+			<value>Photo Put Down.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.0085260770975055</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9b5cf063-1597-4422-9b48-dca9e769e9c3}</destination>
+		</relationship>
+	</object>
+</objects>

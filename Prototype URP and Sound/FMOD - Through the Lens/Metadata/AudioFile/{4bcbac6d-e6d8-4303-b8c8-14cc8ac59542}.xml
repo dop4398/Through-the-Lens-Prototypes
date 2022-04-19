@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{4bcbac6d-e6d8-4303-b8c8-14cc8ac59542}">
+		<property name="assetPath">
+			<value>Album Open.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.9721541950113379</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{9b5cf063-1597-4422-9b48-dca9e769e9c3}</destination>
+		</relationship>
+	</object>
+</objects>
