@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class VideoHandler : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class VideoHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    void ButtonPressed()
+    {
+        //Stop Video
+        //Change Scene
+        videoPlayer.Stop();
+        SceneManager.LoadScene("ApartmentRework");
     }
 }
