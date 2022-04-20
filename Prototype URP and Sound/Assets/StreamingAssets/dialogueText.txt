@@ -1,61 +1,38 @@
-0|Stephanie: So this is what 40 years of neglect looks like.|3|Stephanie
-0|Stephanie: I can kind of see it, though....|3|Stephanie
-0|Stephanie: Mom, as a kid, and the rest of her family.|3|Stephanie
-0|Stephanie: I'm glad Grandpa took these photos. They let me see how things were, back then.|3|Stephanie
-0|Stephanie: It's almost like I'm there.|3|Stephanie
-1|Stephanie: A throne restored to its former glory.|3|Stephanie
-1|Stephanie: Funny. I never would've pegged Grandpa as the rocking chair-type.|3|Stephanie
-1|Stephanie: But, hey, I never knew him.|3|Stephanie
-2|Stephanie: So, this, more specifically, was "home."|3|Stephanie
-2|Stephanie: Doesn't seem like much room for raising four kids.|3|Stephanie
-2|Stephanie: I guess that wasn't a problem for too long, though.|3|Stephanie
+0|So this is what 40 years of neglect looks like.|3|Stephanie
+0|I can kind of see it, though....|3|Stephanie
+0|Mom, as a kid, and the rest of her family.|3|Stephanie
+0|I'm glad Grandpa took these photos. They let me see how things were, back then.|3|Stephanie
+0|It's almost like I'm there.|3|Stephanie
+1|A throne restored to its former glory.|3|Stephanie
+1|Funny. I never would've pegged Grandpa as the rocking chair-type.|3|Stephanie
+1|But, hey, I never knew him.|3|Stephanie
+2|So, this, more specifically, was "home."|3|Stephanie
+2|Doesn't seem like much room for raising four kids.|3|Stephanie
+2|I guess that wasn't a problem for too long, though.|3|Stephanie
 3|Everyone: Happy Birthday to you~|3|Everyone
-3|Amanda: Close your eyes and make a wish, Phoebe!!|3|amanda
-3|Amanda: ... Hector, the phone. It's ringing. Don't answer it.|3|amanda
-3|Hector: I'm just going to step outside for a minute.|3|hector
-3|Amanda: Hector, it's her birthday...|3|amanda
-3|Hector: Honey, I have to. Important decisions at the Mayor's Office recently.|3|hector
-3|Hector: I'll just be right outside. Let her wear my hat.|3|hector
+3|Amanda: "Close your eyes and make a wish, Phoebe!!"|3|amanda
+3|Amanda: "... Hector, the phone. It's ringing. Don't answer it."|3|amanda
+3|Hector: "I'm just going to step outside for a minute."|3|hector
+3|Amanda: "Hector, it's her birthday..."|3|amanda
+3|Hector: "Honey, I have to. Important decisions at the Mayor's Office recently."|3|hector
+3|Hector: "I'll just be right outside. Let her wear my hat."|3|hector
 3||2|d
-3|END OF PLAYTEST, FEEL FREE TO ROAM OR TAKE THE SURVEY|15|d
-4|Amanda: One moment, Hector.|3|amanda
-4|Amanda: Ryan, honey, what's wrong?|3|amanda
-4|Ryan: I wanna go play games! Games! Prizes!|4|ryan
-4|Amanda: You can start playing in just a bit.|4|amanda
-4|Hector: Big smile, everyone! Come on, Benji.|4|hector
-4|Benji: I don't even want to be here.|2|benji
-4|Candace: Did high school make you suddenly stop liking the street fair?|5|candace
-4|Benji: I don't wanna be here with everybody else.|4|benji
-4|Benji: I mean, don't you want to go hang out with your friends?|5|benji
-4|Candace: Well.. I see them at school all the time. And it's Ryan's first time.|5|candace
-4|Benji: Yeah, so I have to win prizes for him.|4|benji
-4|Phoebe: I'll play with you.|3|phoebe
-4|Candace: Yeah, we can all play the games together.|4|candace
-4|Hector: You can all pose for a picture too...|4|hector
-4|Hector: before you go off and clear all the prizes off the racks.|5|hector
-4|Hector: I see a baseball throwing game!|4|hector
-4|Benji: I don't even pitch anymore.|3|benji
-4|Ryan: They got the mousey toys there!|3|ryan
-4|Hector: I'll make sure you get those prizes, Ryan. Count on your Pop.|5|hector
-4|Hector: Let's get a quick picture before we head in.|4|hector
-4|Hector: Big smiles all around!|3|hector
-5|Candace: Thanks for waiting for me, I was just saying bye to my friends.|5|candace
-5|Hector: Did they have a good time at the fair too?|4|hector
-5|Candace: Yep! We saw you sometimes.|3|candace
-5|Candace: What prizes did you win?|3|candace
-5|Phoebe: Apparently this candy is from the moon! And this dog.|4|phoebe
-5|Ryan: I got Mr. Mouse, and Mrs. Fish, and Big Alien, and Cat Cat, and this Ball!|5|ryan
-5|Benji: And I got bubbles. |3|benji
-5|Amanda: Ben was being a good older brother...|4|amanda
-5|Amanda: and helped his younger siblings win lots of prizes.|4|amanda
-5|Benji: Yep, and I had the best time doing it.|4|benji
-5|Hector: How could you not have fun at the street fair?|4|hector
-5|Candace: Benji is really good at not having fun.|4|candace
-5|Hector: I'm glad you had a good time with your friends, Candy.|4|hector
-5|Candace: You haven't called me that in so long haha, it's weird to hear.|5|candace
-5|Candace: Did you have a good time, Phoebe?|4|candace
-5|Phoebe: Yep! Your friends are cool. I had a good time here.|4|phoebe
-5|Hector: Alright, let's get another picture before we - Benji?|4|hector
-5|Benji: I'm tired and have to go. Take a picture without me.|4|benji
+4|*Whispers of the past become clear*|3|d
+4|*You recognize these voices, but they seem younger than normal*|3|d
+4|Hector: "Everybody better be ready to have a great time!"|4|hector
+4|Candace: "Absolutely!|3|candace
+4|Hector: "Attagirl."|3|hector
+4|Phoebe: "Yeah, me too."|3|phoebe
+4|Ben: "Me not."|3|benji
+4|Amanda: "Benji, don’t say that."|4|amanda
+4|Ben: "What? I wanna hang out with my friends instead of.."|5|benji
+4|Ben: "Being stuck winning prizes for Ryan the whole time."|5|benji
+4|Hector: "We are spending time together as a family."|5|hector
+5|Amanda: "Hector, it was so nice to relax. Thank you for watching the kids."|5|amanda
+5|Amanda: ".. is that your phone ringing? Really, while we’re together?"|5|amanda
+5|Hector: "Honey, I’m sorry, you know how impatient the Mayor is.."|5|hector
+5|Ben: "If he’s done playing family for the day, then so am I."|5|benji
+5|Candace: "Stop being a jerk. Dad is here."|4|candace
+5|Phoebe: "Ben, come back!"|4|phoebe
 5||2|d
 6||2|d
