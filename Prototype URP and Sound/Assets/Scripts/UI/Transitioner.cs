@@ -22,13 +22,14 @@ public class Transitioner : MonoBehaviour
     {
 
         black = GetComponent<Image>();
+        black.color = new Color(0, 0, 0, 1);
 
         time = transitionTime;
 
         blackOut = DOVirtual.Float(0f, 1f, time, x => black.color = new Color(0, 0, 0, x)).SetAutoKill(false).Pause().SetLink(gameObject);
         fadeIn = DOVirtual.Float(1f, 0f, time, x => black.color = new Color(0, 0, 0, x)).SetAutoKill(false).Pause().SetLink(gameObject);
 
-        DoFadeIn();
+        DoIntroFadeIn();
 
     }
 
@@ -76,6 +77,20 @@ public class Transitioner : MonoBehaviour
     public void DoFadeOut()
     {
         blackOut.Restart();
+    }
+
+    public async void DoIntroFadeIn()
+    {
+        float end = Time.time + transitionTime;
+        Indicator.instance.gameObject.SetActive(false);
+
+        Debug.Log("Intro Fade in");
+        while (Time.time < end)
+        {
+            await Task.Yield();
+        }
+
+        fadeIn.Restart();
     }
 
     private void OnDestroy()

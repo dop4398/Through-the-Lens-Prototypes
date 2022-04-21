@@ -29,6 +29,7 @@ public class Indicator : MonoBehaviour
     private void Start()
     {
         image = GetComponentInChildren<Image>();
+        gameObject.SetActive(false);
     }
 
     public void SetSprite(GameObject obj)

@@ -8,7 +8,8 @@ public enum GameState{
     Game,
     Inventory,
     Album,
-    Inspection
+    Inspection,
+    CutScene
 }
 
 public class GameManager : MonoBehaviour
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
-        UpdateGameState(GameState.Game);
+        UpdateGameState(GameState.CutScene);
     }
 
     private void Update()
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour
         switch (State)
         {
             case GameState.Game:
+                CutsceneManager.instance.camera.gameObject.SetActive(false);
+                CharacterComponents.instance.controller.playerCamera.gameObject.SetActive(true);
                 break;
             case GameState.Inventory:
                 break;
@@ -69,7 +72,13 @@ public class GameManager : MonoBehaviour
             case GameState.Inspection:
                 PPVController.instance.SetDoF(true);
                 break;
+            case GameState.CutScene:
+                CutsceneManager.instance.camera.gameObject.SetActive(true);
+                CharacterComponents.instance.controller.playerCamera.gameObject.SetActive(false);
+                break;
         }
+
+        Debug.Log(newState);
 
         OnGameStateChanged?.Invoke(newState);
     }
