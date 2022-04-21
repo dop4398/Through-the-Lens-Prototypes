@@ -139,7 +139,11 @@ public class Station : MonoBehaviour
 
 
         if (isSingleUse)
+        {
             Destroy(GetComponent<Station>());
+            Destroy(GetComponentInChildren<StationTrigger>());
+            Destroy(GetComponentInChildren<HoldSnap>());
+        }
     }
 
     /// <summary>
