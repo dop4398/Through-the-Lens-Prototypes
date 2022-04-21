@@ -64,6 +64,7 @@ public class AlbumUI : MonoBehaviour
             {
                 photo_slots[i].GetComponent<Image>().sprite = null;
                 photo_slots[i].GetComponent<Image>().color = new Color(0f,0f,0f,0f);
+                photo_slots[i].transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }

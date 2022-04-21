@@ -23,7 +23,7 @@ public class StationManager : MonoBehaviour
         instance = this;
     }
 
-    private List<Station> stations;
+    public List<Station> stations;
     private float glow;
     private float vig;
 
@@ -70,9 +70,11 @@ public class StationManager : MonoBehaviour
                         CharacterComponents.instance.controller.LockCameraAndInput(s.rot, PhotoController.instance.GetTransitionTime());
                         PhotoController.instance.PlaySuccessParticle();
                         s.ToggleState_delay();
-
-                        //Insert station's id instead of 0 pls
-                        //
+                        if (s.isSingleUse)
+                        {
+                            stations.Remove(s);
+                            break;
+                        }
                     }
                 }
             }
