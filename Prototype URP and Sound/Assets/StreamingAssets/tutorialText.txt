@@ -20,4 +20,5 @@
 5|There are more puzzles to explore beyond this point|6|Stephanie
 5|but they aren't nearly as complete as what you've previously played.|6|Stephanie
 5|Consider them a sneak peek of what could come later ;)|7|Stephanie
-6||1|Stephanie
+6|Oh, it's locked. Maybe there's another way in?|1|Stephanie
+7||1|Stephanie
