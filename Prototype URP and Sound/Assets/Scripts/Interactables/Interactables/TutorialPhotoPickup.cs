@@ -5,6 +5,8 @@ using UnityEngine;
 public class TutorialPhotoPickup : Interactable, IInteractable
 {
     public GameObject playerPhotoObject;
+    public SubScripts subtitles;
+    public int index;
 
     void Start()
     {
@@ -26,5 +28,8 @@ public class TutorialPhotoPickup : Interactable, IInteractable
 
         // Make this object inactive
         gameObject.SetActive(false);
+
+        // proc subtitles
+        subtitles.tutorialRun(index);
     }
 }
