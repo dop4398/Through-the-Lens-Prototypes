@@ -8,6 +8,7 @@ using UnityEngine;
 public class UISFX : MonoBehaviour
 {
     #region Fields
+    private FMOD.Studio.EventInstance startGame;
     private FMOD.Studio.EventInstance select;
     private FMOD.Studio.EventInstance hoverOn;
     private FMOD.Studio.EventInstance hoverOff;
@@ -43,6 +44,13 @@ public class UISFX : MonoBehaviour
         hoverOff = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Hover Off");
         hoverOff.start();
         hoverOff.release();
+    }
+
+    public void PlayStartGame()
+    {
+        startGame = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/Game Start");
+        startGame.start();
+        startGame.release();
     }
 #endregion
 }
