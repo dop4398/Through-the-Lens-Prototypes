@@ -24,12 +24,12 @@ public class SubScripts : MonoBehaviour
     List<int>[] timers = new List<int>[100];
     int[] stationCount = new int[10];
     List<Color32>[] dialogueColors = new List<Color32>[100];
-    Color32 benji = new Color32(67, 100, 199, 255);
-    Color32 candace = new Color32(34, 140, 15, 255);
-    Color32 amanda = new Color32(135, 100, 192, 255);
-    Color32 phoebe = new Color32(199, 122, 210, 255);
-    Color32 ryan = new Color32(232, 147, 63, 255);
-    Color32 hector = new Color32(213, 47, 51, 255);
+    Color32 benji = new Color32(164, 182, 235, 255);
+    Color32 candace = new Color32(153, 225, 140, 255);
+    Color32 amanda = new Color32(198, 159, 255, 255);
+    Color32 phoebe = new Color32(231, 179, 239, 255);
+    Color32 ryan = new Color32(255, 201, 149, 255);
+    Color32 hector = new Color32(255, 135, 136, 255);
     Color32 defaultColor = new Color32(255,255,255,255);
 
     public int lineCount;
@@ -280,7 +280,6 @@ public class SubScripts : MonoBehaviour
     }
 
     //takes the int provided from the trigger box, looks in the file for those lines, and returns them correctly :)
-    //theoretically
     IEnumerator TextSequence(int x)
     {
         //yield return new WaitForSeconds(1);
@@ -297,17 +296,15 @@ public class SubScripts : MonoBehaviour
         backgroundColor.color = invisible;
     }
 
+    //Works identical to textSequence(x), but with the tutorial file instead
     IEnumerator TutorialSequence(int x)
     {
-
         backgroundColor.color = activeDark;
+        textBox.GetComponent<Text>().color = defaultColor;
         for (int i = 0; i < tutorialStopCount[x]; i++)
-        {
-            textBox.GetComponent<Text>().color = dialogueColors[x][i];
-
+        {           
             textBox.GetComponent<Text>().text = tutorialText[x][i];
             yield return new WaitForSeconds(tutorialTimers[x][i]);
-
         }
         textBox.GetComponent<Text>().color = new Color(255, 255, 255);
         textBox.GetComponent<Text>().text = "";

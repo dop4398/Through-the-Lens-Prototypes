@@ -1,13 +1,10 @@
 0|So this is what 40 years of abandon looks like.|4|Stephanie
-0|I can kind of see it, though…|3|Stephanie
-0|Dad, as a kid, and the rest of the family.|4|Stephanie
-1|I’m glad Grandpa took these photos. They let me see how things were, back then.|5|Stephanie
-1|Almost like I was there|3|Stephanie
+0|I can kind of see it, though…|2|Stephanie
+0|Dad, as a kid, and the rest of the family.|3|Stephanie
+1||1|d
 2|The environment around here is kind of familiar.|4|Stephanie
 2|Let’s see if I can find where this picture was taken.|4|Stephanie
-3|Dad sure wasn’t eager to spend time with everybody.|4|Stephanie
-3|Nowadays he sounds regretful. Bitter.|4|Stephanie
-3|Like if maybe he knew how long everyone had left here, he would have acted differently.|6|Stephanie
+3||1|d
 4|I wonder if they took any other photos from the fair.|4|Stephanie
 4|Let me check Grandpa’s album.|3|Stephanie
 5|The evacuation was dated the day after the fair.|4|Stephanie
@@ -15,11 +12,12 @@
 5|Maybe by choice. Maybe on purpose.|4|Stephanie
 5|But, Dad, for your sake...For grandpa’s sake...For everyone’s sake...|5|Stephanie
 5|I’m going to get back what we lost here.|4|Stephanie
-5||2|Stephanie
-5|You have successfully completed the demo section of the game!|6|Stephanie
-5|There are more puzzles to explore beyond this point|6|Stephanie
-5|but they aren't nearly as complete as what you've previously played.|6|Stephanie
+5|.|1|Stephanie
+5|You have successfully completed the demo section of the game!|4|Stephanie
+5|There are more puzzles to explore beyond this point|4|Stephanie
+5|but they aren't nearly as complete as what you've previously played.|4|Stephanie
 5|Consider them a sneak peek of what could come later ;)|7|Stephanie
-6|Oh, it's locked. Maybe there's another way in?|1|Stephanie
+6|Oh, it's locked. Maybe there's another way in?|4|Stephanie
 7||1|Stephanie
-8|Oh, I dropped one of Granpa's photos.|1|Stephanie
+8|Oh, I dropped one of Grandpa's photos.|3|Stephanie
+9||1|Stephanie

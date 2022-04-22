@@ -11,12 +11,14 @@
 2|I guess that wasn't a problem for too long, though.|3|Stephanie
 3|Everyone: Happy Birthday to you~|3|Everyone
 3|Amanda: "Close your eyes and make a wish, Phoebe!!"|3|amanda
-3|Amanda: "... Hector, the phone. It's ringing. Don't answer it."|3|amanda
-3|Hector: "I'm just going to step outside for a minute."|3|hector
+3|Amanda: "... Hector, your pager. It's beeping. Don't go now."|3|amanda
+3|Hector: "I'm just going to check in for a minute."|3|hector
 3|Amanda: "Hector, it's her birthday..."|3|amanda
 3|Hector: "Honey, I have to. Important decisions at the Mayor's Office recently."|3|hector
 3|Hector: "I'll just be right outside. Let her wear my hat."|3|hector
 3||2|d
+4|I’m glad Grandpa took these photos. They let me see how things were, back then.|5|Stephanie
+4|Almost like I was there|3|Stephanie
 4|*Whispers of the past become clear*|3|d
 4|*You recognize these voices, but they seem younger than normal*|3|d
 4|Hector: "Everybody better be ready to have a great time!"|4|hector
@@ -24,12 +26,16 @@
 4|Hector: "Attagirl."|3|hector
 4|Phoebe: "Yeah, me too."|3|phoebe
 4|Ben: "Me not."|3|benji
-4|Amanda: "Benji, don’t say that."|4|amanda
-4|Ben: "What? I wanna hang out with my friends instead of.."|5|benji
-4|Ben: "Being stuck winning prizes for Ryan the whole time."|5|benji
-4|Hector: "We are spending time together as a family."|5|hector
+4|Amanda: "Benji, don’t say that."|3|amanda
+4|Ben: "What? I wanna hang out with my friends instead of.."|4|benji
+4|Ben: "Being stuck winning prizes for Ryan the whole time."|4|benji
+4|Hector: "We are spending time together as a family."|4|hector
+4|Dad sure wasn’t eager to spend time with everybody.|4|Stephanie
+4|Nowadays he sounds regretful. Bitter.|4|Stephanie
+4|Like if maybe he knew how long everyone had left here|4|Stephanie
+4|he would have acted differently.|3|Stephanie
 5|Amanda: "Hector, it was so nice to relax. Thank you for watching the kids."|5|amanda
-5|Amanda: ".. is that your phone ringing? Really, while we’re together?"|5|amanda
+5|Amanda: ".. is that your pager? Really, while we’re together?"|5|amanda
 5|Hector: "Honey, I’m sorry, you know how impatient the Mayor is.."|5|hector
 5|Ben: "If he’s done playing family for the day, then so am I."|5|benji
 5|Candace: "Stop being a jerk. Dad is here."|4|candace
