@@ -30,7 +30,8 @@ public class CutsceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !_sceneSkipped)
         {
-            director.time = 41f;
+            director.time = 42f;
+            _sceneSkipped = !_sceneSkipped;
         }
     }
 
