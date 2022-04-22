@@ -14,7 +14,7 @@ public class Album : MonoBehaviour
     #region Fields
     [SerializeField] public List<Photo> album;
     [SerializeField] public List<int> hand;
-    public int max_hand = 3;
+    public int max_hand = 5;
     #endregion
 
     void Start()

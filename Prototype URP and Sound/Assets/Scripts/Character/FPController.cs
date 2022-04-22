@@ -89,6 +89,12 @@ public class FPController : MonoBehaviour
 
 
     #region Helper Methods
+    public void InitTransform()
+    {
+        gameObject.transform.position = new Vector3(0f, transform.position.y, 21.4f);
+        gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        playerCamera.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+    }
     public void Move(Vector2 input, bool isRunning, bool isJumping)
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -197,8 +203,6 @@ public class FPController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, dir.y, 0));
         playerCamera.transform.rotation = Quaternion.Euler(new Vector3(dir.x, 0, 0));
     }
-
-
 
     /// <summary>
     /// Deals with inputs to let the player look and move around the scene. To be called every frame in Update().

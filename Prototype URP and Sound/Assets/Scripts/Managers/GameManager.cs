@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         switch (State)
         {
             case GameState.Game:
+                PlayerInput.playerInput.isDisabled = false;
                 CutsceneManager.instance.camera.gameObject.SetActive(false);
                 CharacterComponents.instance.controller.playerCamera.gameObject.SetActive(true);
                 break;
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
                 PPVController.instance.SetDoF(true);
                 break;
             case GameState.CutScene:
+                PlayerInput.playerInput.isDisabled = true;
                 CutsceneManager.instance.camera.gameObject.SetActive(true);
                 CharacterComponents.instance.controller.playerCamera.gameObject.SetActive(false);
                 break;

@@ -28,9 +28,6 @@ public class Transitioner : MonoBehaviour
 
         blackOut = DOVirtual.Float(0f, 1f, time, x => black.color = new Color(0, 0, 0, x)).SetAutoKill(false).Pause().SetLink(gameObject);
         fadeIn = DOVirtual.Float(1f, 0f, time, x => black.color = new Color(0, 0, 0, x)).SetAutoKill(false).Pause().SetLink(gameObject);
-
-        DoIntroFadeIn();
-
     }
 
     // Update is called once per frame
