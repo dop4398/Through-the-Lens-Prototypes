@@ -1,6 +1,7 @@
 0|So this is what 40 years of abandon looks like.|4|Stephanie
 0|I can kind of see it, though…|2|Stephanie
 0|Dad, as a kid, and the rest of the family.|3|Stephanie
+0||1|d
 1||1|d
 2|The environment around here is kind of familiar.|4|Stephanie
 2|Let’s see if I can find where this picture was taken.|4|Stephanie
@@ -8,6 +9,7 @@
 3||1|d
 4|I wonder if they took any other photos from the fair.|4|Stephanie
 4|Let me check Grandpa’s album.|3|Stephanie
+4||1|D
 5|The evacuation was dated the day after the fair.|4|Stephanie
 5|Clearly everyone had to leave things behind.|4|Stephanie
 5|Maybe by choice. Maybe on purpose.|4|Stephanie
@@ -18,6 +20,7 @@
 5|There are more puzzles to explore beyond this point|4|Stephanie
 5|but they aren't nearly as complete as what you've previously played.|4|Stephanie
 5|Consider them a sneak peek of what could come later ;)|7|Stephanie
+5||1|d
 6|Oh, it's locked. Maybe there's another way in?|4|Stephanie
 6||1|d
 7||1|Stephanie
