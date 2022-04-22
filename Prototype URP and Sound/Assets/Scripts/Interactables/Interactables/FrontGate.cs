@@ -27,8 +27,6 @@ public class FrontGate : Interactable, IInteractable
     public void Interaction()
     {
         emitter.Play();
-
-        Debug.Log("interaction sub index: " + subtitleIndex);
         subtitles.tutorialRun(subtitleIndex);
     }
 }

@@ -26,4 +26,9 @@ public class IntroSequenceSubtitles : MonoBehaviour
     {
         subtitles.tutorialRun(1);
     }
+
+    public void PlaySubs2()
+    {
+        subtitles.tutorialRun(2);
+    }
 }

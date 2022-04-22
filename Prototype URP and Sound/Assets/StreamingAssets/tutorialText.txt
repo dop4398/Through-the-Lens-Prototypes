@@ -4,6 +4,7 @@
 1||1|d
 2|The environment around here is kind of familiar.|4|Stephanie
 2|Let’s see if I can find where this picture was taken.|4|Stephanie
+2||1|Stephanie
 3||1|d
 4|I wonder if they took any other photos from the fair.|4|Stephanie
 4|Let me check Grandpa’s album.|3|Stephanie
@@ -18,6 +19,8 @@
 5|but they aren't nearly as complete as what you've previously played.|4|Stephanie
 5|Consider them a sneak peek of what could come later ;)|7|Stephanie
 6|Oh, it's locked. Maybe there's another way in?|4|Stephanie
+6||1|d
 7||1|Stephanie
 8|Oh, I dropped one of Grandpa's photos.|3|Stephanie
+8||1|d
 9||1|Stephanie

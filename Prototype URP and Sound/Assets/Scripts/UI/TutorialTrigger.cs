@@ -23,7 +23,7 @@ public class TutorialTrigger : MonoBehaviour
         if (other.gameObject.name == "FPPlayer Variant")
         {
             subtitles.tutorialRun(index);
-            
+            gameObject.SetActive(false);
         }
        
     }
