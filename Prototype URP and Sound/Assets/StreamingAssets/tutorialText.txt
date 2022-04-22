@@ -22,3 +22,4 @@
 5|Consider them a sneak peek of what could come later ;)|7|Stephanie
 6|Oh, it's locked. Maybe there's another way in?|1|Stephanie
 7||1|Stephanie
+8|Oh, I dropped one of Granpa's photos.|1|Stephanie

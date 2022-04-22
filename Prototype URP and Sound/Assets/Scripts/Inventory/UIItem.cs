@@ -13,7 +13,7 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
     public Item item;
     public Image spriteImage;
     public bool examining = false;
-
+    private FMOD.Studio.EventInstance click;
 
     private void Awake()
     {
@@ -55,7 +55,10 @@ public class UIItem : MonoBehaviour, IPointerClickHandler
         examining = true;
         //Debug.Log(this.item.title);
         if (this.item != null)
-        {             
+        {
+            click = FMODUnity.RuntimeManager.CreateInstance("event:/Menus/UI Select");
+            click.start();
+            click.release();
             Inventory.instance.ui_thoughts.GetComponentInChildren<Text>().text = this.item.info;
             Inspector.instance.loader.LoadObject(Instantiate(item.prefab, new Vector3(0, 1000, 0), Quaternion.identity));
         }
