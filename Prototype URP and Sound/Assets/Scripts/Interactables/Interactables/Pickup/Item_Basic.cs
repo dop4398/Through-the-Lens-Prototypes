@@ -11,12 +11,13 @@ public class Item_Basic : PickUp
 
     private void Awake()
     {
-        itemData = ItemDatabase.database.GetItem(ID);
+
     }
 
     protected override void Start()
     {
         base.Start();
+        itemData = ItemDatabase.database.GetItem(ID);
     }
 
     #region Helper Methods
