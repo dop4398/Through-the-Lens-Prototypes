@@ -14,7 +14,7 @@ CapsuleCollider:
   m_Height: 666.49365
   m_Direction: 1
   m_Center: {x: 3.778265, y: 65.67736, z: 74.85453}
---- !u!114 &729797302
+--- !u!114 &6888995006153458798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,19 +23,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6357152439111425587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81e5c5c0103be1419d5fdffd594d14c, type: 3}
+  m_Script: {fileID: 11500000, guid: 12ef0dcd40e7fc244ada588b064caabc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materials: []
-  usable: 0
+  usable: 1
   itemData:
     myType: 1
-    ID: 2
-    title: Rabbit Toy
-    icon: {fileID: 21300000, guid: 29d990aa9021b674ea9e03ae8450a512, type: 3}
-    info: A toy rabbit, they must have won this for Uncle Ryan
-    prefab: {fileID: 6357152439111425587}
+    ID: 0
+    title: 
+    icon: {fileID: 0}
+    info: 
+    prefab: {fileID: 0}
   ID: 2
+  max_area: 1
+  old_duration: 3
+  new_duration: 3
 --- !u!1001 &6122729076558111586
 PrefabInstance:
   m_ObjectHideFlags: 0
